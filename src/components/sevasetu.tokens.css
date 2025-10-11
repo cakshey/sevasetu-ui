@@ -1,0 +1,34 @@
+:root {
+  /* ===== Brand Colors ===== */
+  --brand-primary: #227AD8;
+  --brand-primary-gradient: linear-gradient(135deg, #082A52, #227AD8, #8BD6FF);
+
+  --brand-accent: #FF8F3D;
+
+  /* ===== Neutral Colors ===== */
+  --bg: #15181c;
+  --surface: #f5f6f7;
+  --surface-alt: #fefefe;
+
+  /* ===== Text ===== */
+  --text-primary: #d8d7d5;
+  --text-muted: #868380;
+  --text-dark: #434343;
+
+  /* ===== Status ===== */
+  --success: #3CCF4E;
+  --warning: #FFC107;
+  --error: #E84141;
+
+  /* ===== Typography ===== */
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-heading: "Poppins", var(--font-ui);
+  --font-mono: "Roboto Mono", monospace;
+
+  /* ===== Spacing ===== */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+}

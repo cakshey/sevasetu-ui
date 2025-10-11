@@ -1,0 +1,46 @@
+:root {
+  /* Ensure global vars are available */
+}
+
+.btn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 10px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.12s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* --- Variants --- */
+.btn--primary {
+  color: #fff;
+  background-image: var(--brand-primary-gradient);
+  border: none;
+  box-shadow: 0 6px 18px rgba(34, 122, 216, 0.18);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: none;
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}

@@ -1,0 +1,64 @@
+.seva-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.seva-modal {
+  background: var(--surface, #1a1e22);
+  color: var(--text-primary, #fff);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transform: scale(0.95);
+  animation: popIn 0.3s ease forwards;
+}
+
+.seva-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #082a52, #227ad8, #80b0ff);
+  color: #fff;
+}
+
+.seva-modal-body {
+  padding: 20px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.seva-modal-footer {
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.95); opacity: 0.9; }
+  to { transform: scale(1); opacity: 1; }
+}

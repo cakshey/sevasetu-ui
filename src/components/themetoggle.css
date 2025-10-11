@@ -1,0 +1,35 @@
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: transform 0.3s ease;
+  margin-left: 12px;
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg) scale(1.1);
+}
+
+.theme-toggle .icon {
+  display: inline-block;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+[data-theme="dark"] {
+  --bg: #15181c;
+  --surface: #1a1e22;
+  --text-primary: #d8d7d5;
+  --text-muted: #868380;
+  --brand-primary: #227ad8;
+  --brand-accent: #ff8f3d;
+}
+
+[data-theme="light"] {
+  --bg: #f5f6f7;
+  --surface: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-muted: #434343;
+  --brand-primary: #227ad8;
+  --brand-accent: #ff8f3d;
+}

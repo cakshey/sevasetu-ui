@@ -1,0 +1,127 @@
+.seva-hero {
+  width: 100%;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #082a52, #227ad8, #80b0ff);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+.seva-hero h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.seva-hero p {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+.hero-cta {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  background: var(--brand-accent, #ff8f3d);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+/* === HERO GRADIENT MOTION ENHANCEMENT (PHASE 6.2) === */
+
+.hero-gradient {
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #1e3a8a, #2563eb, #60a5fa, #1e40af);
+  background-size: 400% 400%;
+  animation: gradientDrift 18s ease infinite;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.4s ease;
+}
+
+@keyframes gradientDrift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 700px;
+  padding: 40px 20px;
+  animation: fadeInUp 1.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-btn {
+  background-color: #ff7b00;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 6px;
+  margin-top: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.hero-btn:hover {
+  background-color: #ffa033;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .hero-gradient {
+    min-height: 200px;
+    animation-duration: 28s;
+  }
+  .hero-content h1 {
+    font-size: 1.4rem;
+  }
+  .hero-btn {
+    padding: 8px 18px;
+  }
+}
