@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SevaSetu India — Booking Form</title>
+  <link rel="stylesheet" href="bookingform_mockup.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">SevaSetu<span class="accent">India</span></div>
+      <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="tricolor"></div>
+  </nav>
+
+  <!-- Booking Form -->
+  <main class="main-area">
+    <div class="booking-card">
+      <h1>Book Trusted Home & Care Services</h1>
+      <p class="subtitle">
+        Fast, verified, and safe bookings — powered by <span class="brand">SevaSetu India</span>.
+      </p>
+
+      <form class="booking-form" id="bookingForm">
+        <input type="text" placeholder="Full Name" id="name" required />
+
+        <input 
+          type="tel" 
+          placeholder="Enter 10-digit mobile number"
+          maxlength="10"
+          pattern="[0-9]{10}"
+          oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+          id="mobile"
+          required
+        />
+
+        <input type="email" placeholder="Email Address" id="email" required />
+
+        <select id="serviceSelect" required>
+          <option value="">Select Service</option>
+          <option>Cleaning</option>
+          <option>Repair</option>
+          <option>Gardening</option>
+          <option>Painting</option>
+          <option>Staff Support</option>
+        </select>
+
+        <input type="date" id="date" required />
+
+        <select id="timeSlot" required>
+          <option value="">Select Preferred Time Slot</option>
+          <option>Morning (8 AM – 12 PM)</option>
+          <option>Afternoon (12 PM – 4 PM)</option>
+          <option>Evening (4 PM – 8 PM)</option>
+        </select>
+
+        <!-- Address Section -->
+        <div class="address-section">
+          <label class="address-label">Pincode</label>
+          <div class="pincode-row">
+            <input 
+              type="text"
+              id="pincode"
+              placeholder="Enter 6-digit Pincode"
+              maxlength="6"
+              pattern="[0-9]{6}"
+              oninput="this.value=this.value.replace(/[^0-9]/g,''); fetchLocation(this.value)"
+              required
+            />
+            <button type="button" class="btn-locate" onclick="locateMe()">📍 Locate Me</button>
+          </div>
+
+          <div class="address-row">
+            <input type="text" id="district" placeholder="District" readonly />
+            <input type="text" id="state" placeholder="State" readonly />
+          </div>
+
+          <!-- Full width address -->
+          <div class="address-block">
+            <textarea
+              id="fullAddress"
+              placeholder="Flat No, Street, Locality"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Full width notes -->
+          <div class="notes-block">
+            <textarea
+              id="notes"
+              placeholder="Additional Notes (optional)"
+            ></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Confirm Booking</button>
+      </form>
+
+      <p class="footer-note">You’ll receive confirmation via email & SMS.</p>
+      <p class="support">
+        Need help? <a href="#">Contact our support team</a>.
+      </p>
+    </div>
+  </main>
+
+  <script>
+  // Auto-select service if passed via URL (ex: ?service=repair)
+  window.onload = function() {
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get("service");
+    if (service) {
+      const select = document.getElementById("serviceSelect");
+      for (let option of select.options) {
+        if (option.text.toLowerCase() === service.toLowerCase()) {
+          option.selected = true;
+          break;
+        }
+      }
+    }
+  };
+
+  // Fetch district/state from pincode
+  async function fetchLocation(pincode) {
+    if (pincode.length === 6) {
+      try {
+        const res = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+        const data = await res.json();
+        if (data[0].Status === "Success") {
+          const po = data[0].PostOffice[0];
+          document.getElementById("district").value = po.District;
+          document.getElementById("state").value = po.State;
+        } else {
+          document.getElementById("district").value = "";
+          document.getElementById("state").value = "";
+        }
+      } catch {
+        console.warn("Unable to fetch pincode info");
+      }
+    } else {
+      document.getElementById("district").value = "";
+      document.getElementById("state").value = "";
+    }
+  }
+
+  // Locate Me (GPS)
+  async function locateMe() {
+    if (!navigator.geolocation) return alert("Geolocation not supported");
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+      const { latitude, longitude } = pos.coords;
+      try {
+        const res = await fetch(
+          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+        );
+        const data = await res.json();
+        if (data.postcode) {
+          const pin = data.postcode.replace(/\D/g, '').slice(0,6);
+          document.getElementById("pincode").value = pin;
+          fetchLocation(pin);
+        } else {
+          alert("Couldn't detect pincode. Please enter manually.");
+        }
+      } catch {
+        alert("Location fetch failed.");
+      }
+    }, () => alert("Permission denied for location."));
+  }
+
+  // Confirm Booking
+  document.getElementById("bookingForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const service = document.getElementById("serviceSelect").value;
+    const mobile = document.getElementById("mobile").value;
+    alert(`✅ Booking Confirmed!\n\nService: ${service}\nName: ${name}\nPhone: ${mobile}\n\nA confirmation has been sent via Email & SMS.`);
+  });
+  </script>
+</body>
+</html>
+
+
