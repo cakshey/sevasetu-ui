@@ -1,0 +1,175 @@
+/* General container */
+.booking-wrapper {
+  max-width: 550px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 30px 40px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Header */
+.booking-header {
+  text-align: center;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.back-home {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #fff5ef;
+  border: 2px solid #e65c00;
+  color: #e65c00;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-home:hover {
+  background: #e65c00;
+  color: #fff;
+}
+
+.booking-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.subline {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.brand {
+  font-weight: 600;
+  color: #e65c00;
+}
+
+/* Form */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input,
+select,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+.pincode-row {
+  display: flex;
+  gap: 10px;
+}
+
+.locate-btn {
+  background: #e65c00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  min-width: 110px;
+}
+
+.locate-btn:hover {
+  background: #cc5200;
+}
+
+/* Buttons */
+.confirm-btn {
+  background: #e65c00;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.3s ease;
+}
+
+.confirm-btn:hover {
+  background: #cc5200;
+}
+
+/* Footer */
+.form-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 18px;
+}
+
+.support-link {
+  color: #e65c00;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.support-link:hover {
+  text-decoration: underline;
+}
+
+/* Bottom back button */
+.bottom-home-btn {
+  background: #fff5ef;
+  color: #e65c00;
+  border: 2px solid #e65c00;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  margin-top: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bottom-home-btn:hover {
+  background: #e65c00;
+  color: #fff;
+}
+
+/* Success screen */
+.success-container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.success-lottie {
+  width: 160px;
+  margin: 0 auto 20px;
+}
+
+.back-home-btn {
+  background: #e65c00;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.back-home-btn:hover {
+  background: #cc5200;
+}

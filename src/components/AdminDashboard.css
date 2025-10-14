@@ -1,0 +1,278 @@
+/* ============================
+   Admin Dashboard Base Layout
+   ============================ */
+.admin-dashboard {
+  padding: 40px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+  color: #1e293b;
+  transition: all 0.3s ease-in-out;
+}
+
+.admin-dashboard h2 {
+  text-align: center;
+  font-size: 26px;
+  color: #1e40af;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+/* ============================
+   Filter Controls
+   ============================ */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  transition: 0.2s;
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+/* ============================
+   Export Button
+   ============================ */
+.export-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.export-btn:hover {
+  background-color: #1e40af;
+}
+
+/* ============================
+   Table Styling
+   ============================ */
+.table-container {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+  background-color: #f1f5f9;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: #f8fafc;
+}
+
+.status-complete {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.status-pending {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+/* ============================
+   Edit Button
+   ============================ */
+.edit-btn {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.edit-btn:hover {
+  background-color: #ea580c;
+}
+
+/* ============================
+   Modal Styling
+   ============================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 41, 59, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.modal-content {
+  background: #ffffff;
+  width: 400px;
+  border-radius: 12px;
+  padding: 25px 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.modal-content h3 {
+  text-align: center;
+  color: #1e40af;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.modal-summary {
+  background: #f1f5f9;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.modal-content label {
+  display: block;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #1e3a8a;
+}
+
+.modal-content select,
+.modal-content textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.modal-content select:focus,
+.modal-content textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 4px rgba(37, 99, 235, 0.25);
+}
+
+.modal-content textarea {
+  resize: none;
+  height: 80px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.save-btn {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.save-btn:hover {
+  background-color: #1e40af;
+}
+
+.cancel-btn {
+  background-color: #94a3b8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.cancel-btn:hover {
+  background-color: #64748b;
+}
+
+/* ============================
+   Animations
+   ============================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ============================
+   Responsive Design
+   ============================ */
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+
+  table {
+    font-size: 13px;
+  }
+}

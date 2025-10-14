@@ -1,0 +1,105 @@
+/* ✅ Clean Layout without Ratings */
+
+.homepage-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fafbfe;
+}
+
+.homepage-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-box {
+  text-align: center;
+  background: white;
+  padding: 25px 40px;
+  border-radius: 10px;
+  margin: 30px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.services-wrapper {
+  width: 100%;
+  margin-top: 30px;
+}
+.login-btn {
+  background: #fff;
+  color: #007bff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #f2f2f2;
+  transform: translateY(-1px);
+}
+
+.welcome-msg {
+  color: #f0f0f0;
+  font-size: 1.1rem;
+  margin-top: 15px;
+}
+
+.services-wrapper {
+  margin-top: 40px;
+}
+
+/* --- Login / Logout Buttons --- */
+.login-btn {
+  background: #fff;
+  color: #007bff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #f2f2f2;
+  transform: translateY(-1px);
+}
+
+.welcome-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.welcome-msg {
+  color: #f0f0f0;
+  font-size: 1.1rem;
+}
+
+.logout-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}

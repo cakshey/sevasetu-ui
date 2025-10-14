@@ -1,48 +1,40 @@
-// src/components/HeroSection.jsx
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./hero.css";
 
-export default function HeroSection({ onExplore }) {
-  const [gradient, setGradient] = useState(
-    "linear-gradient(135deg, #007BFF 0%, #5BC0F8 100%)"
-  );
-
-  // Desktop: mouse-controlled gradient
-  const handleMouseMove = (e) => {
-    const { innerWidth, innerHeight } = window;
-    const x = (e.clientX / innerWidth) * 100;
-    const y = (e.clientY / innerHeight) * 100;
-    setGradient(`radial-gradient(at ${x}% ${y}%, #007BFF, #5BC0F8)`);
-  };
-
-  // Mobile: auto-breathing gradient
-  useEffect(() => {
-    let angle = 0;
-    const interval = setInterval(() => {
-      angle += 0.5;
-      const x = 50 + Math.sin(angle * Math.PI / 180) * 30;
-      const y = 50 + Math.cos(angle * Math.PI / 180) * 30;
-      setGradient(`radial-gradient(at ${x}% ${y}%, #007BFF, #5BC0F8)`);
-    }, 120);
-    return () => clearInterval(interval);
-  }, []);
-
+const HeroSection = ({ children }) => {
   return (
-    <section
-      className="hero"
-      style={{ background: gradient, transition: "background 0.5s ease" }}
-      onMouseMove={handleMouseMove}
-    >
+    <section className="hero">
       <div className="hero-content">
-        <h1 className="hero-title">Empower Care, Instantly</h1>
-        <p className="hero-subtitle">
-          SevaSetu helps you connect with trusted home and care services — faster,
-          safer, and smarter.
+        <h1>Empower Care, Instantly</h1>
+        <p>
+          SevaSetu helps you connect with trusted home and care services —
+          faster, safer, and smarter.
         </p>
-        <button className="hero-btn" onClick={onExplore}>
+        <button
+          className="explore-btn"
+          onClick={() => (window.location.href = "/services")}
+        >
           Explore Services
         </button>
+
+        {/* ✅ Place for Login / Welcome message (from HomePage.jsx) */}
+        <div className="hero-extra">{children}</div>
       </div>
+
+      {/* ✅ Wave Effect for Aesthetic Transition */}
+      <svg
+        className="hero-wave"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 150"
+        preserveAspectRatio="none"
+      >
+        <path
+          fill="#f8f9fb"
+          d="M0,80 C480,150 960,0 1440,80 L1440,150 L0,150 Z"
+        ></path>
+      </svg>
     </section>
   );
-}
+};
+
+export default HeroSection;
