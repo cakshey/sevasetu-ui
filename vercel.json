@@ -1,18 +1,6 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
-      ]
-    }
-  ]
-}
-{
   "buildCommand": "CI=false npm run build",
   "installCommand": "npm install --legacy-peer-deps",
   "outputDirectory": "build",
-  "ignoreCommand": "false",
   "framework": "create-react-app"
 }
