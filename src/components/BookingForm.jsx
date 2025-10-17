@@ -31,6 +31,7 @@ const BookingForm = () => {
 
   const today = new Date().toISOString().split("T")[0];
 
+  // 📍 Auto-fill City/State from pincode
   const handleChange = async (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -49,6 +50,7 @@ const BookingForm = () => {
     }
   };
 
+  // 🌍 Locate Me button
   const handleLocate = async () => {
     if (!navigator.geolocation) {
       alert("Geolocation not supported.");
@@ -82,20 +84,33 @@ const BookingForm = () => {
     );
   };
 
+  // 📨 Submit Booking
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (new Date(formData.date) < new Date(today)) {
       alert("Please select a valid future date.");
       return;
     }
+
     setSubmitting(true);
 
     try {
+      // 🔹 Save to Firestore
       await addDoc(collection(db, "bookings"), {
         ...formData,
         createdAt: serverTimestamp(),
       });
 
+      // 🔹 Log the active ENV IDs (for debug)
+      console.log("📨 EmailJS ENV IDs:", {
+        SERVICE_ID: process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        TEMPLATE_ID: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        ADMIN_TEMPLATE_ID: process.env.REACT_APP_EMAILJS_ADMIN_TEMPLATE_ID,
+        PUBLIC_KEY: process.env.REACT_APP_EMAILJS_PUBLIC_KEY,
+      });
+
+      // 🔹 Send confirmation to Customer
       await emailjs.send(
         process.env.REACT_APP_EMAILJS_SERVICE_ID,
         process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
@@ -109,10 +124,31 @@ const BookingForm = () => {
           state: formData.state,
           notes: formData.notes,
           reply_to: formData.email,
+          phone: formData.phone,
         },
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       );
 
+      // 🔹 Send notification to Admin
+      await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_ADMIN_TEMPLATE_ID,
+        {
+          user_name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          service_name: formData.service,
+          booking_date: formData.date,
+          time_slot: formData.timeSlot,
+          address: formData.address,
+          district: formData.city,
+          state: formData.state,
+          notes: formData.notes,
+        },
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log("✅ Both Customer & Admin emails sent successfully!");
       setShowSuccess(true);
     } catch (err) {
       console.error("🔥 Booking submission failed:", err);
@@ -135,6 +171,7 @@ const BookingForm = () => {
     );
   }
 
+  // 🧾 Booking Form UI
   return (
     <div className="booking-wrapper">
       <div className="booking-header">
@@ -215,7 +252,6 @@ const BookingForm = () => {
             Contact our support team.
           </a>
         </p>
-        {/* ✅ Only one Back to Home button */}
         <button className="bottom-home-btn" onClick={() => navigate("/")}>
           ⬅ Back to Home
         </button>
