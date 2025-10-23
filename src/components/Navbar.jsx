@@ -1,13 +1,26 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    navigate("/logout-success");
+  const handleLogout = async () => {
+    try {
+      await signOut(auth); // ✅ log out from Firebase
+      localStorage.removeItem("user");
+      sessionStorage.clear();
+
+      // Redirect & force reload so Navbar refreshes
+      navigate("/logout-success");
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   return (
@@ -30,19 +43,37 @@ const Navbar = () => {
 
       {/* RIGHT SIDE USER INFO */}
       <div className="nav-right">
-        <div className="user-info">
-          <img
-            src="/assets/avatar.png"
-            alt="User"
-            className="user-avatar"
-            onError={(e) => (e.target.style.display = "none")}
-          />
-          <span className="user-name">Akshey Chaubey</span>
-        </div>
-
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout
-        </button>
+        {user ? (
+          <>
+            <div className="user-info">
+              <img
+                src="/assets/avatar.png"
+                alt="User"
+                className="user-avatar"
+                onError={(e) => (e.target.style.display = "none")}
+              />
+              <span className="user-name">{user.displayName || "User"}</span>
+            </div>
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <button
+            className="login-btn"
+            onClick={() => navigate("/login")}
+            style={{
+              backgroundColor: "#1746b8",
+              color: "white",
+              borderRadius: "6px",
+              padding: "8px 16px",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Login
+          </button>
+        )}
       </div>
     </nav>
   );
