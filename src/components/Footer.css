@@ -1,0 +1,128 @@
+.footer {
+  background: linear-gradient(to bottom, #0a1f4c, #071a3d);
+  color: #e8ecff;
+  padding: 60px 80px 30px 80px;
+  font-family: "Inter", sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* 🔹 Logo Section */
+.footer-logo h2 {
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.footer-logo p {
+  font-size: 14px;
+  color: #b9c4e2;
+  line-height: 1.6;
+}
+
+/* 🔹 Section Titles */
+.footer-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+/* 🔹 Links */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #b9c4e2;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* 🔹 Social + App store */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.social-icons a {
+  color: #d1dcff;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+/* 🔹 App store buttons */
+.app-buttons img {
+  height: 36px;
+  margin-bottom: 10px;
+  display: block;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 5px 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.app-buttons img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  filter: brightness(1.15);
+}
+
+/* 🔹 Bottom line */
+.footer-bottom {
+  border-top: 1px solid #24325b;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #aab7e0;
+}
+
+.footer-bottom .small-text {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #8492c2;
+}
+
+/* 🔹 Responsive layout */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+
+  .footer-logo {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+  }
+}

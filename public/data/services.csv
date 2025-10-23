@@ -1,0 +1,73 @@
+﻿Main Service,Sub-Service,Tier-2 City Avg Price (₹),Remarks
+Women’s Salon & Spa,Haircut & Styling,450,Basic cut + blow dry
+Women’s Salon & Spa,Facial & Cleanup,900,Fruit or herbal facial
+Women’s Salon & Spa,Waxing (Full body),1300,"Full arms, legs, underarms"
+Women’s Salon & Spa,Threading & Eyebrow,70,Eyebrow + upper lips
+Women’s Salon & Spa,Manicure & Pedicure,750,Spa manicure & pedicure combo
+Women’s Salon & Spa,Hair Spa,950,L’Oreal/Matrix treatment
+Women’s Salon & Spa,Bridal Makeup,4500,Includes hairstyle & draping
+Women’s Salon & Spa,Body Massage (60 min),1200,Relaxation or aroma therapy
+Women’s Salon & Spa,Party Makeup,1200,Light makeup & hair styling
+Men’s Salon & Massage,Haircut & Beard Trim,300,Classic or modern style
+Men’s Salon & Massage,Facial & Cleanup,700,Charcoal or hydra facial
+Men’s Salon & Massage,Head Massage,350,"With oil, 30 min session"
+Men’s Salon & Massage,Full Body Massage,1100,60 min Swedish massage
+Men’s Salon & Massage,Hair Color,600,Ammonia-free global color
+Men’s Salon & Massage,D-Tan & Brightening,500,Full face D-tan pack
+Men’s Salon & Massage,Pedicure & Foot Spa,550,Deep clean + scrub
+Men’s Salon & Massage,Shaving & Styling,200,Hot towel shave & styling
+Men’s Salon & Massage,Anti-Hairfall Treatment,950,Herbal or serum-based
+Cleaning & Pest Control,Home Deep Cleaning,2200,2BHK full cleaning
+Cleaning & Pest Control,Kitchen Deep Cleaning,950,Chimney + tiles + sink
+Cleaning & Pest Control,Bathroom Cleaning,400,1 bathroom deep clean
+Cleaning & Pest Control,Sofa Cleaning,850,5-seater shampoo wash
+Cleaning & Pest Control,Carpet Cleaning,600,Per 25 sq.ft area
+Cleaning & Pest Control,Pest Control (Cockroach),700,2BHK apartment
+Cleaning & Pest Control,Termite Treatment,1200,Per 100 sq.ft coverage
+Cleaning & Pest Control,Water Tank Cleaning,900,Up to 1000L tank
+Cleaning & Pest Control,Mattress Sanitization,500,King-size bed
+"Electrician, Plumber & Carpenter",Switch Board Repair,200,Per board replacement
+"Electrician, Plumber & Carpenter",Fan Installation,250,Ceiling or wall fan
+"Electrician, Plumber & Carpenter",Water Tap Replacement,180,Per tap
+"Electrician, Plumber & Carpenter",Leakage Fixing,300,Minor pipe leakage
+"Electrician, Plumber & Carpenter",Furniture Repair,450,Chair/table/small work
+"Electrician, Plumber & Carpenter",Door Lock Installation,350,New or replacement
+"Electrician, Plumber & Carpenter",Lighting Fitting,250,LED or chandelier fitting
+"Electrician, Plumber & Carpenter",Water Motor Installation,700,Up to 1 HP motor
+"Electrician, Plumber & Carpenter",Wooden Shelf Installation,600,Custom size fitting
+Painting & Waterproofing,Interior Wall Painting,12000,"2BHK home, Asian Paints"
+Painting & Waterproofing,Exterior Wall Painting,15000,Up to 1000 sq.ft
+Painting & Waterproofing,Ceiling Painting,2500,White emulsion
+Painting & Waterproofing,Texture Painting,5000,1 feature wall
+Painting & Waterproofing,Waterproof Coating,3200,Bathroom or terrace area
+Painting & Waterproofing,Crack Filling,400,Minor crack repairs
+Painting & Waterproofing,Wood Polishing,1800,2 doors + windows
+Painting & Waterproofing,Metal Painting,1500,Grill or gate painting
+Painting & Waterproofing,Primer Coating,2000,Undercoat before paint
+Native Water Purifier,RO Installation,400,New purifier fitting
+Native Water Purifier,RO Service,350,Filter cleaning + checkup
+Native Water Purifier,Filter Replacement,700,Sediment + carbon filter
+Native Water Purifier,Membrane Change,1000,RO membrane replacement
+Native Water Purifier,UV Lamp Replacement,500,Original OEM lamp
+Native Water Purifier,Leakage Fix,250,Pipe/joint tightening
+Native Water Purifier,Water Quality Test,300,TDS & hardness report
+Native Water Purifier,AMC (1 Year),1800,Quarterly maintenance
+Native Water Purifier,New RO Setup (Up to 10L),5500,Standard Kent-type model
+AC & Appliance Repair,AC Gas Refilling,1400,1.5-ton split AC
+AC & Appliance Repair,AC Servicing,500,Wet or dry cleaning
+AC & Appliance Repair,Fridge Repair,400,Cooling or compressor issue
+AC & Appliance Repair,Washing Machine Repair,450,Front/top load service
+AC & Appliance Repair,Microwave Repair,300,Heating issue fix
+AC & Appliance Repair,TV Repair,600,LED/LCD panel issue
+AC & Appliance Repair,Water Heater Service,350,Geyser not heating
+AC & Appliance Repair,Chimney Deep Cleaning,700,Kitchen exhaust cleaning
+AC & Appliance Repair,AC Installation,1300,Split AC wall mount
+Wall Makeover by Revamp,Wallpaper Installation,1200,Per wall (10x10 ft)
+Wall Makeover by Revamp,3D Wall Panels,4500,PVC decorative design
+Wall Makeover by Revamp,Wall Art & Texture,2800,Custom mural art
+Wall Makeover by Revamp,POP Ceiling Design,6000,Living room setup
+Wall Makeover by Revamp,False Ceiling Lighting,3500,LED concealed lights
+Wall Makeover by Revamp,Wall Crack Repair,500,Minor plaster fix
+Wall Makeover by Revamp,Modular Partition Setup,8000,Glass or wood partitions
+Wall Makeover by Revamp,Accent Wall Design,2500,Premium color + finish
+Wall Makeover by Revamp,Interior Renovation Combo,12000,Full room revamp
