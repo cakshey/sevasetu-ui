@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import "./Navbar.css";
 
-const Navbar = ({ user }) => {
+const Navbar = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
+  // Watch for login/logout state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+        localStorage.setItem("user", JSON.stringify(firebaseUser));
+      } else {
+        setUser(null);
+        localStorage.removeItem("user");
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // Logout
   const handleLogout = async () => {
-    try {
-      await signOut(auth); // ✅ log out from Firebase
-      localStorage.removeItem("user");
-      sessionStorage.clear();
-
-      // Redirect & force reload so Navbar refreshes
-      navigate("/logout-success");
-      setTimeout(() => {
-        window.location.reload();
-      }, 300);
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
+    await signOut(auth);
+    localStorage.removeItem("user");
+    navigate("/logout-success");
   };
 
   return (
@@ -46,12 +52,11 @@ const Navbar = ({ user }) => {
         {user ? (
           <>
             <div className="user-info">
-              <img
-                src="/assets/avatar.png"
-                alt="User"
-                className="user-avatar"
-                onError={(e) => (e.target.style.display = "none")}
-              />
+              {user.photoURL ? (
+                <img src={user.photoURL} alt="User" className="user-avatar" />
+              ) : (
+                <img src="/assets/avatar.png" alt="User" className="user-avatar" />
+              )}
               <span className="user-name">{user.displayName || "User"}</span>
             </div>
             <button className="logout-btn" onClick={handleLogout}>
@@ -59,18 +64,7 @@ const Navbar = ({ user }) => {
             </button>
           </>
         ) : (
-          <button
-            className="login-btn"
-            onClick={() => navigate("/login")}
-            style={{
-              backgroundColor: "#1746b8",
-              color: "white",
-              borderRadius: "6px",
-              padding: "8px 16px",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
+          <button className="logout-btn" onClick={() => navigate("/login")}>
             Login
           </button>
         )}
