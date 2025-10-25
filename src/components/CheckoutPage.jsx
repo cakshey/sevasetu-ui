@@ -1,4 +1,3 @@
-// ✅ src/components/CheckoutPage.jsx
 import React, { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { auth, db } from "../firebase";
@@ -20,9 +19,10 @@ function CheckoutPage() {
   const user = auth.currentUser;
 
   useEffect(() => {
-    if (!user) navigate("/"); // redirect if not logged in
+    if (!user) navigate("/login"); // redirect if not logged in
   }, [user, navigate]);
 
+  // Fetch address details from pincode
   const fetchAddress = async (pin) => {
     if (pin.length !== 6) return;
     try {
@@ -41,13 +41,17 @@ function CheckoutPage() {
     }
   };
 
+  // Handle booking confirmation
   const handleBooking = async () => {
-    if (!phone.match(/^\d{10}$/)) return alert("Enter valid 10-digit phone");
-    if (!pincode || !address || !date || !time) return alert("All fields required");
+    if (!phone.match(/^\d{10}$/)) return alert("Enter valid 10-digit phone number");
+    if (!pincode || !address || !date || !time)
+      return alert("All fields are required");
 
     setLoading(true);
+
     try {
-      await addDoc(collection(db, "bookings"), {
+      // Prepare booking data
+      const newBooking = {
         userId: user.uid,
         name: user.displayName,
         email: user.email,
@@ -57,15 +61,27 @@ function CheckoutPage() {
         date,
         time,
         status: "pending",
+        requestId: "AUTO-GENERATED",
         createdAt: serverTimestamp(),
-      });
+      };
 
-      alert("✅ Booking confirmed!");
+      // Save booking to Firestore
+      await addDoc(collection(db, "bookings"), newBooking);
+
+      // ✅ Save locally for BookingConfirmation page
+      localStorage.setItem(
+        "lastBooking",
+        JSON.stringify({
+          ...newBooking,
+          createdAt: new Date().toISOString(),
+        })
+      );
+
       clearCart();
-      navigate("/");
-    } catch (e) {
-      console.error("Error adding booking:", e);
-      alert("Something went wrong, please try again.");
+      navigate("/booking-confirmation");
+    } catch (error) {
+      console.error("Error adding booking:", error);
+      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -74,7 +90,9 @@ function CheckoutPage() {
   return (
     <div className="checkout-container">
       <h2>Checkout</h2>
-      <p>Logged in as: <strong>{user?.displayName}</strong> ({user?.email})</p>
+      <p>
+        Logged in as: <strong>{user?.displayName}</strong> ({user?.email})
+      </p>
 
       <h3>Selected Services</h3>
       <ul>
@@ -101,33 +119,15 @@ function CheckoutPage() {
             fetchAddress(e.target.value);
           }}
         />
-        <input
-          type="text"
-          placeholder="District"
-          value={district}
-          readOnly
-        />
-        <input
-          type="text"
-          placeholder="State"
-          value={state}
-          readOnly
-        />
+        <input type="text" placeholder="District" value={district} readOnly />
+        <input type="text" placeholder="State" value={state} readOnly />
         <textarea
           placeholder="Full address / landmark"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         />
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-        <input
-          type="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-        />
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
 
         <button disabled={loading} onClick={handleBooking}>
           {loading ? "Processing..." : "Confirm Booking"}

@@ -1,181 +1,149 @@
-/* Booking Confirmation Page */
-
 .confirmation-container {
-  background: #f4f7fb;
-  min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 50px 20px;
-  font-family: "Inter", sans-serif;
+  align-items: center;
+  padding: 40px 0;
+  background: #f5f7ff;
+  min-height: 80vh;
 }
 
 .confirmation-card {
-  background: #fff;
   display: flex;
-  gap: 50px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  padding: 40px 50px;
+  background: white;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  width: 85%;
   max-width: 1000px;
-  width: 100%;
-  transition: all 0.3s ease;
 }
 
-.confirmation-left {
+.confirmation-left,
+.confirmation-right {
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.confirmation-image {
-  width: 320px;
-  max-width: 100%;
-  animation: fadeIn 1s ease-in-out;
+  padding: 30px;
 }
 
 .confirmation-right {
-  flex: 1;
+  border-left: 2px solid #f0f0f0;
+  background: #fcfdff;
 }
 
-.confirmation-right h2 {
-  font-size: 28px;
-  color: #0d47a1;
+.thankyou-img {
+  width: 100%;
+  max-width: 280px;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+.booking-info {
+  background: #f9f9ff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 15px;
+  font-size: 0.95rem;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.feedback-form button {
+  background-color: #0047ab;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.feedback-form button:hover {
+  background-color: #00347a;
+}
+
+.rating {
   margin-bottom: 10px;
 }
 
-.confirmation-text {
-  font-size: 16px;
-  color: #444;
-  margin-bottom: 20px;
-}
-
-.booking-details {
-  background: #f9fbff;
-  padding: 16px 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border: 1px solid #e0e7ff;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-.feedback-section h3 {
-  color: #0d47a1;
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
-.stars {
-  margin: 10px 0;
-}
-
 .star {
-  font-size: 28px;
+  font-size: 22px;
+  cursor: pointer;
   color: #ccc;
-  cursor: pointer;
-  transition: color 0.3s ease;
+  margin-right: 3px;
 }
 
-.star.active {
-  color: #ffb400;
+.star.filled {
+  color: gold;
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 15px 0 20px;
-}
-
-.tag-btn {
-  border: 1px solid #ccc;
-  background: #fff;
-  padding: 6px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #333;
-  transition: all 0.3s ease;
-}
-
-.tag-btn.selected {
-  background: #1976d2;
-  color: white;
-  border-color: #1565c0;
-}
-
-.submit-btn {
-  background: linear-gradient(90deg, #1565c0, #1976d2);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-  background: linear-gradient(90deg, #0d47a1, #1565c0);
-}
-
-.thank-you-msg {
-  color: #388e3c;
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-.action-buttons {
-  margin-top: 25px;
+.confirmation-actions {
   display: flex;
   gap: 10px;
+  margin-top: 20px;
 }
 
 .home-btn,
 .view-btn {
-  background: #e3f2fd;
-  border: 1px solid #90caf9;
-  color: #0d47a1;
-  padding: 8px 16px;
+  background: #eef2ff;
+  color: #0047ab;
+  border: 1px solid #0047ab;
+  padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .home-btn:hover,
 .view-btn:hover {
-  background: #bbdefb;
+  background: #0047ab;
+  color: white;
 }
 
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
-@media (max-width: 900px) {
+/* ✅ Responsive (Mobile <768px) */
+@media (max-width: 768px) {
   .confirmation-card {
     flex-direction: column;
+    width: 95%;
+  }
+
+  .confirmation-left,
+  .confirmation-right {
+    border: none;
+    padding: 20px;
+  }
+
+  .confirmation-right {
+    border-top: 2px solid #f0f0f0;
+  }
+
+  .thankyou-img {
+    max-width: 200px;
+  }
+
+  .confirmation-actions {
+    flex-direction: column;
+  }
+
+  .home-btn,
+  .view-btn {
+    width: 100%;
     text-align: center;
-    padding: 30px 25px;
   }
 
-  .confirmation-image {
-    width: 220px;
-  }
-
-  .action-buttons {
-    justify-content: center;
+  h2,
+  h3 {
+    text-align: center;
   }
 }
-

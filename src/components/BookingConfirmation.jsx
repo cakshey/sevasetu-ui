@@ -1,190 +1,91 @@
-// src/components/BookingConfirmation.jsx
-import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../firebase";
+// ✅ src/components/BookingConfirmation.jsx
+import React, { useEffect, useState } from "react";
+import { auth, db } from "../firebase";
+import { collection, query, where, orderBy, limit, getDocs } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import "./BookingConfirmation.css";
-import thankYouImg from "../assets/thankyou-illustration.png"; // ✅ image in src/assets
 
-const BookingConfirmation = () => {
+function BookingConfirmation() {
+  const [booking, setBooking] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const location = useLocation();
-  const bookingData = location.state || {}; // passed from ServicesPage on booking
 
-  // ✅ States
-  const [rating, setRating] = useState(0);
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [comment, setComment] = useState("");
-  const [userName, setUserName] = useState(""); // 👈 added
-  const [userLocation, setUserLocation] = useState(""); // 👈 renamed from 'location' to avoid conflict with useLocation()
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        navigate("/login");
+        return;
+      }
 
-  const tags = [
-    "Ease of Booking",
-    "Service Quality",
-    "Value for Money",
-    "Friendly Staff",
-    "Overall Experience",
-  ];
+      try {
+        // 🔹 First, try Firestore
+        const q = query(
+          collection(db, "bookings"),
+          where("userId", "==", user.uid),
+          orderBy("createdAt", "desc"),
+          limit(1)
+        );
 
-  const toggleTag = (tag) => {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+        const snapshot = await getDocs(q);
+
+        if (!snapshot.empty) {
+          const data = snapshot.docs[0].data();
+          console.log("✅ Booking found in Firestore:", data);
+          setBooking(data);
+        } else {
+          // 🔹 Fallback: check localStorage (recent booking)
+          const localBooking = JSON.parse(localStorage.getItem("lastBooking"));
+          if (localBooking) {
+            console.log("📦 Using localStorage booking");
+            setBooking(localBooking);
+          } else {
+            console.warn("⚠️ No booking found.");
+            setBooking(null);
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching booking:", err);
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigate]);
+
+  if (loading) return <div className="loading">Loading booking...</div>;
+
+  if (!booking)
+    return (
+      <div className="no-booking">
+        <h3>No booking found!</h3>
+        <button onClick={() => navigate("/services")}>Go to Services</button>
+      </div>
     );
-  };
 
-  // ✅ Submit feedback to Firestore
-  const handleSubmit = async () => {
-    if (!rating) {
-      alert("Please provide a rating before submitting.");
-      return;
-    }
-
-    try {
-      setLoading(true);
-      await addDoc(collection(db, "feedback"), {
-        rating,
-        tags: selectedTags,
-        comment,
-        userName: userName || "Anonymous",
-        location: userLocation || "—",
-        serviceName: bookingData.service || "N/A",
-        category: bookingData.category || "N/A",
-        createdAt: serverTimestamp(),
-      });
-
-      console.log("✅ Feedback saved successfully!");
-      setSubmitted(true);
-    } catch (err) {
-      console.error("❌ Error saving feedback:", err);
-      alert("Something went wrong while saving feedback.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const service = booking.services?.[0];
+  const address = booking.address;
 
   return (
     <div className="confirmation-container">
-      <div className="confirmation-card">
-        {/* LEFT SIDE */}
-        <div className="confirmation-left">
-          <img
-            src={thankYouImg}
-            alt="Booking Confirmed"
-            className="confirmation-image"
-          />
-        </div>
+      <div className="confirmation-left">
+        <img src="/assets/thankyou.png" alt="Thank you" />
+        <h3>🎉 Booking Confirmed!</h3>
+        <p>Thank you for booking with <strong>SevaSetu India</strong>.</p>
 
-        {/* RIGHT SIDE */}
-        <div className="confirmation-right">
-          <h2>🎉 Booking Confirmed!</h2>
-          <p className="confirmation-text">
-            Thank you for booking with <strong>SevaSetu India</strong>!
+        <div className="booking-summary">
+          <p><strong>Service:</strong> {service?.subService || "—"}</p>
+          <p><strong>Category:</strong> {service?.category || "—"}</p>
+          <p><strong>Date of Service:</strong> {booking.date || "—"}</p>
+          <p><strong>Request ID:</strong> {booking.requestId || "AUTO-GENERATED"}</p>
+          <p><strong>Address:</strong>{" "}
+            {address?.line1 ? `${address.line1}, ${address.district || ""}, ${address.state || ""}, ${address.pincode || ""}` : "Not provided"}
           </p>
-
-          <div className="booking-details">
-            <p>
-              <strong>Service:</strong> {bookingData.service || "N/A"}
-            </p>
-            <p>
-              <strong>Category:</strong> {bookingData.category || "N/A"}
-            </p>
-            <p>
-              <strong>Date of Service:</strong>{" "}
-              {bookingData.date || new Date().toLocaleDateString()}
-            </p>
-            <p>
-              <strong>Request ID:</strong> {bookingData.id || "Not Available"}
-            </p>
-          </div>
-
-          <hr />
-
-          {/* ⭐ Feedback Section */}
-          <div className="feedback-section">
-            <h3>⭐ Rate Your Experience</h3>
-
-            <div className="stars">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <span
-                  key={star}
-                  className={`star ${rating >= star ? "active" : ""}`}
-                  onClick={() => setRating(star)}
-                >
-                  ★
-                </span>
-              ))}
-            </div>
-
-            <div className="tags">
-              {tags.map((tag, index) => (
-                <button
-                  key={index}
-                  className={`tag-btn ${
-                    selectedTags.includes(tag) ? "selected" : ""
-                  }`}
-                  onClick={() => toggleTag(tag)}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-
-            {/* 🧑 User Info Fields */}
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="feedback-input"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Your City / Area"
-              className="feedback-input"
-              value={userLocation}
-              onChange={(e) => setUserLocation(e.target.value)}
-            />
-
-            <textarea
-              className="feedback-comment"
-              placeholder="Share any comments (optional)..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            ></textarea>
-
-            {!submitted ? (
-              <button
-                className="submit-btn"
-                onClick={handleSubmit}
-                disabled={loading}
-              >
-                {loading ? "Submitting..." : "Submit Feedback"}
-              </button>
-            ) : (
-              <p className="thank-you-msg">
-                ✅ Thanks for sharing your feedback!
-              </p>
-            )}
-          </div>
-
-          {/* 🔘 Action Buttons */}
-          <div className="action-buttons">
-            <button className="home-btn" onClick={() => navigate("/")}>
-              🏠 Go to Homepage
-            </button>
-            <button
-              className="view-btn"
-              onClick={() => navigate("/services", { replace: true })}
-            >
-              📋 View My Bookings
-            </button>
-          </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default BookingConfirmation;
