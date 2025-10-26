@@ -1,0 +1,125 @@
+.admin-feedback-page {
+  padding: 50px 80px;
+  background: #f9fbfd;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+h2 {
+  color: #0d47a1;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+/* 🔍 Search Bar */
+.search-bar {
+  margin-bottom: 25px;
+}
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+.search-bar input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
+}
+
+/* ⭐ Average Ratings */
+.average-summary {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.avg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.avg-card {
+  background: linear-gradient(145deg, #e3f2fd, #ffffff);
+  border-radius: 10px;
+  text-align: center;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+.avg-card:hover {
+  transform: translateY(-4px);
+}
+.avg-card h4 {
+  color: #0d47a1;
+  margin-bottom: 5px;
+}
+.avg-card p {
+  color: #388e3c;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* 📊 Feedback Table */
+.feedback-table-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+.feedback-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.feedback-table th,
+.feedback-table td {
+  border-bottom: 1px solid #eee;
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.feedback-table th {
+  background: #e3f2fd;
+  color: #0d47a1;
+  font-weight: 600;
+}
+
+.feedback-table tr:hover {
+  background: #f6faff;
+}
+
+.rating {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+.loading,
+.no-data {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .admin-feedback-page {
+    padding: 30px 20px;
+  }
+}

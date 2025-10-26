@@ -1,0 +1,174 @@
+.checkout-container {
+  max-width: 480px;
+  margin: 60px auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: #222;
+  transition: all 0.3s ease;
+}
+
+.checkout-container h2 {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.checkout-container h3 {
+  margin-top: 16px;
+  font-size: 1.2rem;
+  color: #444;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+.checkout-container h4 {
+  text-align: right;
+  font-weight: 600;
+  color: #007bff;
+  margin-top: 8px;
+}
+
+.checkout-container p {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.checkout-container ul {
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+}
+
+.checkout-container ul li {
+  background: #f7f9fc;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- FORM --- */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: none;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+/* --- BUTTON --- */
+.checkout-form button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.checkout-form button:hover:not(:disabled) {
+  background: #0056d2;
+  transform: translateY(-1px);
+}
+
+.checkout-form button:disabled {
+  background: #9ec8ff;
+  cursor: not-allowed;
+}
+
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 600px) {
+  .checkout-container {
+    margin: 24px;
+    padding: 18px;
+  }
+
+  .checkout-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .checkout-form input,
+  .checkout-form textarea {
+    font-size: 0.9rem;
+  }
+
+  .checkout-form button {
+    font-size: 0.95rem;
+  }
+}
+
+/* --- NICE TOUCH: subtle hover on container --- */
+.checkout-container:hover {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-form input,
+.checkout-form textarea,
+.checkout-form select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.pincode-row {
+  display: flex;
+  gap: 10px;
+}
+
+.locate-btn {
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.locate-btn:hover {
+  background: #0d47a1;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
