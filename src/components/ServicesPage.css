@@ -260,3 +260,48 @@
   background: linear-gradient(90deg, #0d47a1, #1565c0);
   transform: translateY(-2px);
 }
+
+/* 💚 Floating checkout bar — green theme */
+.floating-checkout {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f6fff8;
+  border: 2px solid #43a047;
+  box-shadow: 0 4px 14px rgba(67, 160, 71, 0.3);
+  border-radius: 14px;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1200;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.floating-checkout p {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1b5e20;
+}
+
+.checkout-btn {
+  background: linear-gradient(90deg, #43a047, #66bb6a);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 8px rgba(67, 160, 71, 0.4);
+}
+
+.checkout-btn:hover {
+  background: linear-gradient(90deg, #2e7d32, #43a047);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.4);
+}

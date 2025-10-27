@@ -1,14 +1,8 @@
-// src/components/ServicesPage.jsx
 import React, { useEffect, useState } from "react";
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext"; // ✅ import cart context
+import { useCart } from "../context/CartContext";
 import "./ServicesPage.css";
 
 function ServicesPage() {
@@ -17,11 +11,11 @@ function ServicesPage() {
   const params = new URLSearchParams(location.search);
   const category = params.get("category");
 
-  const { cart, addToCart } = useCart(); // ✅ now using cart too
+  const { cart, addToCart } = useCart();
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 Fetch services
+  // 🔹 Fetch services from Firestore
   useEffect(() => {
     async function fetchServices() {
       try {
@@ -35,14 +29,11 @@ function ServicesPage() {
             .replace(/\u00A0/g, " ")
             .trim();
 
-          console.log("📂 Selected category:", normalizedCategory);
-
           q = query(
             collection(db, "services"),
             where("category", "==", normalizedCategory)
           );
         } else {
-          console.log("📂 Loading all services");
           q = collection(db, "services");
         }
 
@@ -52,7 +43,6 @@ function ServicesPage() {
           ...doc.data(),
         }));
 
-        console.log("✅ Loaded services:", data);
         setServices(data);
       } catch (err) {
         console.error("❌ Error fetching services:", err);
@@ -64,7 +54,7 @@ function ServicesPage() {
     fetchServices();
   }, [category]);
 
-  // 🔹 Add service to cart
+  // 🔹 Add to cart
   const handleAddToCart = (service) => {
     addToCart(service);
     alert(`${service.name} added to your cart.`);
@@ -113,13 +103,14 @@ function ServicesPage() {
             ))}
           </div>
 
-          {/* ✅ Checkout button visible only if cart has items */}
+          {/* ✅ Floating Checkout Bar — visible only when cart has items */}
           {cart.length > 0 && (
-            <div className="checkout-section">
-              <p className="cart-summary">
-                🛒 You have {cart.length} service{cart.length > 1 ? "s" : ""} in your cart.
+            <div className="floating-checkout">
+              <p>
+                🛒 You have {cart.length} service
+                {cart.length > 1 ? "s" : ""} in your cart.
               </p>
-              <button className="go-checkout-btn" onClick={goToCheckout}>
+              <button onClick={goToCheckout} className="checkout-btn">
                 Proceed to Checkout
               </button>
             </div>
