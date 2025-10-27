@@ -1,3 +1,4 @@
+/* 🌟 Checkout Container */
 .checkout-container {
   max-width: 480px;
   margin: 60px auto;
@@ -64,7 +65,8 @@
 }
 
 .checkout-form input,
-.checkout-form textarea {
+.checkout-form textarea,
+.checkout-form select {
   width: 100%;
   padding: 12px 14px;
   border: 1px solid #ccc;
@@ -75,7 +77,8 @@
 }
 
 .checkout-form input:focus,
-.checkout-form textarea:focus {
+.checkout-form textarea:focus,
+.checkout-form select:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
@@ -101,6 +104,31 @@
 
 .checkout-form button:disabled {
   background: #9ec8ff;
+  cursor: not-allowed;
+}
+
+/* --- LOCATION BUTTON --- */
+.pincode-row {
+  display: flex;
+  gap: 10px;
+}
+
+.locate-btn {
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.locate-btn:hover {
+  background: #0d47a1;
+}
+
+button[disabled] {
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
@@ -130,45 +158,56 @@
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
 }
 
-.checkout-container {
-  max-width: 500px;
-  margin: 40px auto;
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+/* =====================================================
+   ✅ NEW STYLES — SUCCESS + FEEDBACK SECTION
+===================================================== */
+.checkout-success {
+  max-width: 600px;
+  margin: 60px auto;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.6s ease-in-out;
 }
 
-.checkout-form input,
-.checkout-form textarea,
-.checkout-form select {
-  width: 100%;
-  margin: 8px 0;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.checkout-success h2 {
+  color: #2e7d32;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
 }
 
-.pincode-row {
-  display: flex;
-  gap: 10px;
+.checkout-success p {
+  color: #444;
+  font-size: 1rem;
+  margin-bottom: 18px;
 }
 
-.locate-btn {
+.checkout-success .home-btn {
+  margin-top: 20px;
   background: #1976d2;
   color: white;
   border: none;
-  border-radius: 6px;
-  padding: 8px 12px;
+  padding: 10px 16px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  transition: background 0.3s ease;
 }
 
-.locate-btn:hover {
+.checkout-success .home-btn:hover {
   background: #0d47a1;
 }
 
-button[disabled] {
-  opacity: 0.6;
-  cursor: not-allowed;
+/* ✅ Subtle entry animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

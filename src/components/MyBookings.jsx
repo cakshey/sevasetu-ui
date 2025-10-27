@@ -20,7 +20,7 @@ const MyBookings = () => {
       }
 
       try {
-        // Fetch bookings
+        // 🧾 Fetch bookings
         const bookingsQuery = query(
           collection(db, "bookings"),
           where("userId", "==", user.uid),
@@ -32,7 +32,7 @@ const MyBookings = () => {
           ...doc.data(),
         }));
 
-        // Fetch feedbacks
+        // 💬 Fetch feedbacks
         const feedbackQuery = query(
           collection(db, "feedback"),
           where("userId", "==", user.uid),
@@ -76,9 +76,11 @@ const MyBookings = () => {
           const serviceName = b.services?.[0]?.subService || "Service name unavailable";
           const category = b.services?.[0]?.category || "—";
 
-          // Match feedback with this booking's service
+          // ✅ Match feedback with service name OR category (more flexible)
           const relatedFeedback = feedbacks.find(
-            (f) => f.service === serviceName
+            (f) =>
+              f.serviceName?.toLowerCase() === serviceName.toLowerCase() ||
+              f.category?.toLowerCase() === category.toLowerCase()
           );
 
           return (
@@ -87,9 +89,9 @@ const MyBookings = () => {
                 <h3>{serviceName}</h3>
                 <p><strong>Category:</strong> {category}</p>
                 <p><strong>Date:</strong> {b.date || "—"}</p>
-                <p><strong>Time:</strong> {b.time || "—"}</p>
+                <p><strong>Time:</strong> {b.timeSlot || "—"}</p>
                 <p><strong>Status:</strong> {b.status || "Pending"}</p>
-                <p><strong>Request ID:</strong> {b.id || "AUTO-GENERATED"}</p>
+                <p><strong>Request ID:</strong> {b.requestId || b.id}</p>
 
                 {b.address ? (
                   <p>
@@ -101,13 +103,13 @@ const MyBookings = () => {
                 )}
               </div>
 
-              {/* 💬 Display Feedback if exists */}
+              {/* 💬 Feedback Section */}
               {relatedFeedback ? (
                 <div className="feedback-section">
                   <h4>⭐ Your Feedback</h4>
                   <p><strong>Rating:</strong> {"★".repeat(relatedFeedback.rating)}</p>
-                  <p><strong>City:</strong> {relatedFeedback.city}</p>
-                  <p><strong>Comment:</strong> {relatedFeedback.comment}</p>
+                  <p><strong>Place:</strong> {relatedFeedback.place || "—"}</p>
+                  <p><strong>Comment:</strong> {relatedFeedback.comment || "No comment provided."}</p>
                   <p className="feedback-date">
                     Submitted on:{" "}
                     {relatedFeedback.createdAt?.toDate

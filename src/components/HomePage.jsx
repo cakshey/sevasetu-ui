@@ -1,79 +1,75 @@
+// ✅ src/components/HomePage.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { collection, getDocs, orderBy, limit, query } from "firebase/firestore";
+import { collection, query, orderBy, limit, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import "./HomePage.css";
 
-// ✅ Category icons (from public/assets/icons)
-const categories = [
-  { title: "Women's Salon & Spa", icon: "/assets/icons/women-salon.png" },
-  { title: "Men's Salon & Massage", icon: "/assets/icons/men-salon.png" },
-  { title: "Cleaning & Pest Control", icon: "/assets/icons/cleaning.png" },
-  { title: "Electrician, Plumber & Carpenter", icon: "/assets/icons/electrician.png" },
-  { title: "Painting & Waterproofing", icon: "/assets/icons/painting.png" },
-  { title: "Native Water Purifier", icon: "/assets/icons/purifier.png" },
-  { title: "AC & Appliance Repair", icon: "/assets/icons/ac-repair.png" },
-  { title: "Wall Makeover by Revamp", icon: "/assets/icons/wall-makeover.png" },
-];
-
-// ✅ Right side image grid (Service highlights)
-const highlights = [
-  {
-    title: "Domestic Staff",
-    img: "/assets/domestic-staff.jpg",
-    caption: "Housemaid, Cook, Driver, Security Guard",
-  },
-  {
-    title: "Pest Control",
-    img: "/assets/pest-control.jpg",
-    caption: "Cockroach, Termite, Bed Bug, Disinfection",
-  },
-  {
-    title: "Appliance Repair",
-    img: "/assets/appliance-repair.jpg",
-    caption: "Electrical, Plumbing, AC, Appliance Repair",
-  },
-  {
-    title: "Home Painting",
-    img: "/assets/home-painting.jpg",
-    caption: "Home, Kitchen, Bathroom, Sofa, Mattress",
-  },
-];
-
-const HomePage = () => {
+export default function HomePage() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-  const [feedbackList, setFeedbackList] = useState([]); // ✅ renamed to match usage
+  const [feedbackList, setFeedbackList] = useState([]);
+  const [scrollIndex, setScrollIndex] = useState(0);
 
-  // ✅ Handles category click → navigates with URL param
-  const handleCategoryClick = (category) => {
-    const encoded = encodeURIComponent(category);
-    navigate(`/services?category=${encoded}`);
-  };
+  // 🧭 Fetch feedback in realtime
+  useEffect(() => {
+    const q = query(collection(db, "feedback"), orderBy("createdAt", "desc"), limit(10));
+    const unsub = onSnapshot(q, (snapshot) => {
+      const docs = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+      setFeedbackList(docs);
+    });
+    return () => unsub();
+  }, []);
 
-  // ✅ Filter categories based on search input
+  // ⏳ Auto-scroll every 4s
+  useEffect(() => {
+    if (feedbackList.length === 0) return;
+    const timer = setInterval(() => {
+      setScrollIndex((prev) => (prev + 1) % feedbackList.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [feedbackList]);
+
+  // 🎯 Category grid data
+  const categories = [
+    { title: "Women's Salon & Spa", icon: "/assets/icons/women-salon.png" },
+    { title: "Men's Salon & Massage", icon: "/assets/icons/men-salon.png" },
+    { title: "Cleaning & Pest Control", icon: "/assets/icons/cleaning.png" },
+    { title: "Electrician, Plumber & Carpenter", icon: "/assets/icons/electrician.png" },
+    { title: "Painting & Waterproofing", icon: "/assets/icons/painting.png" },
+    { title: "Native Water Purifier", icon: "/assets/icons/purifier.png" },
+    { title: "AC & Appliance Repair", icon: "/assets/icons/ac-repair.png" },
+    { title: "Wall Makeover by Revamp", icon: "/assets/icons/wall-makeover.png" },
+  ];
+
+  const highlights = [
+    {
+      title: "Domestic Staff",
+      img: "/assets/home/domestic.jpg",
+      caption: "Housemaid, Cook, Driver, Security Guard",
+    },
+    {
+      title: "Pest Control",
+      img: "/assets/home/pest.jpg",
+      caption: "Cockroach, Termite, Bed Bug, Disinfection",
+    },
+    {
+      title: "Appliance Repair",
+      img: "/assets/home/appliance.jpg",
+      caption: "Electrical, Plumbing, AC, Appliance Repair",
+    },
+    {
+      title: "Home Cleaning",
+      img: "/assets/home/cleaning.jpg",
+      caption: "Home, Kitchen, Bathroom, Sofa, Mattress",
+    },
+  ];
+
   const filteredCategories = categories.filter((cat) =>
     cat.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // ✅ Fetch recent feedback (testimonials)
-  useEffect(() => {
-    async function loadFeedback() {
-      try {
-        const q = query(
-          collection(db, "feedback"),
-          orderBy("createdAt", "desc"),
-          limit(3)
-        );
-        const snap = await getDocs(q);
-        const data = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-        setFeedbackList(data);
-      } catch (err) {
-        console.error("❌ Error loading feedback:", err);
-      }
-    }
-    loadFeedback();
-  }, []);
+  const fb = feedbackList[scrollIndex];
 
   return (
     <div className="home-container">
@@ -86,85 +82,79 @@ const HomePage = () => {
 
         <div className="category-section">
           <h3>What are you looking for?</h3>
-
-          {/* 🔍 Search Bar */}
-          <div className="search-container">
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search services..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-
-          {/* ✅ Filtered Category Grid */}
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search services..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
           <div className="category-grid">
-            {filteredCategories.length > 0 ? (
-              filteredCategories.map((cat, index) => (
-                <div
-                  key={index}
-                  className="category-card"
-                  onClick={() => handleCategoryClick(cat.title)}
-                >
-                  <img src={cat.icon} alt={cat.title} className="category-img" />
-                  <p className="category-label">{cat.title}</p>
-                </div>
-              ))
-            ) : (
-              <p style={{ textAlign: "center", color: "#666" }}>No services found.</p>
-            )}
+            {filteredCategories.map((cat, i) => (
+              <div
+                key={i}
+                className="category-card"
+                onClick={() =>
+                  navigate(`/services?category=${encodeURIComponent(cat.title)}`)
+                }
+              >
+                <img src={cat.icon} alt={cat.title} className="category-img" />
+                <p>{cat.title}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* RIGHT SIDE */}
       <div className="home-right">
+        {/* 🖼️ 4 IMAGE HIGHLIGHTS */}
         <div className="image-grid">
-          {highlights.map((img, index) => (
+          {highlights.map((item, index) => (
             <div className="image-card" key={index}>
-              <img src={img.img} alt={img.title} />
+              <img src={item.img} alt={item.title} />
               <div className="image-caption">
-                <strong>{img.title}</strong>
+                <strong>{item.title}</strong>
                 <br />
-                {img.caption}
+                {item.caption}
               </div>
             </div>
           ))}
         </div>
 
-        {/* 🗣️ Feedback / Testimonials Section */}
+        {/* 💬 FEEDBACK WIDGET */}
         <div className="feedback-widget">
-          <h3 className="feedback-title">
+          <h3>
             💬 What Our Customers Say{" "}
-            {feedbackList.length > 0 && (
-              <span className="feedback-count">
-                ({feedbackList.length} Reviews)
-              </span>
-            )}
+            <span className="review-count">({feedbackList.length} Reviews)</span>
           </h3>
 
-          {feedbackList.length === 0 ? (
-            <p className="no-feedback">No feedback yet — be the first to review!</p>
+          {!fb ? (
+            <p>No feedback yet — be the first to share!</p>
           ) : (
-            feedbackList.map((fb, index) => (
-              <div key={index} className="feedback-card">
-                <p className="feedback-comment">
-                  <em>{fb.comment || "No comment provided."}</em>
-                </p>
-                <p className="feedback-rating">
-                  ⭐ {fb.rating}/5 — <strong>{fb.serviceName}</strong>
-                </p>
-                <p className="feedback-meta">
-                  👤 {fb.userName || "Anonymous"} — 📍 {fb.location || "Unknown"}
-                </p>
-              </div>
-            ))
+            <div key={fb.id} className="feedback-card fade-in">
+              <p className="feedback-comment">
+                <em>{fb.comment || "No comment provided."}</em>
+              </p>
+              <p className="feedback-rating">
+                ⭐ {fb.rating}/5 — <b>{fb.serviceName || "Service"}</b>
+              </p>
+              <p className="feedback-meta">
+                👤 {fb.name || "Anonymous"} — 📍 {fb.place || "Unknown"}
+              </p>
+              {Array.isArray(fb.tags) && fb.tags.length > 0 && (
+                <div className="feedback-tags">
+                  {fb.tags.map((t, i) => (
+                    <span key={i} className="tag-chip">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
           )}
         </div>
       </div>
     </div>
   );
-};
-
-export default HomePage;
+}

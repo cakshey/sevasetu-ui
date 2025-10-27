@@ -125,14 +125,15 @@
 
 /* 🖼️ RIGHT SIDE IMAGES */
 .home-right {
-  width: 48%;
+  width: 45%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 100px;
+  margin-top: 220px;
 }
 
+/* Image grid layout */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -141,28 +142,38 @@
   animation: fadeIn 1s ease-in-out;
 }
 
+/* ✅ Natural rectangular image cards with SevaSetu gradient hover */
 .image-card {
   position: relative;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
   background: #fff;
+  border: 2px solid transparent;
 }
 
 .image-card:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(0, 74, 173, 0.25);
+  box-shadow: 0 8px 22px rgba(0, 74, 173, 0.25);
+  border: 2px solid transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(135deg, #5b8dfb, #7b5cff);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }
 
+/* Maintain full visibility */
 .image-card img {
   width: 100%;
-  height: 220px;
+  height: 240px;
   object-fit: cover;
+  object-position: center top;
   display: block;
   border-radius: 16px;
 }
 
+/* Caption overlay */
 .image-caption {
   position: absolute;
   bottom: 0;
@@ -204,58 +215,6 @@
   }
 }
 
-/* 📱 RESPONSIVENESS */
-@media (max-width: 1100px) {
-  .home-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 30px;
-  }
-
-  .home-left,
-  .home-right {
-    width: 100%;
-  }
-
-  .home-right {
-    margin-top: 40px;
-  }
-
-  .image-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-}
-
-@media (max-width: 700px) {
-  .home-container {
-    padding: 30px 20px;
-  }
-
-  .home-left h1 {
-    font-size: 26px;
-  }
-
-  .category-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  }
-
-  .category-card {
-    padding: 18px 10px;
-  }
-
-  .category-img {
-    width: 65px;
-    height: 65px;
-  }
-
-  .image-card img {
-    height: 180px;
-  }
-
-  .image-caption {
-    font-size: 13px;
-  }
-}
 /* 🔍 Search Bar */
 .search-container {
   margin: 10px 0 25px;
@@ -277,96 +236,7 @@
   box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
 }
 
-/* Category Cards Adjustments */
-.category-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-}
-
-.category-card img {
-  width: 55px;
-  height: 55px;
-  margin-bottom: 10px;
-}
-
-/* 💬 Testimonials Section */
-.testimonial-section {
-  margin-top: 60px;
-  background: linear-gradient(135deg, #eef3ff, #f9fbff);
-  border-radius: 16px;
-  padding: 25px 30px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  animation: fadeIn 0.6s ease;
-}
-
-.testimonial-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #002b5b;
-  margin-bottom: 15px;
-}
-
-.testimonial-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.testimonial-card {
-  background: #fff;
-  border-left: 4px solid #004aad;
-  border-radius: 10px;
-  padding: 14px 18px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-3px);
-}
-
-.testimonial-comment {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 6px;
-  font-style: italic;
-}
-
-.testimonial-user {
-  font-size: 13px;
-  color: #004aad;
-  font-weight: 600;
-}
-
-.testimonial-empty {
-  font-size: 14px;
-  color: #777;
-  font-style: italic;
-}
-
-.feedback-meta {
-  font-size: 13px;
-  color: #666;
-  margin-top: 4px;
-}
-
-.feedback-count {
-  font-size: 14px;
-  font-weight: 500;
-  color: #1976d2;
-  margin-left: 6px;
-}
-
+/* 💬 Feedback Widget */
 .feedback-widget {
   background: #fff;
   border-radius: 10px;
@@ -385,12 +255,6 @@
   justify-content: space-between;
 }
 
-.feedback-count {
-  color: #1976d2;
-  font-size: 14px;
-  font-weight: 600;
-}
-
 .feedback-card {
   border-left: 4px solid #1976d2;
   background: #f9fbff;
@@ -399,28 +263,114 @@
   margin-bottom: 12px;
 }
 
+/* 📱 Responsive Adjustments */
+@media (max-width: 1100px) {
+  .home-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 30px;
+  }
+
+  .home-left,
+  .home-right {
+    width: 100%;
+  }
+
+  .home-right {
+    margin-top: 60px;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .image-card img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 700px) {
+  .home-container {
+    padding: 30px 20px;
+  }
+
+  .home-left h1 {
+    font-size: 26px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .image-card img {
+    height: 180px;
+  }
+
+  .image-caption {
+    font-size: 13px;
+  }
+}
+/* ✨ Auto-scroll animation for feedback */
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Feedback widget styling */
+.feedback-widget {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  max-width: 420px;
+}
+
+.feedback-card {
+  margin-top: 10px;
+  background: #f9fbff;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border-left: 4px solid #004aad;
+}
+
 .feedback-comment {
+  font-style: italic;
   color: #333;
-  font-size: 14px;
-  margin-bottom: 6px;
 }
 
 .feedback-rating {
-  color: #388e3c;
-  font-size: 14px;
-  margin-bottom: 4px;
+  font-weight: 600;
+  color: #111;
+  margin-top: 6px;
 }
 
 .feedback-meta {
-  font-size: 13px;
+  font-size: 0.9rem;
   color: #666;
-  margin-top: 2px;
 }
 
-.no-feedback {
-  font-size: 14px;
-  color: #777;
-  font-style: italic;
-  text-align: center;
-  margin-top: 8px;
+.feedback-tags {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag-chip {
+  background: #e8f0ff;
+  color: #004aad;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
 }

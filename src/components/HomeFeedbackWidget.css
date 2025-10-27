@@ -1,0 +1,112 @@
+/* ✅ FeedbackWidget.css */
+.feedback-widget {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px 25px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.feedback-widget h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0d47a1;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.review-count {
+  font-size: 0.9rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.feedback-card {
+  background: #f9fbff;
+  border-left: 4px solid #004aad;
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0, 74, 173, 0.1);
+}
+
+.feedback-comment {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.feedback-rating {
+  font-weight: 600;
+  color: #222;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.feedback-meta {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+/* 🏷️ Tags */
+.feedback-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.tag-chip {
+  background: linear-gradient(135deg, #e8edff, #f5f7ff);
+  color: #004aad;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+/* ✨ Hover animation for chips */
+.tag-chip:hover {
+  background: #dbe3ff;
+  color: #002f9c;
+}
+
+/* 📱 Responsive */
+@media (max-width: 600px) {
+  .feedback-widget {
+    max-width: 100%;
+    padding: 18px;
+  }
+
+  .feedback-card {
+    padding: 12px 14px;
+  }
+
+  .feedback-comment {
+    font-size: 0.9rem;
+  }
+
+  .tag-chip {
+    font-size: 0.7rem;
+  }
+}

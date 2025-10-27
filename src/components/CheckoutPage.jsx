@@ -1,9 +1,10 @@
-// src/components/CheckoutPage.jsx
+// ✅ src/components/CheckoutPage.jsx
 import React, { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { auth, db } from "../firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import FeedbackForm from "./FeedbackForm";
 import "./CheckoutPage.css";
 
 function CheckoutPage() {
@@ -17,6 +18,7 @@ function CheckoutPage() {
   const [timeSlot, setTimeSlot] = useState("");
   const [loading, setLoading] = useState(false);
   const [addressLoading, setAddressLoading] = useState(false);
+  const [bookingSuccess, setBookingSuccess] = useState(false);
 
   const navigate = useNavigate();
   const user = auth.currentUser;
@@ -55,7 +57,6 @@ function CheckoutPage() {
     }
   };
 
-  // Handle booking confirmation (safe + clean)
   const handleBooking = async () => {
     if (cart.length === 0) return alert("Your cart is empty!");
     if (!phone.match(/^\d{10}$/)) return alert("Enter a valid 10-digit phone number");
@@ -88,7 +89,6 @@ function CheckoutPage() {
         createdAt: serverTimestamp(),
       };
 
-      // Deep-clean undefined/null recursively
       const cleanData = (obj) => {
         if (Array.isArray(obj)) return obj.map(cleanData);
         if (obj && typeof obj === "object") {
@@ -102,10 +102,8 @@ function CheckoutPage() {
       };
 
       const safeBooking = cleanData(newBooking);
-
       await addDoc(collection(db, "bookings"), safeBooking);
 
-      // Save locally for confirmation
       localStorage.setItem(
         "lastBooking",
         JSON.stringify({
@@ -115,7 +113,7 @@ function CheckoutPage() {
       );
 
       clearCart();
-      setTimeout(() => navigate("/booking-confirmation"), 500);
+      setBookingSuccess(true);
     } catch (error) {
       console.error("🔥 Error adding booking:", error);
       alert("Something went wrong. Please try again.");
@@ -155,6 +153,33 @@ function CheckoutPage() {
     );
   };
 
+  // ✅ After booking success → Show thank you + feedback form
+  if (bookingSuccess) {
+    const lastService = cart[0]?.subService || cart[0]?.name || "Service";
+    return (
+      <div className="checkout-success">
+        <h2>✅ Thank you for your booking!</h2>
+        <p>
+          We truly appreciate your trust in <strong>SevaSetu India</strong>.
+        </p>
+        <p>Please take a moment to rate your experience below 👇</p>
+
+        <FeedbackForm
+          serviceName={lastService}
+          category={cart[0]?.category || "General"}
+          userName={user?.displayName || ""}
+          userEmail={user?.email || ""}
+          place={district || ""}
+        />
+
+        <button className="home-btn" onClick={() => navigate("/")}>
+          ← Back to Home
+        </button>
+      </div>
+    );
+  }
+
+  // ✅ Default Checkout Form
   return (
     <div className="checkout-container">
       <h2>Checkout</h2>
@@ -217,10 +242,7 @@ function CheckoutPage() {
         />
 
         {/* ✅ Time Slot Dropdown */}
-        <select
-          value={timeSlot}
-          onChange={(e) => setTimeSlot(e.target.value)}
-        >
+        <select value={timeSlot} onChange={(e) => setTimeSlot(e.target.value)}>
           <option value="">Select Time Slot</option>
           <option value="9 AM - 12 PM">9 AM - 12 PM</option>
           <option value="12 PM - 3 PM">12 PM - 3 PM</option>
