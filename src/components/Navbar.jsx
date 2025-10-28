@@ -1,88 +1,110 @@
-// src/components/Navbar.jsx
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
-import { signOut, onAuthStateChanged } from "firebase/auth";
-import { useCart } from "../context/CartContext"; // ✅ import CartContext
+import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = () => {
-  const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-  const { cart } = useCart(); // ✅ Live cart count
-
-  // Watch for login/logout state
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      if (firebaseUser) {
-        setUser(firebaseUser);
-        localStorage.setItem("user", JSON.stringify(firebaseUser));
-      } else {
-        setUser(null);
-        localStorage.removeItem("user");
-      }
-    });
-    return () => unsubscribe();
-  }, []);
-
-  // Logout
-  const handleLogout = async () => {
-    await signOut(auth);
-    localStorage.removeItem("user");
-    navigate("/logout-success");
-  };
-
+function Navbar({ user }) {
   return (
-    <nav className="navbar">
-      {/* LEFT SIDE */}
-      <div className="nav-left" onClick={() => navigate("/")}>
-        💜 <span className="brand">SevaSetu India</span>
-      </div>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm">
+      <div className="container-fluid px-3 px-md-5">
+        {/* Logo / Brand */}
+        <NavLink className="navbar-brand fw-bold d-flex align-items-center" to="/">
+          💜 <span className="ms-2">SevaSetu India</span>
+        </NavLink>
 
-      {/* CENTER LINKS */}
-      <div className="nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/services">Services</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/admin-feedback" className="admin-link">
-          Admin Feedback
-        </Link>
-      </div>
-
-      {/* RIGHT SIDE */}
-      <div className="nav-right">
-        {/* ✅ Live Cart Count */}
-        <button className="cart-btn" onClick={() => navigate("/checkout")}>
-          🛒 Cart ({cart.length})
+        {/* Hamburger Button for Mobile */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        {user ? (
-          <>
-            <div className="user-info">
-              {user.photoURL ? (
-                <img src={user.photoURL} alt="User" className="user-avatar" />
-              ) : (
-                <img
-                  src="/assets/avatar.png"
-                  alt="User"
-                  className="user-avatar"
-                />
-              )}
-              <span className="user-name">{user.displayName || "User"}</span>
-            </div>
-            <button className="logout-btn" onClick={handleLogout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <button className="logout-btn" onClick={() => navigate("/login")}>
-            Login
-          </button>
-        )}
+        {/* Menu Links */}
+        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul className="navbar-nav align-items-lg-center">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/">
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/services">
+                Services
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/about">
+                About
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/contact">
+                Contact
+              </NavLink>
+            </li>
+
+            {/* 🧩 Admin Dropdown */}
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle fw-semibold"
+                href="#"
+                id="adminMenu"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Admin
+              </a>
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="adminMenu">
+                <li>
+                  <NavLink className="dropdown-item" to="/admin">
+                    Dashboard
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/admin-feedback">
+                    Feedback
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/admin/backups">
+                    Backup History
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+
+            {/* 🧍 Auth Section */}
+            {user ? (
+              <>
+                <li className="nav-item ms-lg-3">
+                  <NavLink className="nav-link" to="/logout-success">
+                    Logout
+                  </NavLink>
+                </li>
+                <li className="nav-item ms-2">
+                  <span className="badge bg-light text-primary px-2 py-1">
+                    👋 {user.displayName || "Admin"}
+                  </span>
+                </li>
+              </>
+            ) : (
+              <li className="nav-item ms-lg-3">
+                <NavLink className="nav-link" to="/login">
+                  Login
+                </NavLink>
+              </li>
+            )}
+          </ul>
+        </div>
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;

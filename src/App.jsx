@@ -16,6 +16,8 @@ import Footer from "./components/Footer";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import MyBookings from "./components/MyBookings";
 import ThankYouPage from "./components/ThankYouPage"; // Optional, for future use
+import AdminAssignedProviders from "./components/AdminAssignedProviders";
+import AdminDashboard from "./pages/AdminDashboard"; // ✅ Your new admin page
 
 // Utilities & Styles
 import "./utils/importServices";
@@ -43,6 +45,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout-success" element={<LogoutSuccess />} />
         <Route path="/thank-you" element={<ThankYouPage />} />
+        <Route path="/admin-assigned" element={<AdminAssignedProviders />} />
+        <Route path="/admin" element={<AdminDashboard />} />
 
         {/* 🔒 Protected Routes */}
         <Route

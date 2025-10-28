@@ -1,6 +1,5 @@
+/* Prevent top content overlap due to fixed navbar */
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #f7f8fa;
-  color: #333;
+  padding-top: 90px;
 }
+

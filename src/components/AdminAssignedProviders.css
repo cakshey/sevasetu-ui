@@ -1,0 +1,80 @@
+.admin-assigned-container {
+  max-width: 1100px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.admin-assigned-container h2 {
+  text-align: center;
+  color: #0d47a1;
+  margin-bottom: 6px;
+}
+
+.admin-assigned-container p {
+  text-align: center;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.assigned-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.assigned-table th,
+.assigned-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.assigned-table th {
+  background: #f5f8ff;
+  color: #333;
+  font-weight: 600;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.status-badge.assigned {
+  background: #e1f5fe;
+  color: #0277bd;
+}
+
+.status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.reenable-btn {
+  background: #1565c0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.reenable-btn:hover {
+  background: #0d47a1;
+}
+
+.loading,
+.no-data {
+  text-align: center;
+  padding: 40px;
+  color: #555;
+}

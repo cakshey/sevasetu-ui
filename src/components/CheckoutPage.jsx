@@ -2,8 +2,19 @@
 import React, { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { auth, db } from "../firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import FeedbackForm from "./FeedbackForm";
 import "./CheckoutPage.css";
 
@@ -57,6 +68,53 @@ function CheckoutPage() {
     }
   };
 
+  // 🔄 Auto-assign service provider
+  const assignProvider = async (category, userDistrict) => {
+    try {
+      const q = query(
+        collection(db, "service_providers"),
+        where("category", "==", category),
+        where("district", "==", userDistrict),
+        where("verified", "==", true),
+        where("available", "==", true)
+      );
+
+      const snapshot = await getDocs(q);
+      if (snapshot.empty) {
+        toast.warn(`⚠️ No provider available in ${userDistrict}`);
+        return null;
+      }
+
+      // Sort by rating
+      const providers = snapshot.docs
+        .map((d) => ({ id: d.id, ...d.data() }))
+        .sort((a, b) => (b.rating || 0) - (a.rating || 0));
+
+      const selected = providers[0];
+
+      await updateDoc(doc(db, "service_providers", selected.id), {
+        available: false,
+      });
+
+      toast.success(
+        `✅ Assigned: ${selected.name} (${selected.category}) ⭐ ${selected.rating || 0}`
+      );
+
+      return {
+        id: selected.id,
+        name: selected.name,
+        phone: selected.phone,
+        category: selected.category,
+        district: selected.district,
+        rating: selected.rating || 0,
+      };
+    } catch (error) {
+      console.error("❌ Error assigning provider:", error);
+      toast.error("Error assigning provider");
+      return null;
+    }
+  };
+
   const handleBooking = async () => {
     if (cart.length === 0) return alert("Your cart is empty!");
     if (!phone.match(/^\d{10}$/)) return alert("Enter a valid 10-digit phone number");
@@ -66,6 +124,9 @@ function CheckoutPage() {
     setLoading(true);
 
     try {
+      const serviceCategory = cart[0]?.category || "General";
+      const assignedProvider = await assignProvider(serviceCategory, district);
+
       const newBooking = {
         userId: user?.uid || "unknown_user",
         name: user?.displayName || "Customer",
@@ -82,41 +143,30 @@ function CheckoutPage() {
           state: state || "",
           pincode: pincode || "",
         },
-        date: date || "",
-        timeSlot: timeSlot || "",
-        status: "pending",
+        date,
+        timeSlot,
+        status: assignedProvider ? "assigned" : "pending",
+        assignedProvider: assignedProvider || null,
         requestId: `REQ-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
         createdAt: serverTimestamp(),
       };
 
-      const cleanData = (obj) => {
-        if (Array.isArray(obj)) return obj.map(cleanData);
-        if (obj && typeof obj === "object") {
-          return Object.fromEntries(
-            Object.entries(obj)
-              .filter(([_, v]) => v !== undefined && v !== null)
-              .map(([k, v]) => [k, cleanData(v)])
-          );
-        }
-        return obj;
-      };
-
-      const safeBooking = cleanData(newBooking);
-      await addDoc(collection(db, "bookings"), safeBooking);
+      await addDoc(collection(db, "bookings"), newBooking);
 
       localStorage.setItem(
         "lastBooking",
         JSON.stringify({
-          ...safeBooking,
+          ...newBooking,
           createdAt: new Date().toISOString(),
         })
       );
 
       clearCart();
       setBookingSuccess(true);
+      toast.success("🎉 Booking confirmed successfully!");
     } catch (error) {
       console.error("🔥 Error adding booking:", error);
-      alert("Something went wrong. Please try again.");
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -175,6 +225,8 @@ function CheckoutPage() {
         <button className="home-btn" onClick={() => navigate("/")}>
           ← Back to Home
         </button>
+
+        <ToastContainer position="bottom-center" autoClose={4000} />
       </div>
     );
   }
@@ -241,7 +293,6 @@ function CheckoutPage() {
           onChange={(e) => setDate(e.target.value)}
         />
 
-        {/* ✅ Time Slot Dropdown */}
         <select value={timeSlot} onChange={(e) => setTimeSlot(e.target.value)}>
           <option value="">Select Time Slot</option>
           <option value="9 AM - 12 PM">9 AM - 12 PM</option>
@@ -253,6 +304,8 @@ function CheckoutPage() {
           {loading ? "Processing..." : "Confirm Booking"}
         </button>
       </div>
+
+      <ToastContainer position="bottom-center" autoClose={4000} />
     </div>
   );
 }

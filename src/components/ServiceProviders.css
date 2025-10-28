@@ -1,0 +1,108 @@
+.providers-page {
+  padding: 40px;
+  font-family: "Inter", sans-serif;
+  background: #f6f9ff;
+  min-height: 100vh;
+}
+
+.providers-page h2 {
+  color: #0d47a1;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.providers-page p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #1565c0;
+  box-shadow: 0 0 6px rgba(21, 101, 192, 0.3);
+}
+
+.providers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.provider-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.provider-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-header h3 {
+  font-size: 18px;
+  color: #222;
+}
+
+.category {
+  background: #1565c0;
+  color: #fff;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.provider-card p {
+  font-size: 14px;
+  color: #333;
+  margin: 4px 0;
+}
+
+.verified-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #4caf50;
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.provider-card.verified {
+  border: 2px solid #4caf50;
+}
+
+.no-data {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+.loading {
+  text-align: center;
+  color: #444;
+  font-weight: 500;
+}

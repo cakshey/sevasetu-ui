@@ -1,7 +1,7 @@
 // src/utils/importServices.js
 import { collection, addDoc } from "firebase/firestore";
 import Papa from "papaparse";
-import { db } from "../firebase"; // ✅ Use your existing firebase config
+import { db } from "../firebase.js"; // ✅ Use your existing firebase config
 
 // ✅ Function to import CSV and push to Firestore (with data cleaning)
 async function importCSV(filePath) {
