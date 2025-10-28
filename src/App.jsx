@@ -18,6 +18,9 @@ import MyBookings from "./components/MyBookings";
 import ThankYouPage from "./components/ThankYouPage"; // Optional, for future use
 import AdminAssignedProviders from "./components/AdminAssignedProviders";
 import AdminDashboard from "./pages/AdminDashboard"; // ✅ Your new admin page
+import AboutPage from "./components/AboutPage";
+import ContactPage from "./components/ContactPage";
+
 
 // Utilities & Styles
 import "./utils/importServices";
@@ -47,6 +50,9 @@ function App() {
         <Route path="/thank-you" element={<ThankYouPage />} />
         <Route path="/admin-assigned" element={<AdminAssignedProviders />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+
 
         {/* 🔒 Protected Routes */}
         <Route

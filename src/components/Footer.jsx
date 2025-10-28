@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
@@ -9,17 +10,19 @@ function Footer() {
         {/* 🔹 Logo Section */}
         <div className="footer-logo">
           <h2>💜 SevaSetu India</h2>
-          <p>Connecting homes with trusted professionals — faster, safer, and smarter.</p>
+          <p>
+            Connecting homes with trusted professionals — faster, safer, and smarter.
+          </p>
         </div>
 
         {/* 🔹 Company Info */}
         <div className="footer-section">
           <h4>Company</h4>
           <ul>
-            <li><a href="#about">About Us</a></li>
+            <li><Link to="/about">About Us</Link></li>
             <li><a href="#terms">Terms & Conditions</a></li>
             <li><a href="#privacy">Privacy Policy</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
 
@@ -27,7 +30,7 @@ function Footer() {
         <div className="footer-section">
           <h4>For Customers</h4>
           <ul>
-            <li><a href="/services">Our Services</a></li>
+            <li><Link to="/services">Our Services</Link></li>
             <li><a href="#reviews">Customer Reviews</a></li>
             <li><a href="#support">Help & Support</a></li>
           </ul>
@@ -55,11 +58,11 @@ function Footer() {
           <div className="app-buttons">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Available_on_the_App_Store_%28black%29_SVG.svg"
-              alt="App Store"
+              alt="Download on the App Store"
             />
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-              alt="Google Play"
+              alt="Get it on Google Play"
             />
           </div>
         </div>
@@ -67,9 +70,9 @@ function Footer() {
 
       {/* 🔹 Bottom Note */}
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} SevaSetu India. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} <strong>SevaSetu India</strong>. All rights reserved.</p>
         <p className="small-text">
-          A community-driven platform helping Indian households find reliable services and local professionals.
+          A community-driven platform helping Indian households find reliable services and empower local professionals.
         </p>
       </div>
     </footer>

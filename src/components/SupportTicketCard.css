@@ -1,0 +1,58 @@
+.ticket-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #fff;
+  padding: 18px 22px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+  transition: transform 0.2s ease;
+}
+
+.ticket-card:hover {
+  transform: translateY(-3px);
+}
+
+.ticket-info {
+  flex: 1;
+}
+
+.ticket-info h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #1746b8;
+}
+
+.ticket-info .email {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.ticket-info .message {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.ticket-actions button {
+  margin-left: 10px;
+  background: #1746b8;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ticket-actions button:hover {
+  background: #0f3c9c;
+}
+
+/* Status color hint */
+.ticket-card.new { border-left: 6px solid #f6c90e; }
+.ticket-card.in_progress { border-left: 6px solid #4da6ff; }
+.ticket-card.resolved { border-left: 6px solid #4caf50; }
+.ticket-card.escalated { border-left: 6px solid #e53935; }

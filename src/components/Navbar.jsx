@@ -72,6 +72,16 @@ function Navbar({ user }) {
                   </NavLink>
                 </li>
                 <li>
+                  <NavLink className="dropdown-item" to="/admin-assigned">
+                    Assigned Providers
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="dropdown-item" to="/admin/support">
+                    Support Dashboard
+                  </NavLink>
+                </li>
+                <li>
                   <NavLink className="dropdown-item" to="/admin/backups">
                     Backup History
                   </NavLink>

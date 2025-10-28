@@ -1,0 +1,45 @@
+.about-container {
+  padding: 60px 20px;
+  background: #f8faff;
+  color: #222;
+  line-height: 1.6;
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-hero h1 {
+  font-size: 2.5rem;
+  color: #1746b8;
+  font-weight: 700;
+}
+
+.about-hero p {
+  color: #555;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.about-story,
+.about-values,
+.about-footer {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.about-values ul {
+  list-style: disc;
+  margin-left: 25px;
+}
+
+.about-footer {
+  text-align: center;
+  background: linear-gradient(90deg, #1746b8, #4e86f3);
+  color: white;
+}

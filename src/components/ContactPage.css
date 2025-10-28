@@ -1,0 +1,85 @@
+.contact-container {
+  background-color: #f8faff;
+  padding-bottom: 50px;
+}
+
+.contact-hero {
+  background: linear-gradient(90deg, #1746b8, #4378e6);
+  color: white;
+  padding: 60px 20px;
+}
+
+.contact-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.contact-form {
+  background: #ffffff;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #1746b8;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.contact-form button {
+  background-color: #1746b8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 20px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #4378e6;
+  transform: scale(1.02);
+}
+
+.success-msg {
+  color: #2ecc71;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.contact-info {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.contact-info h3 {
+  color: #1746b8;
+  margin-bottom: 8px;
+}
+
+.contact-map {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.contact-map h3 {
+  color: #1746b8;
+  margin-bottom: 15px;
+}
