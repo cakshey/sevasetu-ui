@@ -1,0 +1,203 @@
+/* 🌟 Layout Wrapper */
+.launching-widget-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  padding: 10px;
+  width: 100%;
+}
+
+/* 🟦 Main Widget */
+.launching-widget {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background: linear-gradient(145deg, #1f62e1, #2a73f5);
+  border-radius: 14px;
+  padding: 30px 40px;
+  color: white;
+  max-width: 1100px;
+  width: 100%;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* 🧭 Left Section */
+.launch-left {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.launch-left h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: #ffffff; /* bright white */
+}
+
+/* ✨ Subtitle Text — better contrast */
+.launch-left .sub {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #f5f7ff; /* light readable white */
+  opacity: 0.95;
+}
+
+/* Highlight ₹100 Seva Credit */
+.launch-left .sub span {
+  color: #ffeb3b; /* bright yellow */
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  animation: glowPulse 3s infinite;
+}
+
+/* 🌟 Glowing pulse for ₹100 highlight */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 0px rgba(255, 235, 59, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 235, 59, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(255, 235, 59, 0.4);
+  }
+}
+
+/* 📝 Form Section */
+.launch-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.launch-form .row {
+  display: flex;
+  gap: 10px;
+}
+
+.launch-form input,
+.launch-form select {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+/* 🟢 Buttons */
+.launch-form button {
+  background-color: #fff;
+  color: #1f62e1;
+  font-weight: 600;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.launch-form button:hover {
+  background-color: #e7eeff;
+}
+
+/* OTP input row */
+.phone-otp {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.otp-btn {
+  background-color: #fff;
+  color: #1f62e1;
+  font-weight: 600;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.otp-btn:hover {
+  background-color: #eaf2ff;
+}
+
+/* ✅ Verified Badge */
+.verified-badge {
+  color: #b4ffb4;
+  font-weight: 600;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #69e469;
+  padding: 8px 12px;
+  border-radius: 6px;
+  animation: fadeInCheck 0.8s ease;
+}
+
+/* ✅ Fade-in animation for success check */
+@keyframes fadeInCheck {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 💬 Message text */
+.launch-form p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+/* Submit Button */
+.actions button {
+  width: 100%;
+  background-color: #fff;
+  color: #1f62e1;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.actions button:hover {
+  background-color: #eaf2ff;
+}
+
+/* 🔒 reCAPTCHA */
+#recaptcha-container {
+  margin-top: 8px;
+  transform: scale(0.9);
+  transform-origin: left;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 850px) {
+  .launching-widget {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .launch-left {
+    padding-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .launch-form .row {
+    flex-direction: column;
+  }
+
+  .verified-badge {
+    align-self: center;
+  }
+}

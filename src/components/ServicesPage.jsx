@@ -1,5 +1,9 @@
+// ✅ src/components/ServicesPage.jsx
 import React, { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocsFromServer,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
@@ -15,35 +19,57 @@ function ServicesPage() {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 Fetch services from Firestore
+  // Prevent double fetch in React Strict Mode
+  const [hasFetched, setHasFetched] = useState(false);
+
   useEffect(() => {
     async function fetchServices() {
+      // ✅ Prevent double-fetch during dev (React 18 StrictMode)
+      if (hasFetched) return;
+      setHasFetched(true);
+
       try {
         setLoading(true);
-        let q;
 
-        if (category) {
-          const normalizedCategory = decodeURIComponent(category)
-            .replace(/’/g, "'")
-            .replace(/‘/g, "'")
+        const rawCategory = decodeURIComponent(category || "").trim();
+
+        // Always pull from Firestore server
+        const snap = await getDocsFromServer(collection(db, "services"));
+        let data = snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+        if (rawCategory) {
+          const normalizedCategory = rawCategory
+            .replace(/%26/g, "&")
+            .replace(/&{2,}/g, "&")
+            .replace(/’|‘/g, "'")
             .replace(/\u00A0/g, " ")
-            .trim();
+            .replace(/\s+/g, " ")
+            .trim()
+            .toLowerCase();
 
-          q = query(
-            collection(db, "services"),
-            where("category", "==", normalizedCategory)
+          data = data.filter(
+            (s) =>
+              s.category &&
+              s.category
+                .toString()
+                .trim()
+                .replace(/\s+/g, " ")
+                .toLowerCase() === normalizedCategory
           );
-        } else {
-          q = collection(db, "services");
         }
 
-        const snapshot = await getDocs(q);
-        const data = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        // ✅ Remove duplicates client-side (just in case)
+        const uniqueServices = data.filter(
+          (v, i, a) =>
+            a.findIndex(
+              (t) =>
+                t.name?.trim().toLowerCase() === v.name?.trim().toLowerCase() &&
+                t.category?.trim().toLowerCase() === v.category?.trim().toLowerCase()
+            ) === i
+        );
 
-        setServices(data);
+        // Replace, don’t append
+        setServices(() => uniqueServices.sort((a, b) => a.name.localeCompare(b.name)));
       } catch (err) {
         console.error("❌ Error fetching services:", err);
       } finally {
@@ -52,18 +78,16 @@ function ServicesPage() {
     }
 
     fetchServices();
-  }, [category]);
+  }, [category, hasFetched]);
 
-  // 🔹 Add to cart
+  // 🛒 Add to cart
   const handleAddToCart = (service) => {
     addToCart(service);
-    alert(`${service.name} added to your cart.`);
+    alert(`${service.name || service.subService} added to your cart.`);
   };
 
-  // 🔹 Go to checkout
-  const goToCheckout = () => {
-    navigate("/checkout");
-  };
+  // 🧭 Go to checkout
+  const goToCheckout = () => navigate("/checkout");
 
   return (
     <div className="services-page-container">
@@ -87,12 +111,20 @@ function ServicesPage() {
             {services.map((service) => (
               <div key={service.id} className="service-card">
                 <div className="service-header">
-                  <h3>{service.name}</h3>
-                  <span className="service-price">₹{service.price}</span>
+                  <h3>{service.name || service.subService}</h3>
+                  {service.price && (
+                    <span className="service-price">₹{service.price}</span>
+                  )}
                 </div>
+
                 <p className="service-description">
-                  {service.description || "No description available."}
+                  {service.description?.trim()
+                    ? service.description
+                    : service.remarks?.trim()
+                    ? service.remarks
+                    : "No description available."}
                 </p>
+
                 <button
                   className="book-now"
                   onClick={() => handleAddToCart(service)}
@@ -103,7 +135,7 @@ function ServicesPage() {
             ))}
           </div>
 
-          {/* ✅ Floating Checkout Bar — visible only when cart has items */}
+          {/* ✅ Floating checkout bar when items in cart */}
           {cart.length > 0 && (
             <div className="floating-checkout">
               <p>

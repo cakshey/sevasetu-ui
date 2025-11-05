@@ -130,7 +130,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 220px;
+  margin-top: 120px;
 }
 
 /* Image grid layout */
@@ -373,4 +373,9 @@
   padding: 4px 10px;
   border-radius: 12px;
   font-weight: 600;
+}
+
+/* spacing for Launching Soon section */
+.launching-widget-wrapper {
+  margin: 20px 0 30px;
 }

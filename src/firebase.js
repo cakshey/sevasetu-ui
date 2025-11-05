@@ -1,21 +1,22 @@
+// ✅ Firebase core setup
 import { initializeApp } from "firebase/app";
+import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 
+// ✅ Your Firebase project configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBy9pw-y48RW2VMAKAsaYkoxUezbNbmTAE",
   authDomain: "sevasetu-mvp.firebaseapp.com",
   projectId: "sevasetu-mvp",
-  storageBucket: "sevasetu-mvp.appspot.com",
+  storageBucket: "sevasetu-mvp.appspot.com", // ✅ corrected domain
   messagingSenderId: "715431765919",
-  appId: "1:715431765919:web:7ab4caf4f5df92e9e4ffaa"
+  appId: "1:715431765919:web:7ab4caf4f5df92e9e4ffaa",
 };
 
-// Debug check (optional)
-console.log("🔍 Firebase Config:", firebaseConfig);
-
+// ✅ Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-export { app, db, auth };
+// ✅ Export everything needed across the app
+export { app, auth, db, RecaptchaVerifier, signInWithPhoneNumber };

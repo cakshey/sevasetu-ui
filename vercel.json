@@ -1,16 +1,12 @@
 {
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
-        { "key": "Content-Encoding", "value": "br" }
-      ]
-    }
-  ],
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
   "images": {
-    "formats": ["image/avif", "image/webp"]
+    "domains": ["firebasestorage.googleapis.com"],
+    "sizes": [320, 640, 828, 1080, 1200, 1920, 2048, 3840]
   },
-  "cleanUrls": true,
-  "trailingSlash": false
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }

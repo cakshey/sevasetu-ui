@@ -1,0 +1,2289 @@
+[
+  {
+    "id": "02B1ZPQqv9XrMHJMWJ8b",
+    "category": "Painting & Waterproofing",
+    "name": "Texture Painting",
+    "price": 5000,
+    "description": "1 feature wall"
+  },
+  {
+    "id": "02nCD7IR6tya5Z9BCnY7",
+    "category": "Women's Salon & Spa",
+    "name": "Manicure & Pedicure",
+    "price": 750,
+    "description": "Spa manicure & pedicure combo"
+  },
+  {
+    "id": "05XKjgynldTEy0h90Tnh",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Water Motor Installation",
+    "price": 700,
+    "description": "Up to 1 HP motor"
+  },
+  {
+    "id": "05aNUgMV8bTu21a8Cf3G",
+    "category": "AC & Appliance Repair",
+    "name": "Water Heater Service",
+    "price": 350,
+    "description": "Geyser not heating"
+  },
+  {
+    "id": "05oDenNonRvnOhPiE19A",
+    "category": "AC & Appliance Repair",
+    "name": "Fridge Repair",
+    "price": 400,
+    "description": "Cooling or compressor issue"
+  },
+  {
+    "id": "07IgJogrkuZjiyDavvrl",
+    "category": "Cleaning & Pest Control",
+    "name": "Bathroom Cleaning",
+    "price": 400,
+    "description": "1 bathroom deep clean"
+  },
+  {
+    "id": "090u4Vdz6MOtnavvJrVV",
+    "category": "Cleaning & Pest Control",
+    "name": "Sofa Cleaning",
+    "price": 850,
+    "description": "5-seater shampoo wash"
+  },
+  {
+    "id": "0AS8B9FrNJNKUZ9faVYG",
+    "category": "Native Water Purifier",
+    "name": "Membrane Change",
+    "price": 1000,
+    "description": "RO membrane replacement"
+  },
+  {
+    "id": "0AdUcqTWhGouvxPgvB1L",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Door Lock Installation",
+    "price": 350,
+    "description": "New or replacement"
+  },
+  {
+    "id": "0BWHTvbXM2CY9Fi4GjSR",
+    "category": "Native Water Purifier",
+    "name": "AMC (1 Year)",
+    "price": 1800,
+    "description": "Quarterly maintenance"
+  },
+  {
+    "id": "0Ed8YuOykM5yM9ppXVDd",
+    "category": "Men's Salon & Massage",
+    "name": "Facial & Cleanup",
+    "price": 700,
+    "description": "Charcoal or hydra facial"
+  },
+  {
+    "id": "0HVZhnQYQC6H1nvmNGtd",
+    "category": "Men's Salon & Massage",
+    "name": "Haircut & Beard Trim",
+    "price": 300,
+    "description": "Classic or modern style"
+  },
+  {
+    "id": "0JDueZOtq6w5WiagnPTc",
+    "category": "Women's Salon & Spa",
+    "name": "Manicure & Pedicure",
+    "price": 750,
+    "description": "Spa manicure & pedicure combo"
+  },
+  {
+    "id": "0LiEPJ19gcNKWWS4XACz",
+    "category": "Women's Salon & Spa",
+    "name": "Bridal Makeup",
+    "price": 4500,
+    "description": "Includes hairstyle & draping"
+  },
+  {
+    "id": "0OBnXsGbSoU0yCLSsO2y",
+    "category": "Women's Salon & Spa",
+    "name": "Facial & Cleanup",
+    "price": 900,
+    "description": "Fruit or herbal facial"
+  },
+  {
+    "id": "0SP0iArcbOd7pIsloSmX",
+    "category": "Painting & Waterproofing",
+    "name": "Waterproof Coating",
+    "price": 3200,
+    "description": "Bathroom or terrace area"
+  },
+  {
+    "id": "0UCRFi0BUgEFhbuqPcwP",
+    "category": "Native Water Purifier",
+    "name": "Leakage Fix",
+    "price": 250,
+    "description": "Pipe/joint tightening"
+  },
+  {
+    "id": "0Us5rnhqtrXiHuQViQWx",
+    "category": "Men's Salon & Massage",
+    "name": "D-Tan & Brightening",
+    "price": 500,
+    "description": "Full face D-tan pack"
+  },
+  {
+    "id": "0VDZC521SFvgNpbjb4Ox",
+    "category": "Painting & Waterproofing",
+    "name": "Metal Painting",
+    "price": 1500,
+    "description": "Grill or gate painting"
+  },
+  {
+    "id": "0W0RZc5krnpd8bZOkk4J",
+    "category": "Wall Makeover by Revamp",
+    "subService": "Wall Crack Repair",
+    "price": 500,
+    "remarks": "Minor plaster fix",
+    "createdAt": {
+      "_seconds": 1762017792,
+      "_nanoseconds": 36000000
+    },
+    "updatedAt": {
+      "_seconds": 1762022133,
+      "_nanoseconds": 19000000
+    },
+    "description": "Minor plaster fix",
+    "name": ""
+  },
+  {
+    "id": "0WU4jwrJBwvIlTTv3p49",
+    "category": "Painting & Waterproofing",
+    "name": "Ceiling Painting",
+    "price": 2500,
+    "description": "White emulsion"
+  },
+  {
+    "id": "0Xt0jcLT0hCN06yf3MqR",
+    "category": "Women's Salon & Spa",
+    "name": "Hair Spa",
+    "price": 950,
+    "description": "L’Oreal/Matrix treatment"
+  },
+  {
+    "id": "0Zm46eA3tU7IGsRqwTQ2",
+    "category": "Women's Salon & Spa",
+    "name": "Waxing (Full body)",
+    "price": 1300,
+    "description": "Full arms, legs, underarms"
+  },
+  {
+    "id": "0bIPdAlRExudDdIPzCak",
+    "category": "Wall Makeover by Revamp",
+    "name": "False Ceiling Lighting",
+    "price": 3500,
+    "description": "LED concealed lights"
+  },
+  {
+    "id": "0cYTyde94EdmceCtQxXJ",
+    "category": "AC & Appliance Repair",
+    "name": "AC Installation",
+    "price": 1300,
+    "description": "Split AC wall mount"
+  },
+  {
+    "id": "0dOjIPPtY6LDT8eToMU5",
+    "category": "Men's Salon & Massage",
+    "name": "Full Body Massage",
+    "price": 1100,
+    "description": "60 min Swedish massage"
+  },
+  {
+    "id": "0nu1Clyy3RCAMFU9Ynmj",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wallpaper Installation",
+    "price": 1200,
+    "description": "Per wall (10x10 ft)"
+  },
+  {
+    "id": "0pA5DpMalllCP3yyUNcg",
+    "category": "AC & Appliance Repair",
+    "name": "Washing Machine Repair",
+    "price": 450,
+    "description": "Front/top load service"
+  },
+  {
+    "id": "0qFhylcYhyb5KSdCDR3A",
+    "category": "Women's Salon & Spa",
+    "name": "Threading & Eyebrow",
+    "price": 70,
+    "description": "Eyebrow + upper lips"
+  },
+  {
+    "id": "0r8nzXQHcdLeYmwz3Yp9",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wall Crack Repair",
+    "price": 500,
+    "description": "Minor plaster fix"
+  },
+  {
+    "id": "0sns4JcSNgRog7v7NhDt",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Leakage Fixing",
+    "price": 300,
+    "description": "Minor pipe leakage"
+  },
+  {
+    "id": "0uyB6KZfSKkBAd8n7vSs",
+    "category": "Cleaning & Pest Control",
+    "name": "Bathroom Cleaning",
+    "price": 400,
+    "description": "1 bathroom deep clean"
+  },
+  {
+    "id": "0wNbzaK71AFauPI44Vud",
+    "category": "Men's Salon & Massage",
+    "name": "Pedicure & Foot Spa",
+    "price": 550,
+    "description": "Deep clean + scrub"
+  },
+  {
+    "id": "0yn3e7epIivGabTtJjHp",
+    "category": "Cleaning & Pest Control",
+    "name": "Water Tank Cleaning",
+    "price": 900,
+    "description": "Up to 1000L tank"
+  },
+  {
+    "id": "0zzBDUIUxJdTagJe5JdW",
+    "category": "Native Water Purifier",
+    "name": "New RO Setup (Up to 10L)",
+    "price": 5500,
+    "description": "Standard Kent-type model"
+  },
+  {
+    "id": "11XIMxBHtVMGgDr9eIzq",
+    "category": "Women's Salon & Spa",
+    "name": "Body Massage (60 min)",
+    "price": 1200,
+    "description": "Relaxation or aroma therapy"
+  },
+  {
+    "id": "13h7xOYFJiHu6Km3qD5K",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Switch Board Repair",
+    "price": 200,
+    "description": "Per board replacement"
+  },
+  {
+    "id": "18jb1q4sy9tR2NUKCqm5",
+    "category": "Wall Makeover by Revamp",
+    "name": "3D Wall Panels",
+    "price": 4500,
+    "description": "PVC decorative design"
+  },
+  {
+    "id": "19yP60jD4RI7ji1Dz147",
+    "category": "Cleaning & Pest Control",
+    "name": "Termite Treatment",
+    "price": 1200,
+    "description": "Per 100 sq.ft coverage"
+  },
+  {
+    "id": "1BuRU2wr44HJgd5uoRo3",
+    "category": "Cleaning & Pest Control",
+    "name": "Water Tank Cleaning",
+    "price": 900,
+    "description": "Up to 1000L tank"
+  },
+  {
+    "id": "1JjBnI0Mk6C6o7D72aj7",
+    "category": "Native Water Purifier",
+    "name": "Water Quality Test",
+    "price": 300,
+    "description": "TDS & hardness report"
+  },
+  {
+    "id": "1Jop9Nu6W8X0mIZ3MZEv",
+    "category": "Cleaning & Pest Control",
+    "name": "Home Deep Cleaning",
+    "price": 2200,
+    "description": "2BHK full cleaning"
+  },
+  {
+    "id": "1MzXB9sJoBRrdtqBnxYB",
+    "category": "Painting & Waterproofing",
+    "name": "Exterior Wall Painting",
+    "price": 15000,
+    "description": "Up to 1000 sq.ft"
+  },
+  {
+    "id": "1TFRkiRmQjgWqtuavLwu",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Wooden Shelf Installation",
+    "price": 600,
+    "description": "Custom size fitting"
+  },
+  {
+    "id": "1VpxoTaoquIdSHrR5X9L",
+    "category": "AC & Appliance Repair",
+    "name": "AC Servicing",
+    "price": 500,
+    "description": "Wet or dry cleaning"
+  },
+  {
+    "id": "1W69lWYAeLYXDSXSjMTF",
+    "category": "Wall Makeover by Revamp",
+    "name": "Accent Wall Design",
+    "price": 2500,
+    "description": "Premium color + finish"
+  },
+  {
+    "id": "1aAhTTj25fbiLWy5fmac",
+    "category": "Women's Salon & Spa",
+    "name": "Haircut & Styling",
+    "price": 450,
+    "description": "Basic cut + blow dry"
+  },
+  {
+    "id": "1bgp7flnJS0R6lf81dJ7",
+    "category": "Women's Salon & Spa",
+    "name": "Party Makeup",
+    "price": 1200,
+    "description": "Light makeup & hair styling"
+  },
+  {
+    "id": "1bqVTviVucImV99Kx2cF",
+    "category": "Men's Salon & Massage",
+    "name": "Full Body Massage",
+    "price": 1100,
+    "description": "60 min Swedish massage"
+  },
+  {
+    "id": "1gwjmAj13qFzA3jvFZMj",
+    "category": "Painting & Waterproofing",
+    "name": "Ceiling Painting",
+    "price": 2500,
+    "description": "White emulsion"
+  },
+  {
+    "id": "1hwztwG3C5CtyfZjxDoa",
+    "category": "Painting & Waterproofing",
+    "name": "Wood Polishing",
+    "price": 1800,
+    "description": "2 doors + windows"
+  },
+  {
+    "id": "1iPZqSVvpYvIo4Cb9M0n",
+    "category": "AC & Appliance Repair",
+    "name": "Microwave Repair",
+    "price": 300,
+    "description": "Heating issue fix"
+  },
+  {
+    "id": "1jg49XBpriF0jximYyol",
+    "category": "Painting & Waterproofing",
+    "name": "Primer Coating",
+    "price": 2000,
+    "description": "Undercoat before paint"
+  },
+  {
+    "id": "1mvhJYD7srgvbkK10IDF",
+    "category": "Women's Salon & Spa",
+    "name": "Haircut & Styling",
+    "price": 450,
+    "description": "Basic cut + blow dry"
+  },
+  {
+    "id": "1oSYK9O2FQ7iIGHuMvdo",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wall Art & Texture",
+    "price": 2800,
+    "description": "Custom mural art"
+  },
+  {
+    "id": "1oxVEx34BzyfGkvP6YfJ",
+    "category": "Native Water Purifier",
+    "name": "UV Lamp Replacement",
+    "price": 500,
+    "description": "Original OEM lamp"
+  },
+  {
+    "id": "1pduGVTukBkbyHjZbwGL",
+    "category": "Wall Makeover by Revamp",
+    "name": "Modular Partition Setup",
+    "price": 8000,
+    "description": "Glass or wood partitions"
+  },
+  {
+    "id": "1qGZLudwg9Ueo5KdCyJI",
+    "category": "Painting & Waterproofing",
+    "subService": "Texture Painting",
+    "price": 5000,
+    "remarks": "1 feature wall",
+    "createdAt": {
+      "_seconds": 1762017787,
+      "_nanoseconds": 723000000
+    },
+    "updatedAt": {
+      "_seconds": 1762022129,
+      "_nanoseconds": 761000000
+    },
+    "description": "1 feature wall",
+    "name": ""
+  },
+  {
+    "id": "1zjExxhhoH6sW6X2Svdz",
+    "category": "Painting & Waterproofing",
+    "name": "Crack Filling",
+    "price": 400,
+    "description": "Minor crack repairs"
+  },
+  {
+    "id": "222ZwuVgQqO2nwYNhHw3",
+    "category": "Cleaning & Pest Control",
+    "name": "Bathroom Cleaning",
+    "price": 400,
+    "description": "1 bathroom deep clean"
+  },
+  {
+    "id": "24tt9NToUwdziQVAd6Cp",
+    "category": "Native Water Purifier",
+    "name": "RO Service",
+    "price": 350,
+    "description": "Filter cleaning + checkup"
+  },
+  {
+    "id": "289ZcBZCtbOapBymN0ru",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Fan Installation",
+    "price": 250,
+    "description": "Ceiling or wall fan"
+  },
+  {
+    "id": "29ld656DLUPqd61k1MQp",
+    "category": "Men’s Salon & Massage",
+    "subService": "Pedicure & Foot Spa",
+    "price": 550,
+    "remarks": "Deep clean + scrub",
+    "createdAt": {
+      "_seconds": 1762017785,
+      "_nanoseconds": 232000000
+    },
+    "description": "Deep clean + scrub",
+    "name": ""
+  },
+  {
+    "id": "2ACkv8s3rzqP0j8irTkH",
+    "category": "Cleaning & Pest Control",
+    "name": "Carpet Cleaning",
+    "price": 600,
+    "description": "Per 25 sq.ft area"
+  },
+  {
+    "id": "2Bh8a5T5llsiPlhybLUH",
+    "category": "Wall Makeover by Revamp",
+    "name": "Interior Renovation Combo",
+    "price": 12000,
+    "description": "Full room revamp"
+  },
+  {
+    "id": "2CBbBzoz51Jv2tnWEcwv",
+    "category": "Cleaning & Pest Control",
+    "name": "Kitchen Deep Cleaning",
+    "price": 950,
+    "description": "Chimney + tiles + sink"
+  },
+  {
+    "id": "2QSFsSeJ2fvnOObXGiL5",
+    "category": "AC & Appliance Repair",
+    "name": "TV Repair",
+    "price": 600,
+    "description": "LED/LCD panel issue"
+  },
+  {
+    "id": "2UuCGeM0YuJhXVtLAMoN",
+    "category": "Native Water Purifier",
+    "name": "Filter Replacement",
+    "price": 700,
+    "description": "Sediment + carbon filter"
+  },
+  {
+    "id": "2fAEfBWPEeVXeUEKXWF2",
+    "category": "Cleaning & Pest Control",
+    "name": "Pest Control (Cockroach)",
+    "price": 700,
+    "description": "2BHK apartment"
+  },
+  {
+    "id": "2hQRqHLW23LVzk5OL9iR",
+    "category": "Men's Salon & Massage",
+    "name": "Anti-Hairfall Treatment",
+    "price": 950,
+    "description": "Herbal or serum-based"
+  },
+  {
+    "id": "2iANFzjw53QGtR7gjH8B",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Water Tap Replacement",
+    "price": 180,
+    "description": "Per tap"
+  },
+  {
+    "id": "2oszAb5u8jppbuL3uV6a",
+    "category": "Cleaning & Pest Control",
+    "name": "Bathroom Cleaning",
+    "price": 400,
+    "description": "1 bathroom deep clean"
+  },
+  {
+    "id": "3KbxLHu1fHZXGGZX1xCy",
+    "category": "Cleaning & Pest Control",
+    "name": "Water Tank Cleaning",
+    "price": 900,
+    "description": "Up to 1000L tank"
+  },
+  {
+    "id": "3KjXB416Ay4tsiAqkHSb",
+    "category": "Native Water Purifier",
+    "name": "Membrane Change",
+    "price": 1000,
+    "description": "RO membrane replacement"
+  },
+  {
+    "id": "3V0WRQVyDXMC6sXqa5vM",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Furniture Repair",
+    "price": 450,
+    "description": "Chair/table/small work"
+  },
+  {
+    "id": "3gKfLkCx033EM0kv7z2X",
+    "category": "Painting & Waterproofing",
+    "name": "Interior Wall Painting",
+    "price": 12000,
+    "description": "2BHK home, Asian Paints"
+  },
+  {
+    "id": "3iA1hT5O8J0aT0P6cl8m",
+    "category": "Native Water Purifier",
+    "name": "RO Installation",
+    "price": 400,
+    "description": "New purifier fitting"
+  },
+  {
+    "id": "3qCdMwl1V6GNF5IzCupu",
+    "category": "Native Water Purifier",
+    "name": "Leakage Fix",
+    "price": 250,
+    "description": "Pipe/joint tightening"
+  },
+  {
+    "id": "3yOaPYxO5bdC2xK40CBz",
+    "category": "Men's Salon & Massage",
+    "name": "Hair Color",
+    "price": 600,
+    "description": "Ammonia-free global color"
+  },
+  {
+    "id": "4EifebWq74WHwMHJtQEt",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Fan Installation",
+    "price": 250,
+    "description": "Ceiling or wall fan"
+  },
+  {
+    "id": "4KtldzpIFp3TK9w9ptsw",
+    "category": "Men's Salon & Massage",
+    "name": "Anti-Hairfall Treatment",
+    "price": 950,
+    "description": "Herbal or serum-based"
+  },
+  {
+    "id": "4TT0Ws0cjacQ5vQMcVa4",
+    "category": "Men's Salon & Massage",
+    "name": "Pedicure & Foot Spa",
+    "price": 550,
+    "description": "Deep clean + scrub"
+  },
+  {
+    "id": "4UpOqIHznVeuxd5jpqGo",
+    "category": "Wall Makeover by Revamp",
+    "name": "False Ceiling Lighting",
+    "price": 3500,
+    "description": "LED concealed lights"
+  },
+  {
+    "id": "4mVOBcBtvUo86xbKfjGD",
+    "category": "Men's Salon & Massage",
+    "name": "Hair Color",
+    "price": 600,
+    "description": "Ammonia-free global color"
+  },
+  {
+    "id": "4oGs7nC7r5P68IHcVg3a",
+    "category": "Men's Salon & Massage",
+    "name": "Shaving & Styling",
+    "price": 200,
+    "description": "Hot towel shave & styling"
+  },
+  {
+    "id": "4zQrIy1Xsy2iSOJN3c16",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Lighting Fitting",
+    "price": 250,
+    "description": "LED or chandelier fitting"
+  },
+  {
+    "id": "50Mhg6K5BRoT2Mru1pQ8",
+    "category": "Men's Salon & Massage",
+    "name": "Head Massage",
+    "price": 350,
+    "description": "With oil, 30 min session"
+  },
+  {
+    "id": "59fyjE7zEi1VXIIgGaNQ",
+    "category": "AC & Appliance Repair",
+    "name": "Chimney Deep Cleaning",
+    "price": 700,
+    "description": "Kitchen exhaust cleaning"
+  },
+  {
+    "id": "5Vdm7LwqsdOanoLS9gtv",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Lighting Fitting",
+    "price": 250,
+    "description": "LED or chandelier fitting"
+  },
+  {
+    "id": "5wgF20NY8VwtLQoz6OW1",
+    "category": "Women's Salon & Spa",
+    "name": "Threading & Eyebrow",
+    "price": 70,
+    "description": "Eyebrow + upper lips"
+  },
+  {
+    "id": "61XSFQzF5CM0fbl703IL",
+    "category": "AC & Appliance Repair",
+    "name": "AC Installation",
+    "price": 1300,
+    "description": "Split AC wall mount"
+  },
+  {
+    "id": "62T4VCBbR1rAeEIgKTO5",
+    "category": "Painting & Waterproofing",
+    "name": "Ceiling Painting",
+    "price": 2500,
+    "description": "White emulsion"
+  },
+  {
+    "id": "68v11TJsqZjAmPAcWNuy",
+    "category": "AC & Appliance Repair",
+    "name": "AC Gas Refilling",
+    "price": 1400,
+    "description": "1.5-ton split AC"
+  },
+  {
+    "id": "6aBy3sXwfwS5WFqTogKE",
+    "category": "Painting & Waterproofing",
+    "name": "Texture Painting",
+    "price": 5000,
+    "description": "1 feature wall"
+  },
+  {
+    "id": "73zYv4oufptatw03QUQj",
+    "category": "Men's Salon & Massage",
+    "name": "Haircut & Beard Trim",
+    "price": 300,
+    "description": "Classic or modern style"
+  },
+  {
+    "id": "74VNZfElrAWGIqnEEAVG",
+    "category": "Cleaning & Pest Control",
+    "name": "Mattress Sanitization",
+    "price": 500,
+    "description": "King-size bed"
+  },
+  {
+    "id": "7DPz9lEDYeFvnlrwgxzy",
+    "category": "Cleaning & Pest Control",
+    "name": "Mattress Sanitization",
+    "price": 500,
+    "description": "King-size bed"
+  },
+  {
+    "id": "7EyV3xNGc0Fkt1BhwRKb",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Door Lock Installation",
+    "price": 350,
+    "description": "New or replacement"
+  },
+  {
+    "id": "7KNQVG7vdKvWThUSITjJ",
+    "category": "Native Water Purifier",
+    "name": "New RO Setup (Up to 10L)",
+    "price": 5500,
+    "description": "Standard Kent-type model"
+  },
+  {
+    "id": "7S014Up5lCHc9i8pWF3B",
+    "category": "Wall Makeover by Revamp",
+    "name": "POP Ceiling Design",
+    "price": 6000,
+    "description": "Living room setup"
+  },
+  {
+    "id": "7mc4QOkdKwns9MYxszGI",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Lighting Fitting",
+    "price": 250,
+    "description": "LED or chandelier fitting"
+  },
+  {
+    "id": "7sLMY37POYkRM9HIde8m",
+    "category": "Women’s Salon & Spa",
+    "subService": "Party Makeup",
+    "price": 1200,
+    "remarks": "Light makeup & hair styling",
+    "createdAt": {
+      "_seconds": 1762017784,
+      "_nanoseconds": 438000000
+    },
+    "description": "Light makeup & hair styling",
+    "name": ""
+  },
+  {
+    "id": "8bdD7aGUpg5WXPU5jej6",
+    "category": "Men's Salon & Massage",
+    "name": "Shaving & Styling",
+    "price": 200,
+    "description": "Hot towel shave & styling"
+  },
+  {
+    "id": "8mtRL4A8ZC321yS6Iol5",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Fan Installation",
+    "price": 250,
+    "description": "Ceiling or wall fan"
+  },
+  {
+    "id": "8rLWKb40UKANZdM8Gqq6",
+    "category": "Men's Salon & Massage",
+    "name": "D-Tan & Brightening",
+    "price": 500,
+    "description": "Full face D-tan pack"
+  },
+  {
+    "id": "9GpIPPQ1jTljTGhC7FZQ",
+    "category": "Cleaning & Pest Control",
+    "name": "Home Deep Cleaning",
+    "price": 2200,
+    "description": "2BHK full cleaning"
+  },
+  {
+    "id": "9JZgYbRJU7cu0nqqrrOy",
+    "category": "Painting & Waterproofing",
+    "name": "Primer Coating",
+    "price": 2000,
+    "description": "Undercoat before paint"
+  },
+  {
+    "id": "9f7pgg8QWuahxdBf7kCG",
+    "category": "Men's Salon & Massage",
+    "name": "Pedicure & Foot Spa",
+    "price": 550,
+    "description": "Deep clean + scrub"
+  },
+  {
+    "id": "9oAbZpZnBr6pHdyHiSz2",
+    "category": "Women’s Salon & Spa",
+    "name": "Bridal Makeup",
+    "price": 4500,
+    "description": "Includes hairstyle & draping",
+    "createdAt": {
+      "_seconds": 1762065333,
+      "_nanoseconds": 4000000
+    }
+  },
+  {
+    "id": "9xQwL7bttno0nfhp9RAt",
+    "category": "Men’s Salon & Massage",
+    "name": "Anti-Hairfall Treatment",
+    "price": 950,
+    "description": "Herbal or serum-based",
+    "createdAt": {
+      "_seconds": 1762065334,
+      "_nanoseconds": 348000000
+    }
+  },
+  {
+    "id": "AAtgnZcUp7ggk6BTdljH",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Wooden Shelf Installation",
+    "price": 600,
+    "description": "Custom size fitting"
+  },
+  {
+    "id": "AAzC4Memc6L7NE0mFZL9",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wallpaper Installation",
+    "price": 1200,
+    "description": "Per wall (10x10 ft)"
+  },
+  {
+    "id": "ACrdPPjkMnLuwOaE9equ",
+    "category": "Cleaning & Pest Control",
+    "name": "Sofa Cleaning",
+    "price": 850,
+    "description": "5-seater shampoo wash"
+  },
+  {
+    "id": "AVTjGSTeZ4kc1sbr78T5",
+    "category": "Women’s Salon & Spa",
+    "name": "Hair Spa",
+    "price": 950,
+    "description": "L’Oreal/Matrix treatment",
+    "createdAt": {
+      "_seconds": 1762065332,
+      "_nanoseconds": 807000000
+    }
+  },
+  {
+    "id": "AhR6EeN3RoYmkwVMaOAR",
+    "category": "Men's Salon & Massage",
+    "name": "Full Body Massage",
+    "price": 1100,
+    "description": "60 min Swedish massage"
+  },
+  {
+    "id": "Aqk7FeM5f6GIeAeE4hep",
+    "category": "AC & Appliance Repair",
+    "name": "TV Repair",
+    "price": 600,
+    "description": "LED/LCD panel issue"
+  },
+  {
+    "id": "BFSDVglwoC2iIH2n9PNF",
+    "category": "Painting & Waterproofing",
+    "name": "Wood Polishing",
+    "price": 1800,
+    "description": "2 doors + windows"
+  },
+  {
+    "id": "BZOvURyBR4zTOwmOtK0k",
+    "category": "AC & Appliance Repair",
+    "name": "Chimney Deep Cleaning",
+    "price": 700,
+    "description": "Kitchen exhaust cleaning"
+  },
+  {
+    "id": "Ba2ClWW8ql2wfxErQztY",
+    "category": "Women's Salon & Spa",
+    "subService": "Hair Spa",
+    "price": 950,
+    "remarks": "L'Oreal/Matrix treatment",
+    "createdAt": {
+      "_seconds": 1762022125,
+      "_nanoseconds": 581000000
+    },
+    "description": "L'Oreal/Matrix treatment",
+    "name": ""
+  },
+  {
+    "id": "CuN1MK9qgCshYSghczPb",
+    "category": "Women's Salon & Spa",
+    "name": "Bridal Makeup",
+    "price": 4500,
+    "description": "Includes hairstyle & draping"
+  },
+  {
+    "id": "DJ9Zqz2FiNvhu4kSzleF",
+    "category": "Native Water Purifier",
+    "name": "RO Service",
+    "price": 350,
+    "description": "Filter cleaning + checkup"
+  },
+  {
+    "id": "DKgW94MvBQWj1s4VyqO0",
+    "category": "Wall Makeover by Revamp",
+    "name": "Accent Wall Design",
+    "price": 2500,
+    "description": "Premium color + finish"
+  },
+  {
+    "id": "DLxgAz4TshLiftjrDE3y",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Door Lock Installation",
+    "price": 350,
+    "description": "New or replacement"
+  },
+  {
+    "id": "DWGVvNCdEXCOEDuiHOmj",
+    "category": "Women's Salon & Spa",
+    "name": "Hair Spa",
+    "price": 950,
+    "description": "L’Oreal/Matrix treatment"
+  },
+  {
+    "id": "De88A3u508rP6zhjbcSR",
+    "category": "Men's Salon & Massage",
+    "name": "Facial & Cleanup",
+    "price": 700,
+    "description": "Charcoal or hydra facial"
+  },
+  {
+    "id": "DeKPqNetCP4CbztOrhko",
+    "category": "Women's Salon & Spa",
+    "name": "Body Massage (60 min)",
+    "price": 1200,
+    "description": "Relaxation or aroma therapy"
+  },
+  {
+    "id": "E656PmqHF9qlV5PL2Dw7",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wall Art & Texture",
+    "price": 2800,
+    "description": "Custom mural art"
+  },
+  {
+    "id": "Ei5H3HQnxf7gMTuPuGmI",
+    "category": "AC & Appliance Repair",
+    "name": "Microwave Repair",
+    "price": 300,
+    "description": "Heating issue fix"
+  },
+  {
+    "id": "ElNuoqlEryBjmLIqLTOJ",
+    "category": "Women's Salon & Spa",
+    "name": "Waxing (Full body)",
+    "price": 1300,
+    "description": "Full arms, legs, underarms"
+  },
+  {
+    "id": "FFfq0kD8PvLLmvDky57c",
+    "category": "Women's Salon & Spa",
+    "name": "Waxing (Full body)",
+    "price": 1300,
+    "description": "Full arms, legs, underarms"
+  },
+  {
+    "id": "FsPj4kl0cJkk7RaU5ItQ",
+    "category": "Men's Salon & Massage",
+    "name": "Hair Color",
+    "price": 600,
+    "description": "Ammonia-free global color"
+  },
+  {
+    "id": "GVNenKh47w1GPLD0V0HF",
+    "category": "Native Water Purifier",
+    "name": "RO Installation",
+    "price": 400,
+    "description": "New purifier fitting"
+  },
+  {
+    "id": "GXAHLc6EjjXxgt9LK3gI",
+    "category": "Women's Salon & Spa",
+    "name": "Party Makeup",
+    "price": 1200,
+    "description": "Light makeup & hair styling"
+  },
+  {
+    "id": "IU7z59Z8hG27c7BVeY8V",
+    "category": "Painting & Waterproofing",
+    "name": "Texture Painting",
+    "price": 5000,
+    "description": "1 feature wall"
+  },
+  {
+    "id": "IZV28I0yEULhvf1zsLHE",
+    "category": "Women's Salon & Spa",
+    "name": "Party Makeup",
+    "price": 1200,
+    "description": "Light makeup & hair styling"
+  },
+  {
+    "id": "IcrkLAvPK1uo4SjwkwaF",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Furniture Repair",
+    "price": 450,
+    "description": "Chair/table/small work"
+  },
+  {
+    "id": "J2vVynZduaYXx8bLI94v",
+    "category": "AC & Appliance Repair",
+    "name": "AC Installation",
+    "price": 1300,
+    "description": "Split AC wall mount"
+  },
+  {
+    "id": "JOUmuhRSwjhX5bLlwW2J",
+    "category": "Cleaning & Pest Control",
+    "name": "Sofa Cleaning",
+    "price": 850,
+    "description": "5-seater shampoo wash"
+  },
+  {
+    "id": "Jc8X82itQCx0Kglwf5lw",
+    "category": "Men’s Salon & Massage",
+    "name": "Hair Color",
+    "price": 600,
+    "description": "Ammonia-free global color",
+    "createdAt": {
+      "_seconds": 1762065333,
+      "_nanoseconds": 877000000
+    }
+  },
+  {
+    "id": "JtDaUfyN9u10WHACgrwI",
+    "category": "Cleaning & Pest Control",
+    "name": "Kitchen Deep Cleaning",
+    "price": 950,
+    "description": "Chimney + tiles + sink"
+  },
+  {
+    "id": "K0Vy2351X4MiWeSv9In9",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Door Lock Installation",
+    "price": 350,
+    "description": "New or replacement"
+  },
+  {
+    "id": "K196qeVxHL16I7XSExhT",
+    "category": "Women’s Salon & Spa",
+    "name": "Facial & Cleanup",
+    "price": 900,
+    "description": "Fruit or herbal facial",
+    "createdAt": {
+      "_seconds": 1762065331,
+      "_nanoseconds": 827000000
+    }
+  },
+  {
+    "id": "KlmDnmKFdTTloDdteKD6",
+    "category": "Women's Salon & Spa",
+    "name": "Facial & Cleanup",
+    "price": 900,
+    "description": "Fruit or herbal facial"
+  },
+  {
+    "id": "KogLUYVe3BDAoIObz3z8",
+    "category": "Men's Salon & Massage",
+    "name": "Pedicure & Foot Spa",
+    "price": 550,
+    "description": "Deep clean + scrub"
+  },
+  {
+    "id": "Ky9iKSv9nCvXX4sZEIB7",
+    "category": "Cleaning & Pest Control",
+    "name": "Mattress Sanitization",
+    "price": 500,
+    "description": "King-size bed"
+  },
+  {
+    "id": "Kyr2WQQHyGvnQo82yuhi",
+    "category": "Women's Salon & Spa",
+    "name": "Threading & Eyebrow",
+    "price": 70,
+    "description": "Eyebrow + upper lips"
+  },
+  {
+    "id": "LFBoehaaCgKpgvwviAuT",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Leakage Fixing",
+    "price": 300,
+    "description": "Minor pipe leakage"
+  },
+  {
+    "id": "LKXscxpaTI44SEWozP2p",
+    "category": "AC & Appliance Repair",
+    "name": "Fridge Repair",
+    "price": 400,
+    "description": "Cooling or compressor issue"
+  },
+  {
+    "id": "LX8fBm5K3k0mHE7asJUk",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Fan Installation",
+    "price": 250,
+    "description": "Ceiling or wall fan"
+  },
+  {
+    "id": "LlYWfufPcmdKInJwhQeE",
+    "category": "AC & Appliance Repair",
+    "name": "Fridge Repair",
+    "price": 400,
+    "description": "Cooling or compressor issue"
+  },
+  {
+    "id": "Lvc9YkyjcHy7PGoxtc4y",
+    "category": "Native Water Purifier",
+    "name": "UV Lamp Replacement",
+    "price": 500,
+    "description": "Original OEM lamp"
+  },
+  {
+    "id": "N3Zi3bP58xDCftfqlnly",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Switch Board Repair",
+    "price": 200,
+    "description": "Per board replacement"
+  },
+  {
+    "id": "NOMPNwj4oo5QfadQEfmY",
+    "category": "Painting & Waterproofing",
+    "name": "Exterior Wall Painting",
+    "price": 15000,
+    "description": "Up to 1000 sq.ft"
+  },
+  {
+    "id": "NqYlSbX0mpaLaY4SU9uq",
+    "category": "Wall Makeover by Revamp",
+    "name": "False Ceiling Lighting",
+    "price": 3500,
+    "description": "LED concealed lights"
+  },
+  {
+    "id": "OCUSZpA2Figijwz15eM8",
+    "category": "Women’s Salon & Spa",
+    "name": "Threading & Eyebrow",
+    "price": 70,
+    "description": "Eyebrow + upper lips",
+    "createdAt": {
+      "_seconds": 1762327083,
+      "_nanoseconds": 773000000
+    }
+  },
+  {
+    "id": "OFDnThGYXT9VntKMOdYb",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wall Crack Repair",
+    "price": 500,
+    "description": "Minor plaster fix"
+  },
+  {
+    "id": "OXZQ6N8KKoy0IpZb2ewe",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Water Motor Installation",
+    "price": 700,
+    "description": "Up to 1 HP motor"
+  },
+  {
+    "id": "ObR69QXPBKcS9pEzAMef",
+    "category": "AC & Appliance Repair",
+    "name": "Washing Machine Repair",
+    "price": 450,
+    "description": "Front/top load service"
+  },
+  {
+    "id": "OcHKC5Y5g9PQJySZNIqD",
+    "category": "AC & Appliance Repair",
+    "name": "Water Heater Service",
+    "price": 350,
+    "description": "Geyser not heating"
+  },
+  {
+    "id": "P9lISVw0ty70tYeRLuaj",
+    "category": "Men's Salon & Massage",
+    "name": "Head Massage",
+    "price": 350,
+    "description": "With oil, 30 min session"
+  },
+  {
+    "id": "PEpyU7aVSak891is3Dbr",
+    "category": "Painting & Waterproofing",
+    "name": "Primer Coating",
+    "price": 2000,
+    "description": "Undercoat before paint"
+  },
+  {
+    "id": "PVHiUL4WZO0W7ibNgk2q",
+    "category": "Cleaning & Pest Control",
+    "name": "Home Deep Cleaning",
+    "price": 2200,
+    "description": "2BHK full cleaning"
+  },
+  {
+    "id": "PeFvGpxbn4DUfsbdekmC",
+    "category": "Women's Salon & Spa",
+    "name": "Threading & Eyebrow",
+    "price": 70,
+    "description": "Eyebrow + upper lips"
+  },
+  {
+    "id": "Q48UYq7fmuCJNSJUxtP8",
+    "category": "Painting & Waterproofing",
+    "name": "Metal Painting",
+    "price": 1500,
+    "description": "Grill or gate painting"
+  },
+  {
+    "id": "QdYiydjYIa2SXvh5eRgD",
+    "category": "Native Water Purifier",
+    "name": "UV Lamp Replacement",
+    "price": 500,
+    "description": "Original OEM lamp"
+  },
+  {
+    "id": "RCDNuwHOYnFdwNsyduUu",
+    "category": "Women's Salon & Spa",
+    "name": "Facial & Cleanup",
+    "price": 900,
+    "description": "Fruit or herbal facial"
+  },
+  {
+    "id": "RHOBEXfpS432nEucYszG",
+    "category": "Wall Makeover by Revamp",
+    "name": "POP Ceiling Design",
+    "price": 6000,
+    "description": "Living room setup"
+  },
+  {
+    "id": "Raqz8H8GyUTVxMSwoJ0Q",
+    "category": "Painting & Waterproofing",
+    "name": "Exterior Wall Painting",
+    "price": 15000,
+    "description": "Up to 1000 sq.ft"
+  },
+  {
+    "id": "RwfXhkfoM1vx7jJOkXUU",
+    "category": "Native Water Purifier",
+    "name": "RO Installation",
+    "price": 400,
+    "description": "New purifier fitting"
+  },
+  {
+    "id": "SG4fWLKjSSR6ki7tQUOc",
+    "category": "AC & Appliance Repair",
+    "name": "AC Installation",
+    "price": 1300,
+    "description": "Split AC wall mount"
+  },
+  {
+    "id": "SJxdp1uB2DMdA5d7qE06",
+    "category": "Native Water Purifier",
+    "name": "Filter Replacement",
+    "price": 700,
+    "description": "Sediment + carbon filter"
+  },
+  {
+    "id": "SMKP19g7x5Ftil7JnGWC",
+    "category": "Native Water Purifier",
+    "name": "AMC (1 Year)",
+    "price": 1800,
+    "description": "Quarterly maintenance"
+  },
+  {
+    "id": "SqNflt4uTOJuoTCVCoSC",
+    "category": "AC & Appliance Repair",
+    "name": "AC Servicing",
+    "price": 500,
+    "description": "Wet or dry cleaning"
+  },
+  {
+    "id": "TIlWns2H6Zaae7290xdo",
+    "category": "AC & Appliance Repair",
+    "name": "Water Heater Service",
+    "price": 350,
+    "description": "Geyser not heating"
+  },
+  {
+    "id": "UNy032MLMlE2kw8R24kM",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wall Art & Texture",
+    "price": 2800,
+    "description": "Custom mural art"
+  },
+  {
+    "id": "UWP07CUfFcRZvQnJZory",
+    "category": "Cleaning & Pest Control",
+    "name": "Termite Treatment",
+    "price": 1200,
+    "description": "Per 100 sq.ft coverage"
+  },
+  {
+    "id": "UX9ouzDIM9XsjJfHoZIk",
+    "category": "Men’s Salon & Massage",
+    "name": "Facial & Cleanup",
+    "price": 700,
+    "description": "Charcoal or hydra facial",
+    "createdAt": {
+      "_seconds": 1762065333,
+      "_nanoseconds": 523000000
+    }
+  },
+  {
+    "id": "Up3u5a4QAG8tOfY8hJ97",
+    "category": "Women’s Salon & Spa",
+    "name": "Body Massage (60 min)",
+    "price": 1200,
+    "description": "Relaxation or aroma therapy",
+    "createdAt": {
+      "_seconds": 1762327084,
+      "_nanoseconds": 269000000
+    }
+  },
+  {
+    "id": "VKGyetyC1oUgey4v1YhH",
+    "category": "Cleaning & Pest Control",
+    "name": "Carpet Cleaning",
+    "price": 600,
+    "description": "Per 25 sq.ft area"
+  },
+  {
+    "id": "VMOnCUDbECGqBBPtG4wz",
+    "category": "Women's Salon & Spa",
+    "name": "Haircut & Styling",
+    "price": 450,
+    "description": "Basic cut + blow dry"
+  },
+  {
+    "id": "Vi6Z38NOUzvQIoOKXCfp",
+    "category": "Women's Salon & Spa",
+    "name": "Body Massage (60 min)",
+    "price": 1200,
+    "description": "Relaxation or aroma therapy"
+  },
+  {
+    "id": "Vo2bwHCDwiEssBKB0cKW",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Leakage Fixing",
+    "price": 300,
+    "description": "Minor pipe leakage"
+  },
+  {
+    "id": "VpRcro4d5AEx70S2HUIZ",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Water Tap Replacement",
+    "price": 180,
+    "description": "Per tap"
+  },
+  {
+    "id": "WUuANE3XgLX2ece64XN6",
+    "category": "AC & Appliance Repair",
+    "name": "Microwave Repair",
+    "price": 300,
+    "description": "Heating issue fix"
+  },
+  {
+    "id": "WeyBrxssNi7nqGNfG4FA",
+    "category": "Native Water Purifier",
+    "name": "Membrane Change",
+    "price": 1000,
+    "description": "RO membrane replacement"
+  },
+  {
+    "id": "Ws6S440oMbPUtdXldfZY",
+    "category": "AC & Appliance Repair",
+    "name": "AC Servicing",
+    "price": 500,
+    "description": "Wet or dry cleaning"
+  },
+  {
+    "id": "WtCjL4Pu4oDO2A2yx7zt",
+    "category": "AC & Appliance Repair",
+    "name": "TV Repair",
+    "price": 600,
+    "description": "LED/LCD panel issue"
+  },
+  {
+    "id": "XBBrP92S8UouZyfkFLGE",
+    "category": "Cleaning & Pest Control",
+    "name": "Termite Treatment",
+    "price": 1200,
+    "description": "Per 100 sq.ft coverage"
+  },
+  {
+    "id": "XIbZnVv07wnA68vuCVZe",
+    "category": "Painting & Waterproofing",
+    "name": "Metal Painting",
+    "price": 1500,
+    "description": "Grill or gate painting"
+  },
+  {
+    "id": "XXc9EuBfGUW5rQdOkp0I",
+    "category": "Men’s Salon & Massage",
+    "name": "Head Massage",
+    "price": 350,
+    "description": "With oil, 30 min session",
+    "createdAt": {
+      "_seconds": 1762327085,
+      "_nanoseconds": 51000000
+    }
+  },
+  {
+    "id": "XmSZjLS5Syuqi3tIh7E0",
+    "category": "Men's Salon & Massage",
+    "name": "Shaving & Styling",
+    "price": 200,
+    "description": "Hot towel shave & styling"
+  },
+  {
+    "id": "Xql8E9j21cKXAHWfz90c",
+    "category": "Wall Makeover by Revamp",
+    "name": "Interior Renovation Combo",
+    "price": 12000,
+    "description": "Full room revamp"
+  },
+  {
+    "id": "Y6fAosn3fMToZMmXB2wH",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Water Tap Replacement",
+    "price": 180,
+    "description": "Per tap"
+  },
+  {
+    "id": "YHRgPRFZlclBRUSuXsGV",
+    "category": "Wall Makeover by Revamp",
+    "name": "Modular Partition Setup",
+    "price": 8000,
+    "description": "Glass or wood partitions"
+  },
+  {
+    "id": "YSx9AKf930Em02LYFIKb",
+    "category": "Women's Salon & Spa",
+    "name": "Facial & Cleanup",
+    "price": 900,
+    "description": "Fruit or herbal facial"
+  },
+  {
+    "id": "YpHgoxx140DELSGH8hmK",
+    "category": "Women’s Salon & Spa",
+    "name": "Party Makeup",
+    "price": 1200,
+    "description": "Light makeup & hair styling",
+    "createdAt": {
+      "_seconds": 1762327084,
+      "_nanoseconds": 457000000
+    }
+  },
+  {
+    "id": "YtKgxrgLlfGDSDBVUNhl",
+    "category": "Cleaning & Pest Control",
+    "name": "Pest Control (Cockroach)",
+    "price": 700,
+    "description": "2BHK apartment"
+  },
+  {
+    "id": "YuYyRD4zxt0e5O9R5UuG",
+    "category": "Men’s Salon & Massage",
+    "name": "Full Body Massage",
+    "price": 1100,
+    "description": "60 min Swedish massage",
+    "createdAt": {
+      "_seconds": 1762327085,
+      "_nanoseconds": 277000000
+    }
+  },
+  {
+    "id": "Z19cuxW7AW4ZaKyLBkTs",
+    "category": "Painting & Waterproofing",
+    "name": "Wood Polishing",
+    "price": 1800,
+    "description": "2 doors + windows"
+  },
+  {
+    "id": "ZDeIYG5xgcxdyz5mGl9v",
+    "category": "Painting & Waterproofing",
+    "name": "Waterproof Coating",
+    "price": 3200,
+    "description": "Bathroom or terrace area"
+  },
+  {
+    "id": "ZI8NSSiCLMc5IU1d3Ife",
+    "category": "Women's Salon & Spa",
+    "name": "Bridal Makeup",
+    "price": 4500,
+    "description": "Includes hairstyle & draping"
+  },
+  {
+    "id": "ZVorg9nuwF5uBfTKjMeU",
+    "category": "Cleaning & Pest Control",
+    "name": "Water Tank Cleaning",
+    "price": 900,
+    "description": "Up to 1000L tank"
+  },
+  {
+    "id": "ZdOKPsqGBxRqZ1djUbO9",
+    "category": "Painting & Waterproofing",
+    "name": "Waterproof Coating",
+    "price": 3200,
+    "description": "Bathroom or terrace area"
+  },
+  {
+    "id": "ZmQusVqlq8E5fwwCnYmm",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Water Motor Installation",
+    "price": 700,
+    "description": "Up to 1 HP motor"
+  },
+  {
+    "id": "a3Oc01hFoappxpxeogJL",
+    "category": "Cleaning & Pest Control",
+    "name": "Kitchen Deep Cleaning",
+    "price": 950,
+    "description": "Chimney + tiles + sink"
+  },
+  {
+    "id": "aN5gH4RrSMAvzPIa0HiC",
+    "category": "AC & Appliance Repair",
+    "name": "Washing Machine Repair",
+    "price": 450,
+    "description": "Front/top load service"
+  },
+  {
+    "id": "ai3Y4STM4Cab1809xvh9",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wall Crack Repair",
+    "price": 500,
+    "description": "Minor plaster fix"
+  },
+  {
+    "id": "asScjHGar1Mn9Sf1hi3p",
+    "category": "Painting & Waterproofing",
+    "name": "Interior Wall Painting",
+    "price": 12000,
+    "description": "2BHK home, Asian Paints"
+  },
+  {
+    "id": "ay7VlwjJbVVGe16bd1MP",
+    "category": "Cleaning & Pest Control",
+    "name": "Mattress Sanitization",
+    "price": 500,
+    "description": "King-size bed"
+  },
+  {
+    "id": "bFDC3fbLQxJ4jjCeg7Dn",
+    "category": "AC & Appliance Repair",
+    "name": "TV Repair",
+    "price": 600,
+    "description": "LED/LCD panel issue"
+  },
+  {
+    "id": "bjeicXeN1cZ3QaukhgzV",
+    "category": "AC & Appliance Repair",
+    "name": "Chimney Deep Cleaning",
+    "price": 700,
+    "description": "Kitchen exhaust cleaning"
+  },
+  {
+    "id": "c5EGcDVT0MtBfte411OX",
+    "category": "Wall Makeover by Revamp",
+    "name": "Modular Partition Setup",
+    "price": 8000,
+    "description": "Glass or wood partitions"
+  },
+  {
+    "id": "cHGT8v37sKha25LLCcdU",
+    "category": "Men's Salon & Massage",
+    "name": "Hair Color",
+    "price": 600,
+    "description": "Ammonia-free global color"
+  },
+  {
+    "id": "cQx6EGFsFufWBN7MN5ZB",
+    "category": "AC & Appliance Repair",
+    "name": "AC Servicing",
+    "price": 500,
+    "description": "Wet or dry cleaning"
+  },
+  {
+    "id": "ciTuGJbRxN98ViK2eQek",
+    "category": "Wall Makeover by Revamp",
+    "name": "False Ceiling Lighting",
+    "price": 3500,
+    "description": "LED concealed lights"
+  },
+  {
+    "id": "dJRqnjYEVIxvGGwlZ8Wn",
+    "category": "Native Water Purifier",
+    "name": "New RO Setup (Up to 10L)",
+    "price": 5500,
+    "description": "Standard Kent-type model"
+  },
+  {
+    "id": "dQq9RdeFNydg8tSHQZaN",
+    "category": "Native Water Purifier",
+    "name": "Filter Replacement",
+    "price": 700,
+    "description": "Sediment + carbon filter"
+  },
+  {
+    "id": "ds38JbZN6yJhNdssHFzX",
+    "category": "Native Water Purifier",
+    "name": "Water Quality Test",
+    "price": 300,
+    "description": "TDS & hardness report"
+  },
+  {
+    "id": "eHkpdeGSeOr1E6KDsziJ",
+    "category": "Native Water Purifier",
+    "name": "AMC (1 Year)",
+    "price": 1800,
+    "description": "Quarterly maintenance"
+  },
+  {
+    "id": "elzMHQ6ev6YdO6MenLHE",
+    "category": "Men's Salon & Massage",
+    "name": "D-Tan & Brightening",
+    "price": 500,
+    "description": "Full face D-tan pack"
+  },
+  {
+    "id": "f2E8FwCHi4bwsMj3SjFg",
+    "category": "Wall Makeover by Revamp",
+    "name": "Accent Wall Design",
+    "price": 2500,
+    "description": "Premium color + finish"
+  },
+  {
+    "id": "f755MRuqWXSOnMTI7doV",
+    "category": "Men's Salon & Massage",
+    "name": "Facial & Cleanup",
+    "price": 700,
+    "description": "Charcoal or hydra facial"
+  },
+  {
+    "id": "fCvxnpyxsHAPzDNpd9Ym",
+    "category": "Men's Salon & Massage",
+    "name": "Anti-Hairfall Treatment",
+    "price": 950,
+    "description": "Herbal or serum-based"
+  },
+  {
+    "id": "fPMH01332tiG8zEetRN9",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Lighting Fitting",
+    "price": 250,
+    "description": "LED or chandelier fitting"
+  },
+  {
+    "id": "fREFlUvVCXWaJiDTvuVp",
+    "category": "Women's Salon & Spa",
+    "name": "Body Massage (60 min)",
+    "price": 1200,
+    "description": "Relaxation or aroma therapy"
+  },
+  {
+    "id": "fRWVapHm4SsQtgdj58TN",
+    "category": "Men's Salon & Massage",
+    "name": "D-Tan & Brightening",
+    "price": 500,
+    "description": "Full face D-tan pack"
+  },
+  {
+    "id": "frkQojRx8xeGnl3GVXgP",
+    "category": "Women's Salon & Spa",
+    "name": "Party Makeup",
+    "price": 1200,
+    "description": "Light makeup & hair styling"
+  },
+  {
+    "id": "gEgYDqfZ6jXqf17YP16F",
+    "category": "AC & Appliance Repair",
+    "name": "Microwave Repair",
+    "price": 300,
+    "description": "Heating issue fix"
+  },
+  {
+    "id": "gEm8D7pE9ZhS7JBFQxmH",
+    "category": "Men’s Salon & Massage",
+    "name": "D-Tan & Brightening",
+    "price": 500,
+    "description": "Full face D-tan pack",
+    "createdAt": {
+      "_seconds": 1762327085,
+      "_nanoseconds": 471000000
+    }
+  },
+  {
+    "id": "gIZdDwukI2Zi9vNBWpJy",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Furniture Repair",
+    "price": 450,
+    "description": "Chair/table/small work"
+  },
+  {
+    "id": "gLDI9Q0oDd9ETIcpWtKg",
+    "category": "Native Water Purifier",
+    "name": "New RO Setup (Up to 10L)",
+    "price": 5500,
+    "description": "Standard Kent-type model"
+  },
+  {
+    "id": "gP4O7aRhbGQ4qYCNWvHg",
+    "category": "Cleaning & Pest Control",
+    "name": "Kitchen Deep Cleaning",
+    "price": 950,
+    "description": "Chimney + tiles + sink"
+  },
+  {
+    "id": "gPnJcriOLwqW3b3s7juu",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Wooden Shelf Installation",
+    "price": 600,
+    "description": "Custom size fitting"
+  },
+  {
+    "id": "gXu8dVsQMJ9zAbgvly5z",
+    "category": "Women's Salon & Spa",
+    "name": "Hair Spa",
+    "price": 950,
+    "description": "L’Oreal/Matrix treatment"
+  },
+  {
+    "id": "go4vz2q9cciblbFgrxcO",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Switch Board Repair",
+    "price": 200,
+    "description": "Per board replacement"
+  },
+  {
+    "id": "h4eMgRcH0teJYlyQp72x",
+    "category": "Men’s Salon & Massage",
+    "name": "Haircut & Beard Trim",
+    "price": 300,
+    "description": "Classic or modern style",
+    "createdAt": {
+      "_seconds": 1762327084,
+      "_nanoseconds": 682000000
+    }
+  },
+  {
+    "id": "hAd1Vpcoh8DhRtjLGAwt",
+    "category": "Women’s Salon & Spa",
+    "name": "Manicure & Pedicure",
+    "price": 750,
+    "description": "Spa manicure & pedicure combo",
+    "createdAt": {
+      "_seconds": 1762065332,
+      "_nanoseconds": 590000000
+    }
+  },
+  {
+    "id": "hMGbWBEFiHurYV5eNzNG",
+    "category": "Native Water Purifier",
+    "name": "UV Lamp Replacement",
+    "price": 500,
+    "description": "Original OEM lamp"
+  },
+  {
+    "id": "hbwywhUKk0X9Up3ajsSb",
+    "category": "Men's Salon & Massage",
+    "name": "Anti-Hairfall Treatment",
+    "price": 950,
+    "description": "Herbal or serum-based"
+  },
+  {
+    "id": "hv6ApghbTzoAhXBCLTM2",
+    "category": "Painting & Waterproofing",
+    "name": "Exterior Wall Painting",
+    "price": 15000,
+    "description": "Up to 1000 sq.ft"
+  },
+  {
+    "id": "i03yz9BJvgoURbEkTjt4",
+    "category": "Wall Makeover by Revamp",
+    "name": "3D Wall Panels",
+    "price": 4500,
+    "description": "PVC decorative design"
+  },
+  {
+    "id": "i7GLKfg9LaOijfUYc15L",
+    "category": "Painting & Waterproofing",
+    "name": "Interior Wall Painting",
+    "price": 12000,
+    "description": "2BHK home, Asian Paints"
+  },
+  {
+    "id": "j3FhQ1Dqv7vZmyhs4rtQ",
+    "category": "Women’s Salon & Spa",
+    "name": "Haircut & Styling",
+    "price": 450,
+    "description": "Basic cut + blow dry",
+    "createdAt": {
+      "_seconds": 1762327083,
+      "_nanoseconds": 292000000
+    }
+  },
+  {
+    "id": "j4DoXjZh8loPB1sOstpK",
+    "category": "AC & Appliance Repair",
+    "name": "AC Gas Refilling",
+    "price": 1400,
+    "description": "1.5-ton split AC"
+  },
+  {
+    "id": "jTszdypF5rowbcc3kelw",
+    "category": "AC & Appliance Repair",
+    "name": "AC Gas Refilling",
+    "price": 1400,
+    "description": "1.5-ton split AC"
+  },
+  {
+    "id": "jUlQqG5JyRg0mwfpL7ic",
+    "category": "Cleaning & Pest Control",
+    "name": "Carpet Cleaning",
+    "price": 600,
+    "description": "Per 25 sq.ft area"
+  },
+  {
+    "id": "jZ72lB2Voq6dMdCjoeqg",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wall Crack Repair",
+    "price": 500,
+    "description": "Minor plaster fix"
+  },
+  {
+    "id": "jxhdTO7GLityxJFuyDsg",
+    "category": "Women's Salon & Spa",
+    "name": "Haircut & Styling",
+    "price": 450,
+    "description": "Basic cut + blow dry"
+  },
+  {
+    "id": "k9a32xLPs9Qw0AEWp6UO",
+    "category": "Native Water Purifier",
+    "name": "Water Quality Test",
+    "price": 300,
+    "description": "TDS & hardness report"
+  },
+  {
+    "id": "kKZF5fOtu2JoKOgKAD8i",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wallpaper Installation",
+    "price": 1200,
+    "description": "Per wall (10x10 ft)"
+  },
+  {
+    "id": "kMToADOlJ3LI0pxxrvd3",
+    "category": "Cleaning & Pest Control",
+    "name": "Termite Treatment",
+    "price": 1200,
+    "description": "Per 100 sq.ft coverage"
+  },
+  {
+    "id": "kPuFnAVZxdpoJhWnS2aE",
+    "category": "Wall Makeover by Revamp",
+    "name": "Interior Renovation Combo",
+    "price": 12000,
+    "description": "Full room revamp"
+  },
+  {
+    "id": "kXZUOJegEzFb1UpMismW",
+    "category": "Women's Salon & Spa",
+    "name": "Hair Spa",
+    "price": 950,
+    "description": "L’Oreal/Matrix treatment"
+  },
+  {
+    "id": "kv7lHARmEEy7axnk8VGF",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Leakage Fixing",
+    "price": 300,
+    "description": "Minor pipe leakage"
+  },
+  {
+    "id": "kyfBASMBl8fBCK3XFkfK",
+    "category": "Men’s Salon & Massage",
+    "name": "Pedicure & Foot Spa",
+    "price": 550,
+    "description": "Deep clean + scrub",
+    "createdAt": {
+      "_seconds": 1762327085,
+      "_nanoseconds": 644000000
+    }
+  },
+  {
+    "id": "lIy9CuTlZoMaGCzHSwol",
+    "category": "Wall Makeover by Revamp",
+    "name": "POP Ceiling Design",
+    "price": 6000,
+    "description": "Living room setup"
+  },
+  {
+    "id": "lXMBEmehvS953nSLnGHY",
+    "category": "Painting & Waterproofing",
+    "name": "Crack Filling",
+    "price": 400,
+    "description": "Minor crack repairs"
+  },
+  {
+    "id": "lnlZ4uDOZFAIYXZHlqIV",
+    "category": "Wall Makeover by Revamp",
+    "name": "3D Wall Panels",
+    "price": 4500,
+    "description": "PVC decorative design"
+  },
+  {
+    "id": "m9G7vWDHaRLNNRot6KHh",
+    "category": "Painting & Waterproofing",
+    "name": "Interior Wall Painting",
+    "price": 12000,
+    "description": "2BHK home, Asian Paints"
+  },
+  {
+    "id": "mCC9JSVkMbRfY57mG2PN",
+    "category": "Men's Salon & Massage",
+    "name": "Facial & Cleanup",
+    "price": 700,
+    "description": "Charcoal or hydra facial"
+  },
+  {
+    "id": "mcOc947xf1PxZJHoqrD7",
+    "category": "Women's Salon & Spa",
+    "name": "Manicure & Pedicure",
+    "price": 750,
+    "description": "Spa manicure & pedicure combo"
+  },
+  {
+    "id": "mfqtmUEywo04goXjVFxN",
+    "category": "Wall Makeover by Revamp",
+    "name": "Modular Partition Setup",
+    "price": 8000,
+    "description": "Glass or wood partitions"
+  },
+  {
+    "id": "mqzGzSY1ChJ4rXS5TWj5",
+    "category": "Native Water Purifier",
+    "name": "Leakage Fix",
+    "price": 250,
+    "description": "Pipe/joint tightening"
+  },
+  {
+    "id": "ndWLalsFiJnuYj4gSyn1",
+    "category": "Cleaning & Pest Control",
+    "name": "Pest Control (Cockroach)",
+    "price": 700,
+    "description": "2BHK apartment"
+  },
+  {
+    "id": "o1pVC10csIu7zrALlrqy",
+    "category": "Native Water Purifier",
+    "name": "Leakage Fix",
+    "price": 250,
+    "description": "Pipe/joint tightening"
+  },
+  {
+    "id": "oSf3BO4nSaHkTz6ap6YL",
+    "category": "Painting & Waterproofing",
+    "name": "Metal Painting",
+    "price": 1500,
+    "description": "Grill or gate painting"
+  },
+  {
+    "id": "odZiQI8auFt6weQA00YH",
+    "category": "Women’s Salon & Spa",
+    "name": "Waxing (Full body)",
+    "price": 1300,
+    "description": "Full arms, legs, underarms",
+    "createdAt": {
+      "_seconds": 1762065332,
+      "_nanoseconds": 72000000
+    }
+  },
+  {
+    "id": "og324Zwh4eHSbfd5qae1",
+    "category": "Native Water Purifier",
+    "name": "Filter Replacement",
+    "price": 700,
+    "description": "Sediment + carbon filter"
+  },
+  {
+    "id": "omFW2j1rFxAmx12PPSII",
+    "category": "AC & Appliance Repair",
+    "name": "Chimney Deep Cleaning",
+    "price": 700,
+    "description": "Kitchen exhaust cleaning"
+  },
+  {
+    "id": "pR94v0ywTe163XuXj3Lk",
+    "category": "Men's Salon & Massage",
+    "name": "Full Body Massage",
+    "price": 1100,
+    "description": "60 min Swedish massage"
+  },
+  {
+    "id": "pYJskZb2RxuTxYwC1zVr",
+    "category": "Painting & Waterproofing",
+    "name": "Ceiling Painting",
+    "price": 2500,
+    "description": "White emulsion"
+  },
+  {
+    "id": "pbPVTYvAwf12T7MCNiPo",
+    "category": "Cleaning & Pest Control",
+    "name": "Pest Control (Cockroach)",
+    "price": 700,
+    "description": "2BHK apartment"
+  },
+  {
+    "id": "pvsJT4v5a60RctEOBTvv",
+    "category": "Cleaning & Pest Control",
+    "name": "Home Deep Cleaning",
+    "price": 2200,
+    "description": "2BHK full cleaning"
+  },
+  {
+    "id": "q5u0CEwJzWcyCAkfxopm",
+    "category": "Painting & Waterproofing",
+    "name": "Texture Painting",
+    "price": 5000,
+    "description": "1 feature wall"
+  },
+  {
+    "id": "qFkqHCENvgOmHTdgm8Ky",
+    "category": "Women's Salon & Spa",
+    "name": "Manicure & Pedicure",
+    "price": 750,
+    "description": "Spa manicure & pedicure combo"
+  },
+  {
+    "id": "qGqvB608DZENTKQlMh7R",
+    "category": "Men’s Salon & Massage",
+    "name": "Shaving & Styling",
+    "price": 200,
+    "description": "Hot towel shave & styling",
+    "createdAt": {
+      "_seconds": 1762327085,
+      "_nanoseconds": 871000000
+    }
+  },
+  {
+    "id": "qR6xtay4Tuf3O37MxnTu",
+    "category": "Wall Makeover by Revamp",
+    "name": "POP Ceiling Design",
+    "price": 6000,
+    "description": "Living room setup"
+  },
+  {
+    "id": "qZ7KIViIfb2RShM1QUiX",
+    "category": "Men's Salon & Massage",
+    "name": "Head Massage",
+    "price": 350,
+    "description": "With oil, 30 min session"
+  },
+  {
+    "id": "qw993bjWVobCQLHlf8iC",
+    "category": "Native Water Purifier",
+    "name": "Membrane Change",
+    "price": 1000,
+    "description": "RO membrane replacement"
+  },
+  {
+    "id": "rAd4FZ92qJCXXzqSZufo",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Water Tap Replacement",
+    "price": 180,
+    "description": "Per tap"
+  },
+  {
+    "id": "rAgaPsO71BSO10WKOsTQ",
+    "category": "AC & Appliance Repair",
+    "name": "Water Heater Service",
+    "price": 350,
+    "description": "Geyser not heating"
+  },
+  {
+    "id": "rFqTmq3GIyuiXj31mNx2",
+    "category": "AC & Appliance Repair",
+    "name": "Washing Machine Repair",
+    "price": 450,
+    "description": "Front/top load service"
+  },
+  {
+    "id": "rREjsPW7Hh84e32x9me1",
+    "category": "Men's Salon & Massage",
+    "name": "Haircut & Beard Trim",
+    "price": 300,
+    "description": "Classic or modern style"
+  },
+  {
+    "id": "s1SpCuGzyfWL0DrTwMSZ",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wall Art & Texture",
+    "price": 2800,
+    "description": "Custom mural art"
+  },
+  {
+    "id": "sWW3XyG639kIt4cN9jS4",
+    "category": "Native Water Purifier",
+    "name": "RO Service",
+    "price": 350,
+    "description": "Filter cleaning + checkup"
+  },
+  {
+    "id": "sb8slUMhQkXUJCqKBwRN",
+    "category": "AC & Appliance Repair",
+    "name": "Fridge Repair",
+    "price": 400,
+    "description": "Cooling or compressor issue"
+  },
+  {
+    "id": "slab857Ozj12NSg62ltd",
+    "category": "Painting & Waterproofing",
+    "name": "Primer Coating",
+    "price": 2000,
+    "description": "Undercoat before paint"
+  },
+  {
+    "id": "t1a6ZXlBf74IxLXLmVVK",
+    "category": "Native Water Purifier",
+    "name": "RO Service",
+    "price": 350,
+    "description": "Filter cleaning + checkup"
+  },
+  {
+    "id": "tE98ECRAtMw8RSRpRYmJ",
+    "category": "Painting & Waterproofing",
+    "name": "Crack Filling",
+    "price": 400,
+    "description": "Minor crack repairs"
+  },
+  {
+    "id": "tV3pfjvs8AY6yKjAmAJP",
+    "category": "Wall Makeover by Revamp",
+    "name": "Interior Renovation Combo",
+    "price": 12000,
+    "description": "Full room revamp"
+  },
+  {
+    "id": "uamOIewaiGid04lO5tA4",
+    "category": "Painting & Waterproofing",
+    "name": "Waterproof Coating",
+    "price": 3200,
+    "description": "Bathroom or terrace area"
+  },
+  {
+    "id": "umMuFgbcnESmhyEbiMHF",
+    "category": "Wall Makeover by Revamp",
+    "name": "3D Wall Panels",
+    "price": 4500,
+    "description": "PVC decorative design"
+  },
+  {
+    "id": "ush4p46gjx9iivR0wZk2",
+    "category": "Painting & Waterproofing",
+    "name": "Crack Filling",
+    "price": 400,
+    "description": "Minor crack repairs"
+  },
+  {
+    "id": "v5GmZYSpmZCnt6TZZZle",
+    "category": "Wall Makeover by Revamp",
+    "name": "Wallpaper Installation",
+    "price": 1200,
+    "description": "Per wall (10x10 ft)"
+  },
+  {
+    "id": "vMh7beMFe4coUSidHKPU",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Furniture Repair",
+    "price": 450,
+    "description": "Chair/table/small work"
+  },
+  {
+    "id": "vt6ynf9L8krLwXSm8mmz",
+    "category": "Native Water Purifier",
+    "name": "AMC (1 Year)",
+    "price": 1800,
+    "description": "Quarterly maintenance"
+  },
+  {
+    "id": "w35Q0QX6PSbpsMokWf20",
+    "category": "AC & Appliance Repair",
+    "name": "AC Gas Refilling",
+    "price": 1400,
+    "description": "1.5-ton split AC"
+  },
+  {
+    "id": "wE4qRlcIvAXA9TlmxtEi",
+    "category": "Cleaning & Pest Control",
+    "name": "Carpet Cleaning",
+    "price": 600,
+    "description": "Per 25 sq.ft area"
+  },
+  {
+    "id": "wFpMn2HvAU9MKrG9YUin",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Switch Board Repair",
+    "price": 200,
+    "description": "Per board replacement"
+  },
+  {
+    "id": "wK63qjAKAvotFMn9BPxU",
+    "category": "Cleaning & Pest Control",
+    "name": "Sofa Cleaning",
+    "price": 850,
+    "description": "5-seater shampoo wash"
+  },
+  {
+    "id": "wPbhoWQnez318cmCXZDD",
+    "category": "Men's Salon & Massage",
+    "name": "Haircut & Beard Trim",
+    "price": 300,
+    "description": "Classic or modern style"
+  },
+  {
+    "id": "weGhSofSEWF8kerLRrJE",
+    "category": "Women's Salon & Spa",
+    "name": "Waxing (Full body)",
+    "price": 1300,
+    "description": "Full arms, legs, underarms"
+  },
+  {
+    "id": "wrjsdxxUDbd17ZM2iipJ",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Water Motor Installation",
+    "price": 700,
+    "description": "Up to 1 HP motor"
+  },
+  {
+    "id": "wubSk85tlTEzEfcePNdK",
+    "category": "Native Water Purifier",
+    "name": "RO Installation",
+    "price": 400,
+    "description": "New purifier fitting"
+  },
+  {
+    "id": "x2fPYAUrmG5Fwf3FAZIa",
+    "category": "Men's Salon & Massage",
+    "name": "Shaving & Styling",
+    "price": 200,
+    "description": "Hot towel shave & styling"
+  },
+  {
+    "id": "x6onWCJ45fcFGVc47QaK",
+    "category": "Wall Makeover by Revamp",
+    "name": "Accent Wall Design",
+    "price": 2500,
+    "description": "Premium color + finish"
+  },
+  {
+    "id": "xmWPjoACtizJwQv65Ht3",
+    "category": "Women's Salon & Spa",
+    "name": "Bridal Makeup",
+    "price": 4500,
+    "description": "Includes hairstyle & draping"
+  },
+  {
+    "id": "ynwvNN1O6KkJBbvBGzVz",
+    "category": "Native Water Purifier",
+    "name": "Water Quality Test",
+    "price": 300,
+    "description": "TDS & hardness report"
+  },
+  {
+    "id": "yr6Ky260fI5n1mmhZRep",
+    "category": "Electrician, Plumber & Carpenter",
+    "name": "Wooden Shelf Installation",
+    "price": 600,
+    "description": "Custom size fitting"
+  },
+  {
+    "id": "zIdDkyyV9JREvs7VMERS",
+    "category": "Men's Salon & Massage",
+    "name": "Head Massage",
+    "price": 350,
+    "description": "With oil, 30 min session"
+  },
+  {
+    "id": "zUXafIPFyFWyfl4hrWtx",
+    "category": "Painting & Waterproofing",
+    "name": "Wood Polishing",
+    "price": 1800,
+    "description": "2 doors + windows"
+  }
+]

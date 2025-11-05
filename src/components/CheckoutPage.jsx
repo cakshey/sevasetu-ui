@@ -204,32 +204,30 @@ function CheckoutPage() {
   };
 
   // ✅ After booking success → Show thank you + feedback form
-  if (bookingSuccess) {
-    const lastService = cart[0]?.subService || cart[0]?.name || "Service";
-    return (
-      <div className="checkout-success">
-        <h2>✅ Thank you for your booking!</h2>
-        <p>
-          We truly appreciate your trust in <strong>SevaSetu India</strong>.
-        </p>
-        <p>Please take a moment to rate your experience below 👇</p>
+// ✅ After booking success → show feedback form
+if (bookingSuccess) {
+  const lastService = cart[0]?.subService || cart[0]?.name || "Service";
+  return (
+    <div className="checkout-success">
+      <h2>✅ Thank you for your booking!</h2>
+      <p>
+        We truly appreciate your trust in <strong>SevaSetu India</strong>.
+      </p>
+      <p>Please take a moment to rate your experience below 👇</p>
 
-        <FeedbackForm
-          serviceName={lastService}
-          category={cart[0]?.category || "General"}
-          userName={user?.displayName || ""}
-          userEmail={user?.email || ""}
-          place={district || ""}
-        />
+      <FeedbackForm
+        serviceName={lastService}
+        category={cart[0]?.category || "General"}
+        userName={user?.displayName || ""}
+        userEmail={user?.email || ""}
+        place={district || ""}
+      />
 
-        <button className="home-btn" onClick={() => navigate("/")}>
-          ← Back to Home
-        </button>
+      <ToastContainer position="bottom-center" autoClose={4000} />
+    </div>
+  );
+}
 
-        <ToastContainer position="bottom-center" autoClose={4000} />
-      </div>
-    );
-  }
 
   // ✅ Default Checkout Form
   return (

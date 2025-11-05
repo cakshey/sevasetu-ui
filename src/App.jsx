@@ -7,7 +7,7 @@ import { auth } from "./firebase";
 import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import ServicesPage from "./components/ServicesPage";
-import CheckoutPage from "./components/CheckoutPage"; // ✅ NEW IMPORT
+import CheckoutPage from "./components/CheckoutPage";
 import BookingConfirmation from "./components/BookingConfirmation";
 import AdminFeedback from "./components/AdminFeedback";
 import LogoutSuccess from "./components/LogoutSuccess";
@@ -15,12 +15,12 @@ import Login from "./components/Login";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import MyBookings from "./components/MyBookings";
-import ThankYouPage from "./components/ThankYouPage"; // Optional, for future use
+import ThankYouPage from "./components/ThankYouPage";
 import AdminAssignedProviders from "./components/AdminAssignedProviders";
-import AdminDashboard from "./pages/AdminDashboard"; // ✅ Your new admin page
+import AdminDashboard from "./pages/AdminDashboard";
 import AboutPage from "./components/AboutPage";
 import ContactPage from "./components/ContactPage";
-
+import GuestLogin from "./components/GuestLogin"; // ✅ FIXED IMPORT
 
 // Utilities & Styles
 import "./utils/importServices";
@@ -52,7 +52,7 @@ function App() {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
-
+        <Route path="/guest-login" element={<GuestLogin />} /> {/* ✅ ADDED GUEST LOGIN */}
 
         {/* 🔒 Protected Routes */}
         <Route

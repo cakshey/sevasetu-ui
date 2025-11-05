@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, query, orderBy, limit, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
+import LaunchingSoonWidget from "./LaunchingSoonWidget"; // 🔹 Add this import
 import "./HomePage.css";
 
 export default function HomePage() {
@@ -21,7 +22,7 @@ export default function HomePage() {
     return () => unsub();
   }, []);
 
-  // ⏳ Auto-scroll every 4s
+  // ⏳ Auto-scroll feedback
   useEffect(() => {
     if (feedbackList.length === 0) return;
     const timer = setInterval(() => {
@@ -80,6 +81,10 @@ export default function HomePage() {
           SevaSetu helps you connect with trusted home and care services — faster, safer, and smarter.
         </p>
 
+        {/* 🔹 “Launching Soon” Widget under tagline */}
+        <LaunchingSoonWidget />
+
+        {/* 🔹 Category Section */}
         <div className="category-section">
           <h3>What are you looking for?</h3>
           <input

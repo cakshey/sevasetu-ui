@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db, auth } from "../firebase";
+import ThankYouImage from "../assets/thankyou.png";
 import "./FeedbackForm.css";
 
 const FeedbackForm = () => {
@@ -13,8 +14,9 @@ const FeedbackForm = () => {
   const [comment, setComment] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [showCheck, setShowCheck] = useState(false);
 
-  // Predefined feedback tags
   const feedbackTags = [
     "Service Quality",
     "Value for Money",
@@ -23,7 +25,6 @@ const FeedbackForm = () => {
     "Overall Experience",
   ];
 
-  // ✅ Load booking info
   useEffect(() => {
     const stored = localStorage.getItem("lastBooking");
     if (stored) {
@@ -42,7 +43,6 @@ const FeedbackForm = () => {
     }
   }, []);
 
-  // Tag toggle
   const toggleTag = (tag) => {
     setSelectedTags((prev) =>
       prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
@@ -51,15 +51,22 @@ const FeedbackForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // 🔒 Block if not logged in
+    const user = auth.currentUser;
+    if (!user) {
+      alert("Please log in before submitting feedback.");
+      return;
+    }
+
     if (!rating) return alert("Please select a rating first.");
 
     setLoading(true);
     try {
-      const user = auth.currentUser;
       await addDoc(collection(db, "feedback"), {
-        userId: user?.uid || "guest",
-        name: name || "Anonymous",
-        email: email || "",
+        userId: user.uid,
+        name: name || user.displayName || "Anonymous",
+        email: email || user.email || "",
         category,
         serviceName: service,
         place: place || "Unknown",
@@ -69,10 +76,12 @@ const FeedbackForm = () => {
         createdAt: serverTimestamp(),
       });
 
-      alert("✅ Thank you for your feedback!");
-      setRating(0);
-      setComment("");
-      setSelectedTags([]);
+      // ✅ Success animation
+      setShowCheck(true);
+      setTimeout(() => {
+        setShowCheck(false);
+        setSubmitted(true);
+      }, 1200);
     } catch (error) {
       console.error("❌ Error saving feedback:", error);
       alert("Something went wrong. Please try again.");
@@ -81,70 +90,116 @@ const FeedbackForm = () => {
     }
   };
 
+  // ✅ Success Animation
+  if (showCheck) {
+    return (
+      <div className="success-check-container">
+        <div className="success-circle">
+          <div className="success-checkmark"></div>
+        </div>
+        <p className="success-text">Feedback submitted successfully!</p>
+      </div>
+    );
+  }
+
+  // ✅ Thank You Screen
+  if (submitted) {
+    return (
+      <div className="thankyou-card">
+        <img src={ThankYouImage} alt="Thank You" className="thankyou-img" />
+        <h2>Thank you for your feedback!</h2>
+        <p>
+          We truly appreciate your trust in <strong>SevaSetu India</strong>.
+        </p>
+
+        <div className="thankyou-buttons">
+          <button onClick={() => (window.location.href = "/services")}>
+            🌐 Explore More Services
+          </button>
+          <button onClick={() => (window.location.href = "/")}>
+            🏠 Go to Home
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // ✅ Rating labels
   const ratingLabels = ["Poor", "Fair", "Good", "Very Good", "Excellent"];
 
   return (
-    <div className="feedback-form-container">
+    <div className="feedback-form-wrapper">
       <h3>⭐ Rate Your Experience</h3>
-      <form onSubmit={handleSubmit}>
-        <label>Your Name</label>
-        <input
-          type="text"
-          value={name}
-          placeholder="Enter your name"
-          onChange={(e) => setName(e.target.value)}
-        />
 
-        <label>Email</label>
-        <input
-          type="email"
-          value={email}
-          placeholder="Enter your email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label>Category</label>
-        <input type="text" value={category} readOnly className="readonly-input" />
-
-        <label>Service</label>
-        <input type="text" value={service} readOnly className="readonly-input" />
-
-        <label>Place / District</label>
-        <input
-          type="text"
-          placeholder="Enter your city or district"
-          value={place}
-          onChange={(e) => setPlace(e.target.value)}
-        />
-
-        {/* ⭐ RATING */}
-        <label>Rating</label>
-        <div className="star-rating">
-          {[1, 2, 3, 4, 5].map((star) => (
-            <span
-              key={star}
-              onClick={() => setRating(star)}
-              className={star <= rating ? "active" : ""}
-            >
-              ★
-            </span>
-          ))}
-          {rating > 0 && (
-            <span className="rating-label">{`${rating}/5 ${ratingLabels[rating - 1]}`}</span>
-          )}
+      <form onSubmit={handleSubmit} className="feedback-form">
+        <div className="form-grid">
+          <div>
+            <label>Your Name</label>
+            <input
+              type="text"
+              value={name}
+              placeholder="Enter your name"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              placeholder="Enter your email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>Category</label>
+            <input type="text" value={category} readOnly className="readonly-input" />
+          </div>
+          <div>
+            <label>Service</label>
+            <input type="text" value={service} readOnly className="readonly-input" />
+          </div>
+          <div>
+            <label>Place / District</label>
+            <input
+              type="text"
+              placeholder="Enter your city or district"
+              value={place}
+              onChange={(e) => setPlace(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>Rating</label>
+            <div className="rating-row">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                  key={star}
+                  onClick={() => setRating(star)}
+                  className={`star ${star <= rating ? "active" : ""}`}
+                >
+                  ★
+                </span>
+              ))}
+              {rating > 0 && (
+                <span className="rating-label">
+                  {`${rating}/5 ${ratingLabels[rating - 1]}`}
+                </span>
+              )}
+            </div>
+          </div>
         </div>
 
-        {/* 🏷️ TAGS SECTION */}
         <label>What did you like most?</label>
-        <div className="tags-container">
+        <div className="tag-buttons">
           {feedbackTags.map((tag) => (
-            <div
+            <button
               key={tag}
-              className={`tag ${selectedTags.includes(tag) ? "selected" : ""}`}
+              type="button"
+              className={selectedTags.includes(tag) ? "selected" : ""}
               onClick={() => toggleTag(tag)}
             >
               {tag}
-            </div>
+            </button>
           ))}
         </div>
 
@@ -155,7 +210,7 @@ const FeedbackForm = () => {
           onChange={(e) => setComment(e.target.value)}
         />
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className="submit-btn">
           {loading ? "Submitting..." : "Submit Feedback"}
         </button>
       </form>

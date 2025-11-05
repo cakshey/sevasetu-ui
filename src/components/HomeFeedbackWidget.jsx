@@ -44,7 +44,7 @@ export default function FeedbackWidget() {
   if (feedbackList.length === 0) {
     return (
       <div className="feedback-widget">
-        <h3>💬 What Our Customers Say</h3>
+        <h4>💬 What Our Customers Say</h4>
         <p>No reviews yet. Be the first to share your experience!</p>
       </div>
     );
@@ -52,10 +52,12 @@ export default function FeedbackWidget() {
 
   return (
     <div className="feedback-widget">
-      <h3>
-        💬 What Our Customers Say
-        <span className="review-count">({feedbackList.length} Reviews)</span>
-      </h3>
+      <h4>
+  💬 What Our Customers Say{" "}
+  {feedbackList?.length > 0 && (
+    <span>({feedbackList.length} Reviews)</span>
+  )}
+</h4>
 
       <div className="feedback-list">
         {feedbackList.map((fb) => (

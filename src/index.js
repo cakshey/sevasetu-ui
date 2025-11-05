@@ -1,4 +1,4 @@
-// src/index.js
+// ✅ src/index.js
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
@@ -9,11 +9,9 @@ import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+// 🔧 Disable StrictMode to stop double rendering in dev
 root.render(
-  <React.StrictMode>
-    {/* ✅ Wrap the entire app inside CartProvider */}
-    <CartProvider>
-      <App />
-    </CartProvider>
-  </React.StrictMode>
+  <CartProvider>
+    <App />
+  </CartProvider>
 );
