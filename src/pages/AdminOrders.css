@@ -1,0 +1,51 @@
+.admin-orders {
+  padding: 20px;
+  background: #f9fbff;
+  min-height: 100vh;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-order-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.order-top {
+  margin-bottom: 10px;
+}
+
+.order-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-approve {
+  background: #1b9c85;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+}
+
+.btn-complete {
+  background: #0066cc;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+}
+
+.btn-cancel {
+  background: #e63946;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+}

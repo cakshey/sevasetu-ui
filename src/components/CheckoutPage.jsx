@@ -1,6 +1,5 @@
 // ✅ src/components/CheckoutPage.jsx
 import React, { useState, useEffect } from "react";
-import { useCart } from "../context/CartContext";
 import { auth, db } from "../firebase";
 import {
   collection,
@@ -19,7 +18,7 @@ import FeedbackForm from "./FeedbackForm";
 import "./CheckoutPage.css";
 
 function CheckoutPage() {
-  const { cart, clearCart } = useCart();
+  const [cart, setCart] = useState([]);
   const [phone, setPhone] = useState("");
   const [pincode, setPincode] = useState("");
   const [district, setDistrict] = useState("");
@@ -34,12 +33,18 @@ function CheckoutPage() {
   const navigate = useNavigate();
   const user = auth.currentUser;
 
-  // Redirect if not logged in
+  // ✅ Load cart from localStorage
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCart(storedCart);
+  }, []);
+
+  // ✅ Redirect if not logged in
   useEffect(() => {
     if (!user) navigate("/login");
   }, [user, navigate]);
 
-  // Fetch address details from pincode (debounced)
+  // ✅ Fetch address from pincode
   useEffect(() => {
     const delay = setTimeout(() => {
       if (pincode.length === 6) fetchAddress(pincode);
@@ -68,7 +73,7 @@ function CheckoutPage() {
     }
   };
 
-  // 🔄 Auto-assign service provider
+  // ✅ Assign provider (unchanged)
   const assignProvider = async (category, userDistrict) => {
     try {
       const q = query(
@@ -85,7 +90,6 @@ function CheckoutPage() {
         return null;
       }
 
-      // Sort by rating
       const providers = snapshot.docs
         .map((d) => ({ id: d.id, ...d.data() }))
         .sort((a, b) => (b.rating || 0) - (a.rating || 0));
@@ -96,18 +100,8 @@ function CheckoutPage() {
         available: false,
       });
 
-      toast.success(
-        `✅ Assigned: ${selected.name} (${selected.category}) ⭐ ${selected.rating || 0}`
-      );
-
-      return {
-        id: selected.id,
-        name: selected.name,
-        phone: selected.phone,
-        category: selected.category,
-        district: selected.district,
-        rating: selected.rating || 0,
-      };
+      toast.success(`✅ Assigned: ${selected.name} (${selected.category})`);
+      return selected;
     } catch (error) {
       console.error("❌ Error assigning provider:", error);
       toast.error("Error assigning provider");
@@ -115,8 +109,14 @@ function CheckoutPage() {
     }
   };
 
+  // ✅ Handle booking
   const handleBooking = async () => {
-    if (cart.length === 0) return alert("Your cart is empty!");
+    const currentCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    if (currentCart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
     if (!phone.match(/^\d{10}$/)) return alert("Enter a valid 10-digit phone number");
     if (!pincode || !address || !date || !timeSlot)
       return alert("All fields are required");
@@ -124,27 +124,25 @@ function CheckoutPage() {
     setLoading(true);
 
     try {
-      const serviceCategory = cart[0]?.category || "General";
+      const serviceCategory = currentCart[0]?.category || "General";
       const assignedProvider = await assignProvider(serviceCategory, district);
+
+      const totalAmount = currentCart.reduce((sum, s) => sum + (s.price || 0), 0);
 
       const newBooking = {
         userId: user?.uid || "unknown_user",
         name: user?.displayName || "Customer",
         email: user?.email || "",
-        phone: phone || "",
-        services: cart.map((item) => ({
-          category: item.category || "General",
-          subService: item.subService || item.name || "Unnamed Service",
-          price: item.price ?? 0,
+        phone,
+        services: currentCart.map((item) => ({
+          category: item.category,
+          subService: item.name,
+          price: item.price || 0,
         })),
-        address: {
-          line1: address || "",
-          district: district || "",
-          state: state || "",
-          pincode: pincode || "",
-        },
+        address: { line1: address, district, state, pincode },
         date,
         timeSlot,
+        totalAmount,
         status: assignedProvider ? "assigned" : "pending",
         assignedProvider: assignedProvider || null,
         requestId: `REQ-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
@@ -152,16 +150,8 @@ function CheckoutPage() {
       };
 
       await addDoc(collection(db, "bookings"), newBooking);
-
-      localStorage.setItem(
-        "lastBooking",
-        JSON.stringify({
-          ...newBooking,
-          createdAt: new Date().toISOString(),
-        })
-      );
-
-      clearCart();
+      localStorage.removeItem("cart");
+      setCart([]);
       setBookingSuccess(true);
       toast.success("🎉 Booking confirmed successfully!");
     } catch (error) {
@@ -203,49 +193,50 @@ function CheckoutPage() {
     );
   };
 
-  // ✅ After booking success → Show thank you + feedback form
-// ✅ After booking success → show feedback form
-if (bookingSuccess) {
-  const lastService = cart[0]?.subService || cart[0]?.name || "Service";
-  return (
-    <div className="checkout-success">
-      <h2>✅ Thank you for your booking!</h2>
-      <p>
-        We truly appreciate your trust in <strong>SevaSetu India</strong>.
-      </p>
-      <p>Please take a moment to rate your experience below 👇</p>
+  // ✅ Show feedback form after success
+  if (bookingSuccess) {
+    return (
+      <div className="checkout-success">
+        <h2>✅ Thank you for your booking!</h2>
+        <p>We truly appreciate your trust in <strong>SevaSetu India</strong>.</p>
+        <p>Please take a moment to rate your experience below 👇</p>
 
-      <FeedbackForm
-        serviceName={lastService}
-        category={cart[0]?.category || "General"}
-        userName={user?.displayName || ""}
-        userEmail={user?.email || ""}
-        place={district || ""}
-      />
+        <FeedbackForm
+  serviceName={cart[0]?.name || "Service"}
+  category={cart[0]?.category || "General"}
+  userName={user?.displayName || localStorage.getItem("userName") || "Guest"}
+  userEmail={user?.email || localStorage.getItem("userEmail") || "guest@sevasetu.in"}
+  place={district || ""}
+/>
 
-      <ToastContainer position="bottom-center" autoClose={4000} />
-    </div>
-  );
-}
+        <ToastContainer position="bottom-center" autoClose={4000} />
+      </div>
+    );
+  }
 
-
-  // ✅ Default Checkout Form
   return (
     <div className="checkout-container">
       <h2>Checkout</h2>
       <p>
-        Logged in as: <strong>{user?.displayName}</strong> ({user?.email})
+        Logged in as: <strong>{user?.displayName || "Guest"}</strong>
       </p>
 
-      <h3>Selected Services</h3>
-      <ul>
-        {cart.map((s, i) => (
-          <li key={i}>
-            {s.subService || s.name} – ₹{s.price}
-          </li>
-        ))}
-      </ul>
-      <h4>Total: ₹{total}</h4>
+      <h3>
+        Selected Services
+        <span style={{ float: "right" }}>Total: ₹{total}</span>
+      </h3>
+
+      {cart.length === 0 ? (
+        <p>No items in cart.</p>
+      ) : (
+        <ul>
+          {cart.map((s, i) => (
+            <li key={i}>
+              {s.name} – ₹{s.price}
+            </li>
+          ))}
+        </ul>
+      )}
 
       <div className="checkout-form">
         <input
@@ -300,6 +291,14 @@ if (bookingSuccess) {
 
         <button disabled={loading} onClick={handleBooking}>
           {loading ? "Processing..." : "Confirm Booking"}
+        </button>
+
+        <button
+          type="button"
+          style={{ background: "#ccc", color: "#000" }}
+          onClick={() => navigate("/cart")}
+        >
+          ← Back to Cart
         </button>
       </div>
 

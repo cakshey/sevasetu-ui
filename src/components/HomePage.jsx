@@ -1,18 +1,19 @@
 // ✅ src/components/HomePage.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { collection, query, orderBy, limit, onSnapshot } from "firebase/firestore";
+import { collection, query, orderBy, limit, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
-import LaunchingSoonWidget from "./LaunchingSoonWidget"; // 🔹 Add this import
+import LaunchingSoonWidget from "./LaunchingSoonWidget";
 import "./HomePage.css";
 
 export default function HomePage() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [feedbackList, setFeedbackList] = useState([]);
+  const [totalReviews, setTotalReviews] = useState(0);
   const [scrollIndex, setScrollIndex] = useState(0);
 
-  // 🧭 Fetch feedback in realtime
+  // 🧭 Fetch feedback (latest 10)
   useEffect(() => {
     const q = query(collection(db, "feedback"), orderBy("createdAt", "desc"), limit(10));
     const unsub = onSnapshot(q, (snapshot) => {
@@ -22,7 +23,16 @@ export default function HomePage() {
     return () => unsub();
   }, []);
 
-  // ⏳ Auto-scroll feedback
+  // 🧾 Fetch total count
+  useEffect(() => {
+    const fetchTotalReviews = async () => {
+      const allSnapshot = await getDocs(collection(db, "feedback"));
+      setTotalReviews(allSnapshot.size);
+    };
+    fetchTotalReviews();
+  }, []);
+
+  // ⏳ Auto-scroll
   useEffect(() => {
     if (feedbackList.length === 0) return;
     const timer = setInterval(() => {
@@ -31,7 +41,6 @@ export default function HomePage() {
     return () => clearInterval(timer);
   }, [feedbackList]);
 
-  // 🎯 Category grid data
   const categories = [
     { title: "Women's Salon & Spa", icon: "/assets/icons/women-salon.png" },
     { title: "Men's Salon & Massage", icon: "/assets/icons/men-salon.png" },
@@ -81,10 +90,8 @@ export default function HomePage() {
           SevaSetu helps you connect with trusted home and care services — faster, safer, and smarter.
         </p>
 
-        {/* 🔹 “Launching Soon” Widget under tagline */}
         <LaunchingSoonWidget />
 
-        {/* 🔹 Category Section */}
         <div className="category-section">
           <h3>What are you looking for?</h3>
           <input
@@ -113,7 +120,7 @@ export default function HomePage() {
 
       {/* RIGHT SIDE */}
       <div className="home-right">
-        {/* 🖼️ 4 IMAGE HIGHLIGHTS */}
+        {/* 🖼️ Image Highlights */}
         <div className="image-grid">
           {highlights.map((item, index) => (
             <div className="image-card" key={index}>
@@ -127,12 +134,28 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* 💬 FEEDBACK WIDGET */}
+        {/* 💬 Feedback Widget */}
         <div className="feedback-widget">
           <h3>
             💬 What Our Customers Say{" "}
-            <span className="review-count">({feedbackList.length} Reviews)</span>
+            {totalReviews > 0 && (
+              <span className="review-count-static">
+                ({feedbackList.length} of {totalReviews} Reviews)
+              </span>
+            )}
           </h3>
+
+          {/* 🕓 Latest review date */}
+          {feedbackList.length > 0 && fb?.createdAt?.toDate && (
+            <p className="review-date">
+              Latest review on:{" "}
+              {fb.createdAt.toDate().toLocaleDateString("en-IN", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })}
+            </p>
+          )}
 
           {!fb ? (
             <p>No feedback yet — be the first to share!</p>

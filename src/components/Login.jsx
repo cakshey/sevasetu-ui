@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   RecaptchaVerifier,
@@ -16,22 +15,32 @@ const Login = () => {
   const [otp, setOtp] = useState("");
   const [confirmationResult, setConfirmationResult] = useState(null);
   const [isOtpSent, setIsOtpSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  // Google Login
+  // ✅ Google Login
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
+      setLoading(true);
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+
+      // ✅ Store user info for later use (e.g. FeedbackForm)
       localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("userName", user.displayName || "Customer");
+      localStorage.setItem("userEmail", user.email || "");
+
+      alert(`Welcome ${user.displayName || "User"}!`);
       navigate("/");
     } catch (error) {
+      console.error("Google login error:", error);
       alert("Login failed. Please try again.");
-      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Setup reCAPTCHA
+  // ✅ Setup reCAPTCHA (runs once)
   const setupRecaptcha = () => {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
@@ -46,11 +55,15 @@ const Login = () => {
     return window.recaptchaVerifier;
   };
 
-  // Send OTP
+  // ✅ Send OTP
   const sendOtp = async () => {
-    if (!phoneNumber) return alert("Enter a valid phone number");
+    if (!phoneNumber.match(/^[6-9]\d{9}$/))
+      return alert("Enter a valid 10-digit phone number");
+
     const appVerifier = setupRecaptcha();
+
     try {
+      setLoading(true);
       const confirmation = await signInWithPhoneNumber(
         auth,
         "+91" + phoneNumber,
@@ -58,26 +71,37 @@ const Login = () => {
       );
       setConfirmationResult(confirmation);
       setIsOtpSent(true);
-      alert("OTP sent successfully!");
+      alert("✅ OTP sent successfully!");
     } catch (error) {
       console.error("OTP send error:", error);
       alert("Failed to send OTP: " + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Verify OTP
+  // ✅ Verify OTP
   const verifyOtp = async () => {
     if (!otp || !confirmationResult)
-      return alert("Enter OTP and make sure OTP is sent.");
+      return alert("Enter OTP and make sure OTP was sent.");
+
     try {
+      setLoading(true);
       const result = await confirmationResult.confirm(otp);
       const user = result.user;
+
+      // ✅ Store user info locally
       localStorage.setItem("user", JSON.stringify(user));
-      alert("Login successful!");
+      localStorage.setItem("userName", user.displayName || "Customer");
+      localStorage.setItem("userEmail", user.email || "");
+
+      alert("🎉 Login successful!");
       navigate("/");
     } catch (error) {
       console.error("OTP verify error:", error);
-      alert("Invalid or expired OTP. Try again.");
+      alert("❌ Invalid or expired OTP. Try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -86,8 +110,8 @@ const Login = () => {
       <h2>🔐 Login</h2>
 
       {/* Google Login */}
-      <button className="login-btn" onClick={handleGoogleLogin}>
-        Login with Google
+      <button className="login-btn" onClick={handleGoogleLogin} disabled={loading}>
+        {loading ? "Loading..." : "Login with Google"}
       </button>
 
       <hr style={{ margin: "20px 0" }} />
@@ -100,8 +124,11 @@ const Login = () => {
             placeholder="Enter phone number"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
+            disabled={loading}
           />
-          <button onClick={sendOtp}>Send OTP</button>
+          <button onClick={sendOtp} disabled={loading}>
+            {loading ? "Sending..." : "Send OTP"}
+          </button>
           <div id="recaptcha-container"></div>
         </div>
       ) : (
@@ -111,8 +138,11 @@ const Login = () => {
             placeholder="Enter OTP"
             value={otp}
             onChange={(e) => setOtp(e.target.value)}
+            disabled={loading}
           />
-          <button onClick={verifyOtp}>Verify OTP</button>
+          <button onClick={verifyOtp} disabled={loading}>
+            {loading ? "Verifying..." : "Verify OTP"}
+          </button>
         </div>
       )}
     </div>

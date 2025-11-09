@@ -1,19 +1,35 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+// src/utils/ProtectedRoute.jsx
+import React, { useEffect, useState } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 
 /**
- * Simple route guard that checks Firebase auth
+ * ProtectedRoute
+ * Redirects to /login if no Firebase user is authenticated
  */
 const ProtectedRoute = ({ children }) => {
-  const user = auth.currentUser;
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
-  // If not logged in → redirect to login
-  if (!user) {
-    return <Navigate to="/login" replace />;
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <div style={{ textAlign: "center", marginTop: "50px" }}>Checking authentication...</div>;
   }
 
-  // Otherwise render the requested component
+  if (!user) {
+    // Redirect to login and preserve the intended destination
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
   return children;
 };
 

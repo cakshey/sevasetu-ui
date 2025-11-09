@@ -1,75 +1,50 @@
-// ✅ src/components/ServicesPage.jsx
 import React, { useEffect, useState } from "react";
-import {
-  collection,
-  getDocsFromServer,
-} from "firebase/firestore";
-import { db } from "../firebase";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../firebase";
 import "./ServicesPage.css";
 
-function ServicesPage() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const params = new URLSearchParams(location.search);
-  const category = params.get("category");
-
-  const { cart, addToCart } = useCart();
+export default function ServicesPage() {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [categoryName, setCategoryName] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // Prevent double fetch in React Strict Mode
-  const [hasFetched, setHasFetched] = useState(false);
+  // 🔹 Extract ?category= parameter if present
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const cat = params.get("category");
+    setCategoryName(cat || "");
+  }, [location.search]);
 
+  // 🔹 Fetch services from Firestore
   useEffect(() => {
     async function fetchServices() {
-      // ✅ Prevent double-fetch during dev (React 18 StrictMode)
-      if (hasFetched) return;
-      setHasFetched(true);
-
+      setLoading(true);
       try {
-        setLoading(true);
+        const ref = collection(db, "services");
+        const q = categoryName
+          ? query(ref, where("category", "==", categoryName))
+          : ref;
 
-        const rawCategory = decodeURIComponent(category || "").trim();
+        const snap = await getDocs(q);
+        const data = snap.docs.map((d) => ({
+          id: d.id,
+          ...d.data(),
+        }));
 
-        // Always pull from Firestore server
-        const snap = await getDocsFromServer(collection(db, "services"));
-        let data = snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-
-        if (rawCategory) {
-          const normalizedCategory = rawCategory
-            .replace(/%26/g, "&")
-            .replace(/&{2,}/g, "&")
-            .replace(/’|‘/g, "'")
-            .replace(/\u00A0/g, " ")
-            .replace(/\s+/g, " ")
-            .trim()
-            .toLowerCase();
-
-          data = data.filter(
-            (s) =>
-              s.category &&
-              s.category
-                .toString()
-                .trim()
-                .replace(/\s+/g, " ")
-                .toLowerCase() === normalizedCategory
-          );
+        // Remove duplicates by name
+        const unique = [];
+        const seen = new Set();
+        for (const s of data) {
+          if (!seen.has(s.name)) {
+            seen.add(s.name);
+            unique.push(s);
+          }
         }
 
-        // ✅ Remove duplicates client-side (just in case)
-        const uniqueServices = data.filter(
-          (v, i, a) =>
-            a.findIndex(
-              (t) =>
-                t.name?.trim().toLowerCase() === v.name?.trim().toLowerCase() &&
-                t.category?.trim().toLowerCase() === v.category?.trim().toLowerCase()
-            ) === i
-        );
-
-        // Replace, don’t append
-        setServices(() => uniqueServices.sort((a, b) => a.name.localeCompare(b.name)));
+        setServices(unique);
       } catch (err) {
         console.error("❌ Error fetching services:", err);
       } finally {
@@ -78,79 +53,95 @@ function ServicesPage() {
     }
 
     fetchServices();
-  }, [category, hasFetched]);
+  }, [categoryName]);
 
-  // 🛒 Add to cart
+  // 🔹 Add item to cart (store with proper price field)
   const handleAddToCart = (service) => {
-    addToCart(service);
-    alert(`${service.name || service.subService} added to your cart.`);
+    const existing = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    const priceValue =
+      Number(service.price) ||
+      Number(service.sellPrice) ||
+      Number(service.servicePrice) ||
+      Number(service.providerCost) ||
+      0;
+
+    existing.push({
+      id: service.id,
+      name: service.name,
+      category: service.category,
+      price: priceValue,
+    });
+
+    localStorage.setItem("cart", JSON.stringify(existing));
+    alert(`${service.name} added to cart!`);
   };
 
-  // 🧭 Go to checkout
-  const goToCheckout = () => navigate("/checkout");
+  const goToCart = () => navigate("/cart");
+
+  if (loading)
+    return (
+      <div className="services-page-container">
+        <p className="loading-text">Loading services...</p>
+      </div>
+    );
 
   return (
     <div className="services-page-container">
-      <button className="back-btn" onClick={() => navigate("/")}>
-        ← Back to Home
+      <button className="back-btn" onClick={() => navigate(-1)}>
+        ← Back
       </button>
 
       <h2 className="page-title">
-        {category
-          ? `${decodeURIComponent(category).replace(/’/g, "'")} Services`
-          : "All Available Services"}
+        {categoryName ? `${categoryName} Services` : "All Services"}
       </h2>
 
-      {loading ? (
-        <p className="loading-text">⏳ Loading services...</p>
-      ) : services.length === 0 ? (
-        <p className="no-data">⚠️ No services found for this category.</p>
+      {services.length === 0 ? (
+        <p className="no-services">No services found in this category.</p>
       ) : (
-        <>
-          <div className="services-grid">
-            {services.map((service) => (
-              <div key={service.id} className="service-card">
+        <div className="services-grid">
+          {services.map((s) => {
+            const priceValue =
+              s.price ||
+              s.sellPrice ||
+              s.servicePrice ||
+              s.providerCost ||
+              0;
+
+            return (
+              <div className="service-card" key={s.id}>
                 <div className="service-header">
-                  <h3>{service.name || service.subService}</h3>
-                  {service.price && (
-                    <span className="service-price">₹{service.price}</span>
-                  )}
+                  <h3 className="service-name">{s.name}</h3>
+                  <p className="service-price">₹{priceValue}</p>
                 </div>
-
+                <p className="service-category">{s.category}</p>
                 <p className="service-description">
-                  {service.description?.trim()
-                    ? service.description
-                    : service.remarks?.trim()
-                    ? service.remarks
-                    : "No description available."}
+                  {s.description || "No description available."}
                 </p>
-
                 <button
-                  className="book-now"
-                  onClick={() => handleAddToCart(service)}
+                  className="add-btn"
+                  onClick={() => handleAddToCart(s)}
                 >
                   Add to Cart
                 </button>
               </div>
-            ))}
-          </div>
+            );
+          })}
+        </div>
+      )}
 
-          {/* ✅ Floating checkout bar when items in cart */}
-          {cart.length > 0 && (
-            <div className="floating-checkout">
-              <p>
-                🛒 You have {cart.length} service
-                {cart.length > 1 ? "s" : ""} in your cart.
-              </p>
-              <button onClick={goToCheckout} className="checkout-btn">
-                Proceed to Checkout
-              </button>
-            </div>
-          )}
-        </>
+      {services.length > 0 && (
+        <div className="checkout-section">
+          <p className="cart-summary">
+            You have{" "}
+            {JSON.parse(localStorage.getItem("cart") || "[]").length} item(s) in
+            your cart.
+          </p>
+          <button className="go-cart-btn" onClick={goToCart}>
+            Go to Your Cart →
+          </button>
+        </div>
       )}
     </div>
   );
 }
-
-export default ServicesPage;

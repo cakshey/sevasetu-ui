@@ -379,3 +379,30 @@
 .launching-widget-wrapper {
   margin: 20px 0 30px;
 }
+.review-link {
+  font-size: 16px;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  margin-left: 5px;
+}
+
+.review-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+  transform: scale(1.03);
+}
+
+.review-count-static {
+  color: #007bff;
+  font-weight: 500;
+  margin-left: 6px;
+}
+
+.review-date {
+  font-size: 14px;
+  color: #666;
+  margin-top: -4px;
+  margin-bottom: 8px;
+}

@@ -1,145 +1,160 @@
-/* =========================================================
-   🔹 SevaSetu Navbar — Responsive Final Version
-   Supports Bootstrap navbar + gradient + dropdown
-   ========================================================= */
+/* --- Reset unwanted top space --- */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* 🔹 Navbar base styles */
+/* --- Navbar container --- */
 .navbar {
-  background: linear-gradient(90deg, #1746b8, #4378e6);
-  color: #fff;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  background-color: #1565d8; /* vibrant blue theme */
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
-  font-family: "Inter", sans-serif;
-  transition: all 0.3s ease;
 }
 
-/* 🔹 Brand */
-.navbar-brand {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #fff !important;
+/* --- Brand logo (footer matching style) --- */
+.navbar-logo {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.navbar-brand span {
   font-weight: 700;
+  font-size: 1.25rem;
+  color: #ffffff;
+  text-decoration: none;
 }
 
-/* 🔹 Nav links */
-.nav-link {
-  color: #fff !important;
-  font-weight: 500;
-  padding: 0.6rem 1rem;
-  transition: all 0.2s ease-in-out;
+.logo-emoji {
+  font-size: 1.4rem;
+  line-height: 1;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
 }
 
-.nav-link:hover,
-.nav-link.active {
-  text-decoration: underline;
-  color: #ffeb3b !important;
+.logo-text {
+  color: #ffe082; /* soft golden accent */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* 🔹 Dropdown styles */
-.dropdown-menu {
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border: none;
-}
-
-.dropdown-item {
-  color: #1746b8 !important;
-  font-weight: 500;
-  transition: background 0.2s ease;
-}
-
-.dropdown-item:hover {
-  background: #e5e9ff;
-  color: #0d3ca1 !important;
-}
-
-/* 🔹 Auth badges & buttons */
-.badge {
-  font-weight: 600;
-  border-radius: 12px;
-}
-
-.login-btn,
-.logout-btn,
-.cart-btn {
-  background: #fff;
-  color: #1746b8;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.login-btn:hover,
-.logout-btn:hover,
-.cart-btn:hover {
-  background: #e5e9ff;
-  transform: scale(1.05);
-}
-
-/* 🔹 User info (avatar & name) */
-.user-info {
+/* --- Navigation Links --- */
+.nav-links {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 24px;
 }
 
-.user-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-}
-
-.user-name {
+.nav-links a {
+  color: white;
+  text-decoration: none;
   font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffd54f;
+}
+
+/* --- Admin Dropdown --- */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown button {
+  background: #0d47a1;
   color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
 }
 
-/* 🔹 Responsive Design */
-
-/* Tablets (≤992px) */
-@media (max-width: 992px) {
-  .navbar-nav {
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  .navbar-collapse {
-    background: linear-gradient(180deg, #1746b8, #4378e6);
-    border-radius: 8px;
-    padding: 0.5rem 0;
-  }
-
-  .dropdown-menu {
-    background: #f8f9fa;
-    text-align: center;
-  }
+.nav-dropdown button:hover {
+  background: #09357b;
 }
 
-/* Mobile (≤576px) */
-@media (max-width: 576px) {
-  .navbar-brand {
-    font-size: 1rem;
-  }
+.nav-dropdown-menu {
+  position: absolute;
+  top: 38px;
+  right: 0;
+  background: #ffffff;
+  color: #333;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: none;
+  flex-direction: column;
+  min-width: 190px;
+  z-index: 100;
+}
 
-  .navbar-toggler {
-    border: none;
-    outline: none;
-  }
+.nav-dropdown:hover .nav-dropdown-menu {
+  display: flex;
+}
 
-  .navbar-nav .nav-link {
-    padding: 0.6rem 0;
+.nav-dropdown-menu a {
+  padding: 8px 14px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.nav-dropdown-menu a:hover {
+  background: #f0f4ff;
+  color: #0d47a1;
+}
+
+/* --- Cart & Logout --- */
+.cart-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cart-icon {
+  position: relative;
+  font-size: 1.3rem;
+  color: white;
+  text-decoration: none;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #ff5252;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  font-weight: 600;
+}
+
+.logout-btn {
+  background: #e53935;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background: #c62828;
+}
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
   }
 }

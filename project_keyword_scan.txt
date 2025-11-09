@@ -1,0 +1,852 @@
+Project Keyword Scan - Sat 11/08/2025 22:10:58.52 
+===================================================== 
+ 
+src\App.jsx:import CheckoutPage from "./components/CheckoutPage";
+src\App.jsx:import BookingConfirmation from "./components/BookingConfirmation";
+src\App.jsx:import AdminFeedback from "./components/AdminFeedback";
+src\App.jsx:import MyBookings from "./components/MyBookings";
+src\App.jsx:import ThankYouPage from "./components/ThankYouPage";
+src\App.jsx:import MyOrders from "./pages/MyOrders";
+src\App.jsx:import AdminOrderManager from "./pages/AdminOrderManager";
+src\App.jsx:import AdminOrders from "./pages/AdminOrders";
+src\App.jsx:  path="/admin-orders"
+src\App.jsx:      <AdminOrders />
+src\App.jsx:        <Route path="/thank-you" element={<ThankYouPage />} />
+src\App.jsx:          path="/checkout"
+src\App.jsx:              <CheckoutPage />
+src\App.jsx:          path="/booking-confirmation"
+src\App.jsx:              <BookingConfirmation />
+src\App.jsx:          path="/my-bookings"
+src\App.jsx:              <MyBookings />
+src\App.jsx:          path="/admin-feedback"
+src\App.jsx:              <AdminFeedback />
+src\App.jsx:  path="/admin-orders"
+src\App.jsx:      <AdminOrderManager />
+src\App.jsx:  path="/admin-orders"
+src\App.jsx:      <AdminOrders />
+src\App.jsx:  path="/my-orders"
+src\App.jsx:      <MyOrders />
+src\components\AboutPage.css:  border-radius: 16px;
+src\components\AdminAssignedProviders.css:  border-radius: 14px;
+src\components\AdminAssignedProviders.css:  border-collapse: collapse;
+src\components\AdminAssignedProviders.css:  border-bottom: 1px solid #e0e0e0;
+src\components\AdminAssignedProviders.css:  border-radius: 8px;
+src\components\AdminAssignedProviders.css:  border: none;
+src\components\AdminAssignedProviders.css:  border-radius: 6px;
+src\components\AdminAssignedProviders.jsx:  orderBy,
+src\components\AdminAssignedProviders.jsx:  const [bookings, setBookings] = useState([]);
+src\components\AdminAssignedProviders.jsx:  // Fetch bookings that have assigned providers
+src\components\AdminAssignedProviders.jsx:    const fetchBookings = async () => {
+src\components\AdminAssignedProviders.jsx:          collection(db, "bookings"),
+src\components\AdminAssignedProviders.jsx:          orderBy("createdAt", "desc")
+src\components\AdminAssignedProviders.jsx:        setBookings(data);
+src\components\AdminAssignedProviders.jsx:        console.error("Error fetching assigned bookings:", err);
+src\components\AdminAssignedProviders.jsx:    fetchBookings();
+src\components\AdminAssignedProviders.jsx:      alert(`âœ… ${providerName} is now available for new bookings.`);
+src\components\AdminAssignedProviders.jsx:    return <div className="loading">â³ Loading assigned bookings...</div>;
+src\components\AdminAssignedProviders.jsx:  if (bookings.length === 0) {
+src\components\AdminAssignedProviders.jsx:            <th>Booking ID</th>
+src\components\AdminAssignedProviders.jsx:          {bookings.map((b) => {
+src\components\AdminFeedback.css:.admin-feedback-page {
+src\components\AdminFeedback.css:  border-radius: 8px;
+src\components\AdminFeedback.css:  border: 1px solid #ccc;
+src\components\AdminFeedback.css:  border-color: #1976d2;
+src\components\AdminFeedback.css:  border-radius: 12px;
+src\components\AdminFeedback.css:  border-radius: 10px;
+src\components\AdminFeedback.css:/* ğŸ“Š Feedback Table */
+src\components\AdminFeedback.css:.feedback-table-container {
+src\components\AdminFeedback.css:  border-radius: 12px;
+src\components\AdminFeedback.css:.feedback-table {
+src\components\AdminFeedback.css:  border-collapse: collapse;
+src\components\AdminFeedback.css:.feedback-table th,
+src\components\AdminFeedback.css:.feedback-table td {
+src\components\AdminFeedback.css:  border-bottom: 1px solid #eee;
+src\components\AdminFeedback.css:.feedback-table th {
+src\components\AdminFeedback.css:.feedback-table tr:hover {
+src\components\AdminFeedback.css:  .admin-feedback-page {
+src\components\AdminFeedback.jsx:import { collection, getDocs, orderBy, query } from "firebase/firestore";
+src\components\AdminFeedback.jsx:import "./AdminFeedback.css";
+src\components\AdminFeedback.jsx:export default function AdminFeedback() {
+src\components\AdminFeedback.jsx:  const [feedbackList, setFeedbackList] = useState([]);
+src\components\AdminFeedback.jsx:  // ğŸ” Fetch Feedback Data
+src\components\AdminFeedback.jsx:    async function fetchFeedback() {
+src\components\AdminFeedback.jsx:        const q = query(collection(db, "feedback"), orderBy("createdAt", "desc"));
+src\components\AdminFeedback.jsx:        setFeedbackList(data);
+src\components\AdminFeedback.jsx:        console.error("âŒ Error fetching feedback:", error);
+src\components\AdminFeedback.jsx:    fetchFeedback();
+src\components\AdminFeedback.jsx:  // ğŸ” Search Filter (runs only after feedback is loaded)
+src\components\AdminFeedback.jsx:    const filtered = feedbackList.filter(
+src\components\AdminFeedback.jsx:  }, [searchTerm, feedbackList, isAuthorized]);
+src\components\AdminFeedback.jsx:            borderRadius: "6px",
+src\components\AdminFeedback.jsx:            border: "1px solid #ccc",
+src\components\AdminFeedback.jsx:            border: "none",
+src\components\AdminFeedback.jsx:            borderRadius: "6px",
+src\components\AdminFeedback.jsx:            border: "none",
+src\components\AdminFeedback.jsx:  // âœ… Render Feedback Dashboard after login
+src\components\AdminFeedback.jsx:    <div className="admin-feedback-page">
+src\components\AdminFeedback.jsx:      <h2>ğŸ—‚ï¸ Customer Feedback Dashboard</h2>
+src\components\AdminFeedback.jsx:        Monitor feedback, ratings & trends from SevaSetu users.
+src\components\AdminFeedback.jsx:      {/* ğŸ“Š Feedback Table */}
+src\components\AdminFeedback.jsx:        <p className="loading">â³ Loading feedback...</p>
+src\components\AdminFeedback.jsx:        <p className="no-data">âš ï¸ No feedback found for this search.</p>
+src\components\AdminFeedback.jsx:        <div className="feedback-table-container">
+src\components\AdminFeedback.jsx:          <table className="feedback-table">
+src\components\AdminServiceReports.css:  border-radius: 10px;
+src\components\AdminServiceReports.css:  border-radius: 8px;
+src\components\AdminServiceReports.jsx:    totalBookings: 0,
+src\components\AdminServiceReports.jsx:    totalFeedback: 0,
+src\components\AdminServiceReports.jsx:        const bookingsSnap = await getDocs(collection(db, "bookings"));
+src\components\AdminServiceReports.jsx:        const feedbackSnap = await getDocs(collection(db, "feedback"));
+src\components\AdminServiceReports.jsx:        const bookings = bookingsSnap.docs.map((doc) => doc.data());
+src\components\AdminServiceReports.jsx:        const feedbacks = feedbackSnap.docs.map((doc) => doc.data());
+src\components\AdminServiceReports.jsx:        const totalBookings = bookings.length;
+src\components\AdminServiceReports.jsx:        const totalFeedback = feedbacks.length;
+src\components\AdminServiceReports.jsx:          feedbacks.length > 0
+src\components\AdminServiceReports.jsx:                feedbacks.reduce((sum, f) => sum + (f.rating || 0), 0) /
+src\components\AdminServiceReports.jsx:                feedbacks.length
+src\components\AdminServiceReports.jsx:        bookings.forEach((b) => {
+src\components\AdminServiceReports.jsx:        setData({ totalBookings, totalFeedback, avgRating, topCategories });
+src\components\AdminServiceReports.jsx:        <div><strong>Total Bookings:</strong> {data.totalBookings}</div>
+src\components\AdminServiceReports.jsx:        <div><strong>Total Feedback:</strong> {data.totalFeedback}</div>
+src\components\AdminServiceReports.jsx:      <table className="table table-striped table-bordered mt-3">
+src\components\AdminServiceReports.jsx:            <th>Booking Count</th>
+src\components\AdminSupportDashboard.css:  border-radius: 14px;
+src\components\AdminSupportDashboard.css:  border-left: 6px solid #4da6ff;
+src\components\AdminSupportDashboard.css:  border-left: 6px solid #f6c90e;
+src\components\AdminSupportDashboard.css:  border-left: 6px solid #4caf50;
+src\components\BackupHistory.jsx:import "./AdminFeedback.css"; // reuse existing styling
+src\components\BackupHistory.jsx:        <table className="table table-bordered table-hover">
+src\components\BookingConfirmation.css:  border-radius: 20px;
+src\components\BookingConfirmation.css:  border-bottom: 1px solid #eee;
+src\components\BookingConfirmation.css:.booking-summary {
+src\components\BookingConfirmation.css:.booking-summary ul {
+src\components\BookingConfirmation.css:.booking-summary li {
+src\components\BookingConfirmation.css:  border-radius: 10px;
+src\components\BookingConfirmation.css:  border: none;
+src\components\BookingConfirmation.css:  border-radius: 10px;
+src\components\BookingConfirmation.css:  border-radius: 50%;
+src\components\BookingConfirmation.css:  border-left: 4px solid #28a745;
+src\components\BookingConfirmation.css:  border-bottom: 4px solid #28a745;
+src\components\BookingConfirmation.css:/* --- No Booking --- */
+src\components\BookingConfirmation.css:.no-booking {
+src\components\BookingConfirmation.css:.no-booking h3 {
+src\components\BookingConfirmation.css:.no-booking button {
+src\components\BookingConfirmation.css:  border: none;
+src\components\BookingConfirmation.css:  border-radius: 8px;
+src\components\BookingConfirmation.css:.no-booking button:hover {
+src\components\BookingConfirmation.css:  .booking-summary li {
+src\components\BookingConfirmation.css:/* âœ… Inline Thank You image styling */
+src\components\BookingConfirmation.css:.thank-image-inline {
+src\components\BookingConfirmation.css:  border: none;
+src\components\BookingConfirmation.css:  border-radius: 8px;
+src\components\BookingConfirmation.jsx:// src/components/BookingConfirmation.jsx
+src\components\BookingConfirmation.jsx:import FeedbackForm from "./FeedbackForm";
+src\components\BookingConfirmation.jsx:import "./BookingConfirmation.css";
+src\components\BookingConfirmation.jsx:function BookingConfirmation() {
+src\components\BookingConfirmation.jsx:  const [bookingData, setBookingData] = useState(null);
+src\components\BookingConfirmation.jsx:    const storedBooking = localStorage.getItem("lastBooking");
+src\components\BookingConfirmation.jsx:    if (storedBooking) {
+src\components\BookingConfirmation.jsx:        setBookingData(JSON.parse(storedBooking));
+src\components\BookingConfirmation.jsx:        console.error("Failed to parse booking data");
+src\components\BookingConfirmation.jsx:  if (!bookingData) {
+src\components\BookingConfirmation.jsx:        <h2>Booking Not Found</h2>
+src\components\BookingConfirmation.jsx:        <p>Your booking details could not be loaded.</p>
+src\components\BookingConfirmation.jsx:  const firstService = bookingData.services?.[0] || {};
+src\components\BookingConfirmation.jsx:      <h2>âœ… Thank you for your booking!</h2>
+src\components\BookingConfirmation.jsx:      <div className="feedback-section">
+src\components\BookingConfirmation.jsx:        <FeedbackForm
+src\components\BookingConfirmation.jsx:          userName={bookingData.name}
+src\components\BookingConfirmation.jsx:          userEmail={bookingData.email}
+src\components\BookingConfirmation.jsx:          place={bookingData.address?.district || ""}
+src\components\BookingConfirmation.jsx:export default BookingConfirmation;
+src\components\CheckoutPage.css:/* ğŸŒŸ Checkout Container */
+src\components\CheckoutPage.css:.checkout-container {
+src\components\CheckoutPage.css:  border-radius: 16px;
+src\components\CheckoutPage.css:.checkout-container:hover {
+src\components\CheckoutPage.css:.checkout-container h2 {
+src\components\CheckoutPage.css:.checkout-container h3 {
+src\components\CheckoutPage.css:  border-bottom: 1px solid #eee;
+src\components\CheckoutPage.css:.checkout-container h4 {
+src\components\CheckoutPage.css:.checkout-form {
+src\components\CheckoutPage.css:.checkout-form input,
+src\components\CheckoutPage.css:.checkout-form textarea,
+src\components\CheckoutPage.css:.checkout-form select {
+src\components\CheckoutPage.css:  border: 1px solid #ccc;
+src\components\CheckoutPage.css:  border-radius: 10px;
+src\components\CheckoutPage.css:  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+src\components\CheckoutPage.css:.checkout-form input:focus,
+src\components\CheckoutPage.css:.checkout-form textarea:focus,
+src\components\CheckoutPage.css:.checkout-form select:focus {
+src\components\CheckoutPage.css:  border-color: #007bff;
+src\components\CheckoutPage.css:.checkout-form button {
+src\components\CheckoutPage.css:  border: none;
+src\components\CheckoutPage.css:  border-radius: 10px;
+src\components\CheckoutPage.css:.checkout-form button:hover:not(:disabled) {
+src\components\CheckoutPage.css:.checkout-form button:disabled {
+src\components\CheckoutPage.css:  border: none;
+src\components\CheckoutPage.css:  border-radius: 6px;
+src\components\CheckoutPage.css:  border: none;
+src\components\CheckoutPage.css:  border-radius: 8px;
+src\components\CheckoutPage.css:/* --- SUCCESS + FEEDBACK --- */
+src\components\CheckoutPage.css:.checkout-success {
+src\components\CheckoutPage.css:  border-radius: 16px;
+src\components\CheckoutPage.css:.checkout-success h2 {
+src\components\CheckoutPage.css:.checkout-success p {
+src\components\CheckoutPage.css:.thankyou-buttons {
+src\components\CheckoutPage.css:.thankyou-buttons button {
+src\components\CheckoutPage.css:  border: none;
+src\components\CheckoutPage.css:  border-radius: 8px;
+src\components\CheckoutPage.css:.thankyou-buttons button:hover {
+src\components\CheckoutPage.css:  .checkout-container {
+src\components\CheckoutPage.css:  .checkout-container h2 {
+src\components\CheckoutPage.css:  .checkout-form input,
+src\components\CheckoutPage.css:  .checkout-form textarea {
+src\components\CheckoutPage.css:  .checkout-form button {
+src\components\CheckoutPage.jsx:// âœ… src/components/CheckoutPage.jsx
+src\components\CheckoutPage.jsx:import FeedbackForm from "./FeedbackForm";
+src\components\CheckoutPage.jsx:import "./CheckoutPage.css";
+src\components\CheckoutPage.jsx:function CheckoutPage() {
+src\components\CheckoutPage.jsx:  const [bookingSuccess, setBookingSuccess] = useState(false);
+src\components\CheckoutPage.jsx:  const handleBooking = async () => {
+src\components\CheckoutPage.jsx:      const newBooking = {
+src\components\CheckoutPage.jsx:      await addDoc(collection(db, "bookings"), newBooking);
+src\components\CheckoutPage.jsx:        "lastBooking",
+src\components\CheckoutPage.jsx:          ...newBooking,
+src\components\CheckoutPage.jsx:      toast.success("ğŸ‰ Booking confirmed! Redirecting...");
+src\components\CheckoutPage.jsx:      setTimeout(() => setBookingSuccess(true), 1800);
+src\components\CheckoutPage.jsx:      console.error("ğŸ”¥ Error adding booking:", error);
+src\components\CheckoutPage.jsx:  // âœ… After booking success â†’ Show thank you + feedback form
+src\components\CheckoutPage.jsx:  if (bookingSuccess) {
+src\components\CheckoutPage.jsx:      <div className="checkout-success">
+src\components\CheckoutPage.jsx:        <h2>âœ… Thank you for your booking!</h2>
+src\components\CheckoutPage.jsx:        <FeedbackForm
+src\components\CheckoutPage.jsx:        <div className="thankyou-buttons">
+src\components\CheckoutPage.jsx:          <button onClick={() => navigate("/my-orders")}>ğŸ“¦ My Orders</button>
+src\components\CheckoutPage.jsx:  // âœ… Default Checkout Form
+src\components\CheckoutPage.jsx:    <div className="checkout-container">
+src\components\CheckoutPage.jsx:      <h2>Checkout</h2>
+src\components\CheckoutPage.jsx:      <div className="checkout-form">
+src\components\CheckoutPage.jsx:          onClick={handleBooking}
+src\components\CheckoutPage.jsx:          {loading ? "Processing..." : "Confirm Booking"}
+src\components\CheckoutPage.jsx:export default CheckoutPage;
+src\components\ContactPage.css:  border-radius: 16px;
+src\components\ContactPage.css:  border-radius: 8px;
+src\components\ContactPage.css:  border: 1px solid #ccc;
+src\components\ContactPage.css:  border: none;
+src\components\ContactPage.css:  border-radius: 20px;
+src\components\ContactPage.jsx:          Have questions or feedback? Reach out to us anytime â€” our support team
+src\components\ContactPage.jsx:              âœ… Thank you! Your message has been submitted successfully.
+src\components\FeedbackForm.css:.feedback-form-wrapper {
+src\components\FeedbackForm.css:  border-radius: 16px;
+src\components\FeedbackForm.css:.feedback-form-wrapper h3 {
+src\components\FeedbackForm.css:.feedback-form label {
+src\components\FeedbackForm.css:.feedback-form input,
+src\components\FeedbackForm.css:.feedback-form textarea {
+src\components\FeedbackForm.css:  border: 1px solid #ccc;
+src\components\FeedbackForm.css:  border-radius: 6px;
+src\components\FeedbackForm.css:.feedback-form textarea {
+src\components\FeedbackForm.css:  border: 1px solid #1a6d1a;
+src\components\FeedbackForm.css:  border-radius: 20px;
+src\components\FeedbackForm.css:  border: none;
+src\components\FeedbackForm.css:  border-radius: 8px;
+src\components\FeedbackForm.css:/* Thank-you Section */
+src\components\FeedbackForm.css:.thankyou-card {
+src\components\FeedbackForm.css:  border-radius: 20px;
+src\components\FeedbackForm.css:.thankyou-img {
+src\components\FeedbackForm.css:.thankyou-buttons {
+src\components\FeedbackForm.css:.thankyou-buttons button {
+src\components\FeedbackForm.css:  border: none;
+src\components\FeedbackForm.css:  border-radius: 8px;
+src\components\FeedbackForm.css:.thankyou-buttons button:hover {
+src\components\FeedbackForm.css:  border-radius: 50%;
+src\components\FeedbackForm.css:  border-left: 5px solid #1a6d1a;
+src\components\FeedbackForm.css:  border-bottom: 5px solid #1a6d1a;
+src\components\FeedbackForm.jsx:import ThankYouImage from "../assets/thankyou.png";
+src\components\FeedbackForm.jsx:import "./FeedbackForm.css";
+src\components\FeedbackForm.jsx:const FeedbackForm = () => {
+src\components\FeedbackForm.jsx:  const feedbackTags = [
+src\components\FeedbackForm.jsx:    "Ease of Booking",
+src\components\FeedbackForm.jsx:    const stored = localStorage.getItem("lastBooking");
+src\components\FeedbackForm.jsx:        const booking = JSON.parse(stored);
+src\components\FeedbackForm.jsx:          booking?.services && booking.services.length > 0 ? booking.services[0] : {};
+src\components\FeedbackForm.jsx:        setPlace(booking?.address?.district || "");
+src\components\FeedbackForm.jsx:        setName(booking?.name || auth.currentUser?.displayName || "");
+src\components\FeedbackForm.jsx:        setEmail(booking?.email || auth.currentUser?.email || "");
+src\components\FeedbackForm.jsx:        console.error("âš ï¸ Could not parse booking data:", err);
+src\components\FeedbackForm.jsx:      alert("Please log in before submitting feedback.");
+src\components\FeedbackForm.jsx:      await addDoc(collection(db, "feedback"), {
+src\components\FeedbackForm.jsx:      console.error("âŒ Error saving feedback:", error);
+src\components\FeedbackForm.jsx:        <p className="success-text">Feedback submitted successfully!</p>
+src\components\FeedbackForm.jsx:  // âœ… Thank You Screen
+src\components\FeedbackForm.jsx:      <div className="thankyou-card">
+src\components\FeedbackForm.jsx:        <img src={ThankYouImage} alt="Thank You" className="thankyou-img" />
+src\components\FeedbackForm.jsx:        <h2>Thank you for your feedback!</h2>
+src\components\FeedbackForm.jsx:        <div className="thankyou-buttons">
+src\components\FeedbackForm.jsx:    <div className="feedback-form-wrapper">
+src\components\FeedbackForm.jsx:      <form onSubmit={handleSubmit} className="feedback-form">
+src\components\FeedbackForm.jsx:          {feedbackTags.map((tag) => (
+src\components\FeedbackForm.jsx:          placeholder="Share your feedback..."
+src\components\FeedbackForm.jsx:          {loading ? "Submitting..." : "Submit Feedback"}
+src\components\FeedbackForm.jsx:export default FeedbackForm;
+src\components\FloatingCart.css:  border-radius: 50%;
+src\components\FloatingCart.css:  border-radius: 50%;
+src\components\Footer.css:  border-radius: 8px;
+src\components\Footer.css:  border-top: 1px solid #24325b;
+src\components\GuestLogin.css:  border-radius: 18px;
+src\components\GuestLogin.css:  border: none;
+src\components\GuestLogin.css:  border-radius: 8px;
+src\components\GuestLogin.jsx:            your bookings.
+src\components\HomeFeedbackWidget.css:/* âœ… FeedbackWidget.css */
+src\components\HomeFeedbackWidget.css:.feedback-widget {
+src\components\HomeFeedbackWidget.css:  border-radius: 14px;
+src\components\HomeFeedbackWidget.css:.feedback-widget h3 {
+src\components\HomeFeedbackWidget.css:.feedback-list {
+src\components\HomeFeedbackWidget.css:.feedback-card {
+src\components\HomeFeedbackWidget.css:  border-left: 4px solid #004aad;
+src\components\HomeFeedbackWidget.css:  border-radius: 10px;
+src\components\HomeFeedbackWidget.css:.feedback-card:hover {
+src\components\HomeFeedbackWidget.css:.feedback-comment {
+src\components\HomeFeedbackWidget.css:.feedback-rating {
+src\components\HomeFeedbackWidget.css:.feedback-meta {
+src\components\HomeFeedbackWidget.css:.feedback-tags {
+src\components\HomeFeedbackWidget.css:  border-radius: 12px;
+src\components\HomeFeedbackWidget.css:  .feedback-widget {
+src\components\HomeFeedbackWidget.css:  .feedback-card {
+src\components\HomeFeedbackWidget.css:  .feedback-comment {
+src\components\HomeFeedbackWidget.jsx:// âœ… src/components/FeedbackWidget.jsx
+src\components\HomeFeedbackWidget.jsx:import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
+src\components\HomeFeedbackWidget.jsx:import "./FeedbackWidget.css";
+src\components\HomeFeedbackWidget.jsx:export default function FeedbackWidget() {
+src\components\HomeFeedbackWidget.jsx:  const [feedbackList, setFeedbackList] = useState([]);
+src\components\HomeFeedbackWidget.jsx:    async function fetchFeedback() {
+src\components\HomeFeedbackWidget.jsx:          collection(db, "feedback"),
+src\components\HomeFeedbackWidget.jsx:          orderBy("createdAt", "desc"),
+src\components\HomeFeedbackWidget.jsx:        setFeedbackList(data);
+src\components\HomeFeedbackWidget.jsx:        console.error("âŒ Error fetching feedback:", error);
+src\components\HomeFeedbackWidget.jsx:    fetchFeedback();
+src\components\HomeFeedbackWidget.jsx:      <div className="feedback-widget">
+src\components\HomeFeedbackWidget.jsx:        <p>Loading feedback...</p>
+src\components\HomeFeedbackWidget.jsx:  if (feedbackList.length === 0) {
+src\components\HomeFeedbackWidget.jsx:      <div className="feedback-widget">
+src\components\HomeFeedbackWidget.jsx:    <div className="feedback-widget">
+src\components\HomeFeedbackWidget.jsx:  {feedbackList?.length > 0 && (
+src\components\HomeFeedbackWidget.jsx:    <span>({feedbackList.length} Reviews)</span>
+src\components\HomeFeedbackWidget.jsx:      <div className="feedback-list">
+src\components\HomeFeedbackWidget.jsx:        {feedbackList.map((fb) => (
+src\components\HomeFeedbackWidget.jsx:          <div key={fb.id} className="feedback-card">
+src\components\HomeFeedbackWidget.jsx:            <p className="feedback-comment">
+src\components\HomeFeedbackWidget.jsx:            <p className="feedback-rating">
+src\components\HomeFeedbackWidget.jsx:            <p className="feedback-meta">
+src\components\HomeFeedbackWidget.jsx:              <div className="feedback-tags">
+src\components\HomePage.css:  box-sizing: border-box;
+src\components\HomePage.css:  border-radius: 20px;
+src\components\HomePage.css:  border-left: 4px solid #004aad;
+src\components\HomePage.css:  border-radius: 16px;
+src\components\HomePage.css:  border-radius: 14px;
+src\components\HomePage.css:  border-color: #004aad;
+src\components\HomePage.css:  border-radius: 18px;
+src\components\HomePage.css:  transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+src\components\HomePage.css:  border: 2px solid transparent;
+src\components\HomePage.css:  border: 2px solid transparent;
+src\components\HomePage.css:  background-origin: border-box;
+src\components\HomePage.css:  background-clip: content-box, border-box;
+src\components\HomePage.css:  border-radius: 16px;
+src\components\HomePage.css:  border-radius: 0 0 16px 16px;
+src\components\HomePage.css:  border-radius: 8px;
+src\components\HomePage.css:  border: 1px solid #ccc;
+src\components\HomePage.css:  border-color: #1976d2;
+src\components\HomePage.css:/* ğŸ’¬ Feedback Widget */
+src\components\HomePage.css:.feedback-widget {
+src\components\HomePage.css:  border-radius: 10px;
+src\components\HomePage.css:.feedback-title {
+src\components\HomePage.css:.feedback-card {
+src\components\HomePage.css:  border-left: 4px solid #1976d2;
+src\components\HomePage.css:  border-radius: 6px;
+src\components\HomePage.css:/* âœ¨ Auto-scroll animation for feedback */
+src\components\HomePage.css:/* Feedback widget styling */
+src\components\HomePage.css:.feedback-widget {
+src\components\HomePage.css:  border-radius: 12px;
+src\components\HomePage.css:.feedback-card {
+src\components\HomePage.css:  border-radius: 10px;
+src\components\HomePage.css:  border-left: 4px solid #004aad;
+src\components\HomePage.css:.feedback-comment {
+src\components\HomePage.css:.feedback-rating {
+src\components\HomePage.css:.feedback-meta {
+src\components\HomePage.css:.feedback-tags {
+src\components\HomePage.css:  border-radius: 12px;
+src\components\HomePage.jsx:import { collection, query, orderBy, limit, getDocs, onSnapshot } from "firebase/firestore";
+src\components\HomePage.jsx:  const [feedbackList, setFeedbackList] = useState([]);
+src\components\HomePage.jsx:  // ğŸ§­ Fetch feedback (latest 10)
+src\components\HomePage.jsx:    const q = query(collection(db, "feedback"), orderBy("createdAt", "desc"), limit(10));
+src\components\HomePage.jsx:      setFeedbackList(docs);
+src\components\HomePage.jsx:      const allSnapshot = await getDocs(collection(db, "feedback"));
+src\components\HomePage.jsx:    if (feedbackList.length === 0) return;
+src\components\HomePage.jsx:      setScrollIndex((prev) => (prev + 1) % feedbackList.length);
+src\components\HomePage.jsx:  }, [feedbackList]);
+src\components\HomePage.jsx:  const fb = feedbackList[scrollIndex];
+src\components\HomePage.jsx:        {/* ğŸ’¬ Feedback Widget */}
+src\components\HomePage.jsx:        <div className="feedback-widget">
+src\components\HomePage.jsx:                ({feedbackList.length} of {totalReviews} Reviews)
+src\components\HomePage.jsx:          {feedbackList.length > 0 && fb?.createdAt?.toDate && (
+src\components\HomePage.jsx:            <p>No feedback yet â€” be the first to share!</p>
+src\components\HomePage.jsx:            <div key={fb.id} className="feedback-card fade-in">
+src\components\HomePage.jsx:              <p className="feedback-comment">
+src\components\HomePage.jsx:              <p className="feedback-rating">
+src\components\HomePage.jsx:              <p className="feedback-meta">
+src\components\HomePage.jsx:                <div className="feedback-tags">
+src\components\LaunchingSoonWidget.css:  border-radius: 14px;
+src\components\LaunchingSoonWidget.css:  border-radius: 4px;
+src\components\LaunchingSoonWidget.css:  border-radius: 6px;
+src\components\LaunchingSoonWidget.css:  border: none;
+src\components\LaunchingSoonWidget.css:  border: none;
+src\components\LaunchingSoonWidget.css:  border-radius: 6px;
+src\components\LaunchingSoonWidget.css:  border: none;
+src\components\LaunchingSoonWidget.css:  border-radius: 6px;
+src\components\LaunchingSoonWidget.css:  border: 1px solid #69e469;
+src\components\LaunchingSoonWidget.css:  border-radius: 6px;
+src\components\LaunchingSoonWidget.css:  border-radius: 6px;
+src\components\Login.css:  border-radius: 12px;
+src\components\Login.css:  border: none;
+src\components\Login.css:  border-radius: 8px;
+src\components\LogoutSuccess.css:  border-radius: 10px;
+src\components\LogoutSuccess.css:  border-radius: 6px;
+src\components\MyBookings.css:.mybookings-container {
+src\components\MyBookings.css:.mybookings-container h2 {
+src\components\MyBookings.css:.bookings-list {
+src\components\MyBookings.css:.booking-card {
+src\components\MyBookings.css:  border-radius: 10px;
+src\components\MyBookings.css:.booking-info h3 {
+src\components\MyBookings.css:.booking-info p,
+src\components\MyBookings.css:.booking-meta p {
+src\components\MyBookings.css:.no-bookings {
+src\components\MyBookings.css:.no-bookings button {
+src\components\MyBookings.css:  border: none;
+src\components\MyBookings.css:  border-radius: 6px;
+src\components\MyBookings.css:.feedback-section {
+src\components\MyBookings.css:  border-left: 4px solid #0b5ed7;
+src\components\MyBookings.css:  border-radius: 6px;
+src\components\MyBookings.css:.feedback-section h4 {
+src\components\MyBookings.css:.feedback-date {
+src\components\MyBookings.css:.no-feedback {
+src\components\MyBookings.jsx:// âœ… src/components/MyBookings.jsx
+src\components\MyBookings.jsx:import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
+src\components\MyBookings.jsx:import "./MyBookings.css";
+src\components\MyBookings.jsx:const MyBookings = () => {
+src\components\MyBookings.jsx:  const [bookings, setBookings] = useState([]);
+src\components\MyBookings.jsx:  const [feedbacks, setFeedbacks] = useState([]);
+src\components\MyBookings.jsx:        // ğŸ§¾ Fetch bookings
+src\components\MyBookings.jsx:        const bookingsQuery = query(
+src\components\MyBookings.jsx:          collection(db, "bookings"),
+src\components\MyBookings.jsx:          orderBy("createdAt", "desc")
+src\components\MyBookings.jsx:        const bookingsSnapshot = await getDocs(bookingsQuery);
+src\components\MyBookings.jsx:        const userBookings = bookingsSnapshot.docs.map((doc) => ({
+src\components\MyBookings.jsx:        // ğŸ’¬ Fetch feedbacks
+src\components\MyBookings.jsx:        const feedbackQuery = query(
+src\components\MyBookings.jsx:          collection(db, "feedback"),
+src\components\MyBookings.jsx:          orderBy("createdAt", "desc")
+src\components\MyBookings.jsx:        const feedbackSnapshot = await getDocs(feedbackQuery);
+src\components\MyBookings.jsx:        const userFeedbacks = feedbackSnapshot.docs.map((doc) => ({
+src\components\MyBookings.jsx:        setBookings(userBookings);
+src\components\MyBookings.jsx:        setFeedbacks(userFeedbacks);
+src\components\MyBookings.jsx:        console.error("Error fetching bookings/feedback:", error);
+src\components\MyBookings.jsx:  if (loading) return <div className="loading">Loading your bookings...</div>;
+src\components\MyBookings.jsx:  if (bookings.length === 0)
+src\components\MyBookings.jsx:      <div className="no-bookings">
+src\components\MyBookings.jsx:        <h3>No bookings found ğŸ˜•</h3>
+src\components\MyBookings.jsx:    <div className="mybookings-container">
+src\components\MyBookings.jsx:      <h2>ğŸ“‹ My Bookings</h2>
+src\components\MyBookings.jsx:      <div className="bookings-list">
+src\components\MyBookings.jsx:        {bookings.map((b) => {
+src\components\MyBookings.jsx:          // âœ… Match feedback with service name OR category (more flexible)
+src\components\MyBookings.jsx:          const relatedFeedback = feedbacks.find(
+src\components\MyBookings.jsx:            <div key={b.id} className="booking-card">
+src\components\MyBookings.jsx:              <div className="booking-info">
+src\components\MyBookings.jsx:              {/* ğŸ’¬ Feedback Section */}
+src\components\MyBookings.jsx:              {relatedFeedback ? (
+src\components\MyBookings.jsx:                <div className="feedback-section">
+src\components\MyBookings.jsx:                  <h4>â­ Your Feedback</h4>
+src\components\MyBookings.jsx:                  <p><strong>Rating:</strong> {"â˜…".repeat(relatedFeedback.rating)}</p>
+src\components\MyBookings.jsx:                  <p><strong>Place:</strong> {relatedFeedback.place || "â€”"}</p>
+src\components\MyBookings.jsx:                  <p><strong>Comment:</strong> {relatedFeedback.comment || "No comment provided."}</p>
+src\components\MyBookings.jsx:                  <p className="feedback-date">
+src\components\MyBookings.jsx:                    {relatedFeedback.createdAt?.toDate
+src\components\MyBookings.jsx:                      ? relatedFeedback.createdAt.toDate().toLocaleDateString()
+src\components\MyBookings.jsx:                <p className="no-feedback">No feedback given yet.</p>
+src\components\MyBookings.jsx:export default MyBookings;
+src\components\MyOrders.css:.orders-container {
+src\components\MyOrders.css:.orders-title {
+src\components\MyOrders.css:.no-orders {
+src\components\MyOrders.css:.orders-list {
+src\components\MyOrders.css:.order-card {
+src\components\MyOrders.css:  border-radius: 12px;
+src\components\MyOrders.css:.order-card:hover {
+src\components\MyOrders.css:.order-header {
+src\components\MyOrders.css:.order-header h3 {
+src\components\MyOrders.css:.order-date {
+src\components\MyOrders.css:.order-items {
+src\components\MyOrders.css:.order-footer {
+src\components\MyOrders.css:  border-radius: 8px;
+src\components\MyOrders.jsx:// âœ… MyOrders.jsx
+src\components\MyOrders.jsx:import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
+src\components\MyOrders.jsx:import "./MyOrders.css";
+src\components\MyOrders.jsx:export default function MyOrders() {
+src\components\MyOrders.jsx:  const [orders, setOrders] = useState([]);
+src\components\MyOrders.jsx:    const fetchOrders = async () => {
+src\components\MyOrders.jsx:          setError("You must be logged in to view your orders.");
+src\components\MyOrders.jsx:        const ordersRef = collection(db, "orders");
+src\components\MyOrders.jsx:          ordersRef,
+src\components\MyOrders.jsx:          orderBy("createdAt", "desc")
+src\components\MyOrders.jsx:        setOrders(data);
+src\components\MyOrders.jsx:        console.error("Error fetching orders:", err);
+src\components\MyOrders.jsx:        setError("Failed to load orders. Please try again later.");
+src\components\MyOrders.jsx:    fetchOrders();
+src\components\MyOrders.jsx:      <div className="orders-container">
+src\components\MyOrders.jsx:        <p className="loading">â³ Loading your orders...</p>
+src\components\MyOrders.jsx:      <div className="orders-container">
+src\components\MyOrders.jsx:    <div className="orders-container">
+src\components\MyOrders.jsx:      <h2 className="orders-title">ğŸ“¦ My Orders</h2>
+src\components\MyOrders.jsx:      {orders.length === 0 ? (
+src\components\MyOrders.jsx:        <p className="no-orders">You havenâ€™t placed any orders yet.</p>
+src\components\MyOrders.jsx:        <div className="orders-list">
+src\components\MyOrders.jsx:          {orders.map((order) => (
+src\components\MyOrders.jsx:            <div key={order.id} className="order-card">
+src\components\MyOrders.jsx:              <div className="order-header">
+src\components\MyOrders.jsx:                <h3>Order ID: {order.id}</h3>
+src\components\MyOrders.jsx:                <span className="order-date">
+src\components\MyOrders.jsx:                  {new Date(order.createdAt?.toDate()).toLocaleString()}
+src\components\MyOrders.jsx:              <ul className="order-items">
+src\components\MyOrders.jsx:                {order.items.map((item, i) => (
+src\components\MyOrders.jsx:              <div className="order-footer">
+src\components\MyOrders.jsx:                <p className="total">Total: â‚¹{order.totalAmount}</p>
+src\components\MyOrders.jsx:                    order.status === "Completed"
+src\components\MyOrders.jsx:                  {order.status || "Pending"}
+src\components\Navbar.css:  border: none;
+src\components\Navbar.css:  border-radius: 8px;
+src\components\Navbar.css:  border-radius: 10px;
+src\components\Navbar.css:  border: none;
+src\components\Navbar.css:  border-radius: 6px;
+src\components\Navbar.css:  border-radius: 10px;
+src\components\Navbar.jsx:            <Link to="/my-orders" className="nav-link">
+src\components\Navbar.jsx:              My Orders
+src\components\Navbar.jsx:            <Link to="/admin-orders">Orders</Link>
+src\components\ServiceProviders.css:  border: 1px solid #ccc;
+src\components\ServiceProviders.css:  border-radius: 8px;
+src\components\ServiceProviders.css:  border-color: #1565c0;
+src\components\ServiceProviders.css:  border-radius: 14px;
+src\components\ServiceProviders.css:  border-radius: 6px;
+src\components\ServiceProviders.css:  border-radius: 6px;
+src\components\ServiceProviders.css:  border: 2px solid #4caf50;
+src\components\ServiceProviders.jsx:import { collection, getDocs, query, orderBy } from "firebase/firestore";
+src\components\ServiceProviders.jsx:        const q = query(collection(db, "service_providers"), orderBy("createdAt", "desc"));
+src\components\ServicesPage.css:  border: none;
+src\components\ServicesPage.css:  border-radius: 5px;
+src\components\ServicesPage.css:  border-radius: 8px;
+src\components\ServicesPage.css:  border: none;
+src\components\ServicesPage.css:  border-radius: 5px;
+src\components\SupportTicketCard.css:  border-radius: 12px;
+src\components\SupportTicketCard.css:  border: none;
+src\components\SupportTicketCard.css:  border-radius: 8px;
+src\components\SupportTicketCard.css:.ticket-card.new { border-left: 6px solid #f6c90e; }
+src\components\SupportTicketCard.css:.ticket-card.in_progress { border-left: 6px solid #4da6ff; }
+src\components\SupportTicketCard.css:.ticket-card.resolved { border-left: 6px solid #4caf50; }
+src\components\SupportTicketCard.css:.ticket-card.escalated { border-left: 6px solid #e53935; }
+src\components\ThankYouPage.css:.thankyou-container {
+src\components\ThankYouPage.css:.thankyou-card {
+src\components\ThankYouPage.css:  border-radius: 20px;
+src\components\ThankYouPage.css:.thankyou-card:hover {
+src\components\ThankYouPage.css:.thankyou-image {
+src\components\ThankYouPage.css:.thankyou-card h1 {
+src\components\ThankYouPage.css:.thankyou-card h3 {
+src\components\ThankYouPage.css:.thankyou-card p {
+src\components\ThankYouPage.css:.thankyou-card button {
+src\components\ThankYouPage.css:  border: none;
+src\components\ThankYouPage.css:  border-radius: 10px;
+src\components\ThankYouPage.css:.thankyou-card button:hover {
+src\components\ThankYouPage.jsx:import thankImage from "../assets/thankyou.png";
+src\components\ThankYouPage.jsx:import "./ThankYouPage.css";
+src\components\ThankYouPage.jsx:function ThankYouPage() {
+src\components\ThankYouPage.jsx:  // âœ… Pick booking info from localStorage for personalization
+src\components\ThankYouPage.jsx:    const lastBooking = localStorage.getItem("lastBooking");
+src\components\ThankYouPage.jsx:    if (lastBooking) {
+src\components\ThankYouPage.jsx:      const booking = JSON.parse(lastBooking);
+src\components\ThankYouPage.jsx:      setUserName(booking.name || "Customer");
+src\components\ThankYouPage.jsx:      if (Array.isArray(booking.services) && booking.services.length > 0) {
+src\components\ThankYouPage.jsx:        setServiceName(booking.services[0].subService || "your service");
+src\components\ThankYouPage.jsx:      } else if (booking.serviceName) {
+src\components\ThankYouPage.jsx:        setServiceName(booking.serviceName);
+src\components\ThankYouPage.jsx:    <div className="thankyou-container">
+src\components\ThankYouPage.jsx:      <div className="thankyou-card">
+src\components\ThankYouPage.jsx:        <img src={thankImage} alt="Thank You" className="thankyou-image" />
+src\components\ThankYouPage.jsx:        <h1>Thank You</h1>
+src\components\ThankYouPage.jsx:          Dear <strong>{userName}</strong>, your booking for{" "}
+src\components\ThankYouPage.jsx:export default ThankYouPage;
+src\components (2).zip:PK     #i[[               components/ux         UT ›!ÿhÌ=ÿh†æóhPK   uUW[               components/AdminFeedback.cssux         UT †¹ùh-ÿhÂûøh¥VMÓ0Ş4w°f„Ô’N’6i'³HlK7¶'gÚa4@BB‚='`Á•8Gà9ÿé¤‰¶ªÒ¿÷>şŞ—.0Iyf3JÉGìÇ=œŸ!”cBx‡Èwò=ÚÀ×­	›U±’eFBtÉnØ–‘*nª$”Ç‰‘ë8wIe2Ó6Ã)÷!ºxiª.,Tà¬°ª8ƒEçgçg‰W7¤
+src\components (2).zip:ïlW›h$ÓÎLı·ÔWFêŞ	ö›LÈ½K )vjCšv°ŞÎØo{Õ=	šŒ3tëƒÒ:±&‚­Œëë÷FG)=Ğ_µÙÍ„Zeúˆ)A4A|=+·GT4¡„éÒj¨àñÉ³îI¸P•¥ÇXä:ëÓ…Ä†Ãi&m‚5×‚`À…¾@×ÀTtjÊ‡®³tUı½¡E.aïjE?O)áÍÏ¸u G3¯±,şÛœ§iÓ;ğcÕğPKë€ö4  §  PK   İ]W[               components/AdminFeedback.jsxux         UT ZÈùh.ÿh£ûøhÛnÛÈõ=@şá”äV¢d'N[GRêØ16€»]Äú`øaDÅI(23´­j¶E‹ĞZ-¶?Ğ§¾ô{üİOè^gHZqÖ‰8sî÷3l¹âBÁkJ5€d’¾Œ"ª?ğç¹"ŠÂ"Á—àä<{ø€Hx’ ,ãé Tğ@€‹Šë¼Ï¨X×ØtN$éRqA-Rá¼†ôıQl @_’+¶èÈ4<STC¾4t.YzJi8'Á;?R_?|@or€F$KDYšë ¸ëÁæá@S©à"*Ï˜DÛHªNƒK˜Öær/.½g&"KP66ˆÆÁ.DI‰â7T,s´óúÓBr‰\-^ÅÒ…Ì‘êOi³µNB„É1ÎŠß¸õrËU(iå‡©é×¢ÊäQ¦b.Øoi˜“~eXô#’Hjá®ˆ”×H9ŞWåGŞe4‚Û|GÉ5YKíT–Rˆ9'Ã©¹sa¸I× ¨ÊDêÕ˜?|ÿİŸá”ª †Ê¡pBÑ×u.¸ÓY ,÷'¦r^Iõ™&(²xš¬DèeHø‚¥7 "×iĞ„[¤Ù¶ÃMÿ)L›ú£²É{Ô>Ï(·É:7œ0³JW'Ÿë˜Š†GÊAˆÊÀñ
+src\components (2).zip:˜­&t	ìzù+B€óµş<Çb›.\ï.‡¥¬½böËß`˜CuÂÏtî¬ö©§ğğÿPKõôv8Š  ˜  PK   j¶Z[            "   components/BookingConfirmation.cssux         UT Xşhü‚şh¸äøhµXÍnã6¾/w ²XÀY„^I–mÅ{iô` İ=¤9ì‘’(‹µ$
+src\components (2).zip:ÿàêSKÛm¼ïÀmRÔÀÜ:ì¿rŸ%´yJCFĞÂ¸u@	@ğ´Ú¹K‘yérëÚRZ&4cü sİ&s›“ã~Ù’ş¦ÑÒÑşf¨xnVf†Úç¶¥ïÕ¬Œ~‹IvD_x‰ :USkUª6eõ«XÏÖ½®î8Ã¶ŞvîŞt«;ûz8kvcúè¢V{šw@¯QÇŸójI CSÎeŒ€#ÀñöütUk££‚§ßXÕv¿ªÁ‹QÓËœe).øi®ÕHnŒ±ÓİMÓ0`*°/§ûÉfÓï'§˜I³LİKª«»íNß¼×ö“õKıÄiãŠy)'ü9×Oì ˜:@?¡SÿÀ¸¹¹éñªÁ$ü¤†HôPKÎÕRË  İ  PK   à²Z[            "   components/BookingConfirmation.jsxux         UT ìQşhü‚şh˜äøhXİ5¾¯Ôw8UÕ¤$3íÂ»IĞÒ´¶¢[.ĞªÒ:3NbídœÚ]B:Bâ‰¸B ¸âàuúğÛã{’­(+UõØççóñçsÃVk.<£$SCØB%é“ùœê)¢(Ô0|‘ĞBÑÑí[Ì*mTj9„|ÖŠ$I:g‚Îˆ¤¾àí[ /
+src\components (2).zip:  í  PK   /[[               components/CheckoutPage.cssux         UT ãjşhü‚şhòôhV]oÛ6}ÿ@¤–+É’ãh/[‹5°ÔEë<lE(‰²¹Ò¢@Qs²¡ÿ½W¤d“íÄ1™¤Î=÷ë\N³-É¾óFz/%¦%èÿË„vøÑÛÓ\n-üêñW½(6´LĞn$W«ÎsZnFİ¹gß7‚7e W…úèu.r"<sÚÔ	
+src\components (2).zip:CÇM)pÌé^ì/x‘uÁ^ç·¾ø™Æ´9G­Ç/äüÑïÔ„ÁÀqƒŞÃÅx¤„-GæÏMº¢eÆsâ	øãPÏ<s¼1A“{©tédpwÛKC§“û-h·P }ğnaŞ'^¨‹CV%Z"–G·8èßĞ]òµW¥oİP‚+•Om¯ÌÏëÑOPKPÂºÏà  •  PK   #[[               components/CheckoutPage.jsxux         UT Êjşhü‚şhÎôh­Y_oÛÈï°!‚€LeÒ¹´ªH6\;wM‘?î)÷P¤nL‘+‰gŠ«.—v¢@ût},pOıı:ù÷:3»KîÊ²’ÍKv¹¿™™¿r’°ZfI&–+QñJÕÉé‚gW¢QçéœÇß×ïß+àL*ö-O35`ÖÔ|¢RÅ¸z1›ñL±–Í¤X²@"(xŞú4•="á¶Jñ*Áï§zí‘¤ZX>uif…äÓ´æ0e	·¢°4ÏÏD6`5—×\¾+–¼VérÕñ°ˆS­„äÛb¾I¯‹9èå+s Á\äbé±o¨¬®ñôş½YS‘@Ì=#¶¹¼UMrƒâ–•<•Æ6ck§0zŞ#ß¯ğ*¨“:ÇÕ…Æ‘õÃ ğ¡E•‰Ü€õz</j%|PÀŸ™Í>‚Z?9 éxL\øD¯÷ŠbŸ}†¯‚G”BËüÎlö”"Í‹jNøWzíÁgiYó]¢¿rO¼O»é{•u¢±ëRŞ«Âw	ÇèåqÖH	a÷|2l’"-…¨*f¬Š•b>ç9+*<ïb.¯iÇb ç¨! ,*c“vÀŞ#`Ğ.¢şÎ¯¹ÊÌ¨Ïr®Ò¢¬uÏbaÎ§Ü›çÑA´9/Ó5(i
+src\components (2).zip:zWÚ°f¦»¤—­OÄÂJ#¯\?;YKŞ4Náuµ[ô5®¼T;(´t.\(o¸2ÏÜÇeL™oŸ-ÿüúş-¦a ·*ÏØ|†´ËÔAÓñÄwhFàR¦CØó²À:¢ğX+Är#‹‡4ÏÚåe8ù¦óÌÓÊ6Ş óRó6,OÖÿt.Æ^öYÄ™<Ø§ùÚ§©y¾í‘§›ä¼Wdêå«ñC¸EÈ:yÒŠ¸+£ÿ’±ÏyÆïÏa8ÃLğsÿ‡(±’áŠõu³ã/PK844Lo  ú  PK   è¶W[               components/LogoutSuccess.cssux         UT üdúhü‚şhüdúhm’Ûnƒ0Dß#å,õ¥•êÈ¡…¤ôkß[ğ"Û$DUÿ½¡Ê…HÈãİáÌÀ¦EC¤aà\†@9ºÖIO~Ö+B„}§š¨VŸgåkÑªS”.Ö„§Sú|­ÕÚ(»p£iµI£{v0Yh€kƒ5yRªQ*é¿ëÕzµ™8x11\MrÏ=a®É;ëGR¥crF/¤§„Äö¢4x¬	#EZ9_¯xf¯d~6Û—<åiNs•c‰gŠ‰c‹>%ÙîŞ«fŸ:ğÚ:Ú`ŒØ%2s,-ú[‡²,­×ë;I›èîÛ¡0féR[N&$GÑbŠçĞİš‹™ß¸(´še•>?=Îßµbl2÷à‚|/\©Ö·° ¯şÿ²˜*Ô¦­?PK²{Rğ7  ¤  PK   )¶W[               components/LogoutSuccess.jsxux         UT –cúhü‚şh•cúhU½NÃ0…÷Hy‡ƒ§vH,±’ff¨Ê€İä&µH|#ÿTTU%‰§ë“à$„íÈçûìë«û­ÇTåÑXî!ì˜ÅCšè¹;c«Í.Ë:³<Ù¬æ~AŠ\n¹Ís¨*r.¯œë4¡÷	¨©Q¡‹SyÍÿğÕç4,ù`VcŠZQuÊ¹'ÕÓFt“’¹ÙåLEîp_^¿?ñÊáúñu$ì‰"İRhàf4¡ëNw…Œø¯:”/„ÏpD8q€j•6pÌ&/äğOÛğ¼R,ç:pOÙŞQîæùãUñ¬£pÓ3åuÜË%M~ PKÕ¥4[ø   €  PK   £X[               components/MyBookings.cssux         UT 2”ûhü‚şh›Gûh•”án›0…ÿGÊ;XİŸMŠ#Ò†”Ò—è+|^¯e%é´wŸÁ@¡›&E(º„Ïçœ{È¾¹ˆïRW–¨=“,ùµİbça“cb.ä1\^»qÃ.ô,¹¯sò’Ü‡¶’:'	a­Ç~$
+src\components (2).zip:¢‹îåÒBé%vÇ¡jİßª˜ÉÉá´$Ò’Y+ß+‹­æA—¢°@ËÁRË¸l]@‰x¡®fÏ]jO!áî±UÁ¾';rûì“ìÇëlã–ò¶ÎKqí3AåÄV-ÀŸôİáÙvfºëÂŒÔIııü;ât%av“I™CQÁkrï‰“Â9Nxé°´¿aL&M¾xºhƒZ½²£‰±›×s-=Lö–Öyº­a<ş0{KÊÖºhPJoáy4c¢X…¬cü—Íypc1÷€w&Ã+Ö·x­š™x™·Sğq'•ä!™"şü•êÏ®éXê•Œ¢Ç…®úø©e‹#×Z6b8ó“’}–Zhf§Óiá#7e€NyşªPú°‰rÆË²lÁËŞPK¡ü˜\ø  O  PK   Æ‹Y[               components/MyBookings.jsxux         UT Ì»ühü‚şhGûhÅXOoÛ6¿èwxÓeRaK]×Sj;H›t(Ğf[Ó† Z¤l.²è‘TRÃ°KO»ûô0 _`ûRùı{”D‰’å´;ó%4ß{?¾¿?Ò‰"¸ùó-(G±X­EÆ2­¢›ÇB\òl¡ÂÔë»w8J¤†—ŒÄz[È;If¾àòLÍ €DŠxÒ(y£-Ä"MQ—‹l?æLnFp½d’`Áô±ˆÕ„¤L>Ş4 	—lN‹ÌBi!Y‘ÎG@r½lôÃ0²&E‘¡Zéà“%ÉŒîa€:FÒ)¹â‹¨ÆRäšÉ1+ÇÀİ|ÅJÙİ;±È”†VSğ˜Î`{÷@%=Ÿ×Â(¦­æªÚ´úçÁ#Ç aŒÎI|YY<µßn3I¡[<¯Öu-sæd6ö©›	?(£‚¶ö¾µÍ3•ÏU,ùÜ˜ïfß7ÉÆÚ©MƒPÒÅ à	øŸUÛÍ4ù^”ŠÏ¼Êİê#™ÎeÖl•—æ£åÆE‰"xÊt¼›ôVT9o÷¿5=Šî—½ê·Zàt²oZĞ³^0rÕÊîö=Ç3ê¡Ştê•“"ÃœÓ®nİù¾c‹iF´1 LÅ^Ğê¹w=ËÈZ-…FÉ5áÚÎ”ß‰f×Şxã´f.¤ˆ®ÈÚ÷qUÉßº~sz (	9í„†Æ2¤Dß´lÿôŠÑ4tßA+øôjX‹ÿ¡öè½ÕèD3\f˜Ñ¸÷_—Ãaßí×S—oüÃ­V11Uõ™”¢;Ä&P‘²°”øŞ‰ùƒq¢6Ôô_d#?ÀÄW xÂ3’¦©nIÍOHªXà2AjiE5;TåWFÅÎ-Õ\X+ÃH5ƒ`BùÄ)Qê”¬ØÔ«åŞ¬ö6"—MHXƒI„3±‘¥,[à=6Ná~ĞõÒÆÑ?-ã†wfm"&Ë/g§¢9‘g>¼÷Ç$B‘£¸™òÁÜÉ+3Ğ—°]S®°ëÁL:½v­æ¹Ö"CN’òørº­²èPs†dXÌKq­œÕ[“¨²nğª„Tßl¦»q÷£^mldcì$MxÆdşdù`öáıo?ã}¶w1ì³¶Éû€œ‰ÙMä¶)N9oóîÕÎl¯A3ÚøÃóû‡!vW>¼y]gF=Ç´’yZ>WúÈ8Cl!JÖÛmdôæ§ß½Î—Äú‚¸Ä
+src\components (2).zip:úT ¼ryÏ¨¯|ìæƒ4W¼ˆ(ÅÄq¯•ßM;S¼U|Œç™ë^l{,¨…ö]Âl´@VøÈ,nÃ~¥¬Şì‡V+&úô¯}R°¿{ç4ÕW¤Êˆô1M‰jßıªOU®øÊl—~'œY	/_BD‰÷¯˜-æ¤+bŸÔªRÓ }fı‰ åñHÈ³¨·3$v¦¬+ŠJ½Ş¶£{Òî]'Ü@Ù}Øù ´i!şİ&½|÷¨sµéS7‡ï0¯ŞÀ)¯¸™RĞò¢Ÿ¢ñäe\#ıH¾V6õh[yL|íÚn/ìò¬5>r~ß½¾Ü½ûûÏğµ\™Soí@ØÚá÷	š¨ŠÌ<Œ¶À…·ÅöC¼OÂnWş.ºÛúV/–g*™c³H'Ş†	ô&?õ~ŞÓnîµ×€Ù¤õ|QÿçUàŒ­KüEÿ PK{³ó*!  ª  PK   (°Z[               components/ThankYouPage.cssux         UT ÔLşhı‚şhÔLşh•SÁ›0½GÊ?X©*e¥²¤,ı‚=W=ôhğ`ÜÙfCZõßkŒ“%	»UC„Ì0óæ½™Gdk*_NªÇ¥’–
+src\components (2).zip:+”“äÏ•Ò­{¿7¨e5y­^Ï›½…ú†Zø±ÅóÃ}±h)‡©.ğNÈYÈy±´·*ÈÕÜ-¼PÖªöÃáÖñ„éjÄ/póˆ2­Ç)U£´xR×ôá}äırr‹LÈ—"ló9&ïBwwÈ$zJo¡Ó4õÏ£³/Ş£ô?'Tô.E.¸pF=´<ÖîÃ›93GRIX²j|gÕØ­ÅYÏ‡vÑÕk3vé”¸|?>ï´¹3æã93ôFnz`ÉTûPK¨´à  ­  PK   °Z[               components/ThankYouPage.jsxux         UT ¶Lşhı‚şh¶Lşh•T±nÛ0İø°¥chÓ)Ğ$¨Û¡2ĞòI&B‘I¹I;(ĞëôJR’E;éĞEÒéŞ{|<Ş‘••T> ÍÌ¶Pk¼Èstı\jÈ•,("g£#Ö’<úŠnXñ5U²6¨¦+Y³¦âş²¤vØ8N¨ÖhtâS²+Q']æ³¬o,-Î´vÙÑQ^‹Ì0) LGcØ 2)´Ñ;KCŸÑøl€ÜÚ„º¢%NÀºøÔw-Ão>"d`!–á³âh˜$ğûç7¸aÙ=,¥¼g¢ &rÙ–€ËŒò…‘ÊE*¨Pi)(g_©ÛŸSØId7˜ÎÛ=ö8ÕæM'›îÉÅšKƒeDL· –Cü÷ª½îr§ùnq}WTiÜ#œõø rQÇŠ…àé	Èy­,Q‘ïV~­}Œ™öï«+®Ãñ1şŒ9ŠÂ¬a'Y88„gZ·'w±®—Ä{²m¦ Ë¾@®ÑÛ;qÂÿ±¦‡²í‡5¸½ëC¡©•€¨ÍÏVl™-°vô”ô1µÇa(¶„ó^òßXªVÌYY€VYºF¯ÊMJüÜ€ò¢sPI(¶~5ß±f‰ÂÜé|º°{‚K±bÔNC@ o‘*˜i£¤(æÛ~
+src\components (2).zip:›YÒıš€?¤¾	í`l	&”Ø±ƒª°¦–ˆÂ–9C¶Áè:³ı óšóÇ8p–Tû>¯íÂ•’¹Å27‰ğ…qş2ã|–RÄğç×ï-9 /kcì­$Å9·ŸnÛ‰í¯¢ˆ$}_’q³W‘‹‡ŠK…ğŞ=ºæÒ¡ËVyèÄ6Aß®·güı¹ÂœÖÜìİ’òPKØyH–  ö  PK     #i[[                      ÿA    components/ux         UT ›!ÿhPK   uUW[ë€ö4  §            ¶I   components/AdminFeedback.cssux         UT †¹ùhPK   İ]W[õôv8Š  ˜            ¶ç  components/AdminFeedback.jsxux         UT ZÈùhPK   j¶Z[ÎÕRË  İ  "          ¶Û  components/BookingConfirmation.cssux         UT XşhPK   à²Z[€Y
+src\components (2).zip:  í  "          ¶Z  components/BookingConfirmation.jsxux         UT ìQşhPK   /[[PÂºÏà  •            ¶Ô  components/CheckoutPage.cssux         UT ãjşhPK   #[[uKë	              ¶  components/CheckoutPage.jsxux         UT ÊjşhPK   (CS[óÂÚ9:  H	            ¶q(  components/Footer.cssux         UT SôhPK   xAS[;è"ÿu  K
+src\components (2).zip:            ¶,  components/Footer.jsxux         UT ìOôhPK   }w[[¨äœG  w            ¶æ/  components/HomePage.cssux         UT —;ÿhPK   ¹uW[0~e^ò  ı            ¶’7  components/HomePage.jsxux         UT FòùhPK   ²PX[ExH¤»  Ã            ¶é?  components/Login.cssux         UT ûhPK   ™QX[844Lo  ú            ¶B  components/Login.jsxux         UT ÊûhPK   è¶W[²{Rğ7  ¤            ¶×D  components/LogoutSuccess.cssux         UT üdúhPK   )¶W[Õ¥4[ø   €            ¶xF  components/LogoutSuccess.jsxux         UT –cúhPK   £X[¡ü˜\ø  O            ¶ÚG  components/MyBookings.cssux         UT 2”ûhPK   Æ‹Y[„Ô•s  ˜            ¶9J  components/MyBookings.jsxux         UT Ì»ühPK     [[š‡¾{  ì            ¶-P  components/Navbar.cssux         UT ©hşhPK    [[ÓÇhÁ¨  e
+src\components (2).zip:            ¶S  components/Navbar.jsxux         UT ¹hşhPK   „[[:‘û  {            ¶W  components/ServicesPage.cssux         UT Á…şhPK   [[{³ó*!  ª            ¶]  components/ServicesPage.jsxux         UT éƒşhPK   (°Z[¨´à  ­            ¶c  components/ThankYouPage.cssux         UT ÔLşhPK   °Z[ØyH–  ö            ¶ce  components/ThankYouPage.jsxux         UT ¶LşhPK      ‡  bh    src\components (3).zip:æÍı*©>;ºiˆÌy©Ëf—1¾Ô+˜Ífğ²¿gİÃú›s11‡Ó›7fºúvş^4[,RÁ)l™FWTÛ´~•³QÛ½îæı­‰¹&n›	ÖL“”c“l¯^Íÿıë·Àİağ±-Ô—:òªÁçóïOñmje²ßÀšp²ì©i˜Ïİ±A®¶:lûç<³+é#´õÁ|’¹Í«nW—Ó§OU<Vß ê–Bn-øœX3y`¹îI&œ˜ËTi™ÆúÀò5Ñèş!ßñò.ÔÅ‹N¢{üĞÎ–Yïæsª#A·Î®Ö¹½°¢î^şTı»\ô¯^øüvû³.¡:šı%Ü±íláİ·Ÿ÷—€ÎqQ2|!(}Eu‹ÅXèa|ÕsÕypóòö<PEä|ïñ§ß½¯3Wy.£,ÖIçÿ	yCø¢ñ< •–‹—V\ÏB?ıŠßUNøĞ´ñn¡¬J'¡xü_ì†	€Å+¶}ÖGßƒóöä¼œqÛ¬‡íìû¡…Aÿ¤«MIÓĞ8”¯ÌSTh-¾˜)üŸ¨|vL"Í„'ø›,ïf»òı<üòsó^„R;£¯ÉGıòNGÇsÒë1ægÔ9ıû¶oˆîtœGªysÁHûPK"iCå    PK   uUW[               components/AdminFeedback.cssux         UT †¹ùhÙ#iÂûøh¥VMÓ0Ş4w°f„Ô’N’6i'³HlK7¶'gÚa4@BB‚='`Á•8Gà9ÿé¤‰¶ªÒ¿÷>şŞ—.0Iyf3JÉGìÇ=œŸ!”cBx‡Èwò=ÚÀ×­	›U±’eFBtÉnØ–‘*nª$”Ç‰‘ë8wIe2Ó6Ã)÷!ºxiª.,Tà¬°ª8ƒEçgçg‰W7¤
+src\components (3).zip:ïlW›h$ÓÎLı·ÔWFêŞ	ö›LÈ½K )vjCšv°ŞÎØo{Õ=	šŒ3tëƒÒ:±&‚­Œëë÷FG)=Ğ_µÙÍ„Zeúˆ)A4A|=+·GT4¡„éÒj¨àñÉ³îI¸P•¥ÇXä:ëÓ…Ä†Ãi&m‚5×‚`À…¾@×ÀTtjÊ‡®³tUı½¡E.aïjE?O)áÍÏ¸u G3¯±,şÛœ§iÓ;ğcÕğPKë€ö4  §  PK   İ]W[               components/AdminFeedback.jsxux         UT ZÈùhØ#i£ûøhÛnÛÈõ=@şá”äV¢d'N[GRêØ16€»]Äú`øaDÅI(23´­j¶E‹ĞZ-¶?Ğ§¾ô{üİOè^gHZqÖ‰8sî÷3l¹âBÁkJ5€d’¾Œ"ª?ğç¹"ŠÂ"Á—àä<{ø€Hx’ ,ãé Tğ@€‹Šë¼Ï¨X×ØtN$éRqA-Rá¼†ôıQl @_’+¶èÈ4<STC¾4t.YzJi8'Á;?R_?|@or€F$KDYšë ¸ëÁæá@S©à"*Ï˜DÛHªNƒK˜Öær/.½g&"KP66ˆÆÁ.DI‰â7T,s´óúÓBr‰\-^ÅÒ…Ì‘êOi³µNB„É1ÎŠß¸õrËU(iå‡©é×¢ÊäQ¦b.Øoi˜“~eXô#’Hjá®ˆ”×H9ŞWåGŞe4‚Û|GÉ5YKíT–Rˆ9'Ã©¹sa¸I× ¨ÊDêÕ˜?|ÿİŸá”ª †Ê¡pBÑ×u.¸ÓY ,÷'¦r^Iõ™&(²xš¬DèeHø‚¥7 "×iĞ„[¤Ù¶ÃMÿ)L›ú£²É{Ô>Ï(·É:7œ0³JW'Ÿë˜Š†GÊAˆÊÀñ
+src\components (3).zip:_ºÆ1ù­¢QâÂp`¢y§ñÚ¼WùPK­) Çå  ×  PK   j¶Z[            "   components/BookingConfirmation.cssux         UT XşhÙ#i¸äøhµXÍnã6¾/w ²XÀY„^I–mÅ{iô` İ=¤9ì‘’(‹µ$
+src\components (3).zip:ÿàêSKÛm¼ïÀmRÔÀÜ:ì¿rŸ%´yJCFĞÂ¸u@	@ğ´Ú¹K‘yérëÚRZ&4cü sİ&s›“ã~Ù’ş¦ÑÒÑşf¨xnVf†Úç¶¥ïÕ¬Œ~‹IvD_x‰ :USkUª6eõ«XÏÖ½®î8Ã¶ŞvîŞt«;ûz8kvcúè¢V{šw@¯QÇŸójI CSÎeŒ€#ÀñöütUk££‚§ßXÕv¿ªÁ‹QÓËœe).øi®ÕHnŒ±ÓİMÓ0`*°/§ûÉfÓï'§˜I³LİKª«»íNß¼×ö“õKıÄiãŠy)'ü9×Oì ˜:@?¡SÿÀ¸¹¹éñªÁ$ü¤†HôPKÎÕRË  İ  PK   [[            "   components/BookingConfirmation.jsxux         UT æHÿhØ#i˜äøh•UMoÔ0½Wê˜æ”•º	âÚì"µ´Pb‘ªzğ:“­ÙÄlgiµì¸Â‰ÿÖ_ÀO`œ³-HœOŞ<ß›qâŒæ1WE©$JkâS¥VB.Ï”Ì„.˜JFÍíá ˆ¶ğ·Ç°Êày–¡[ĞëÜ2‹°…L«í@ÁÉ.©FÏØZ, ÆZUõ8U…—p˜._](]´è(öƒ–¾<V47Æ²JrGPá6‡ \IcAvNüzÃÑI¹Z4$Ï™eÇ`Ğöëë&¯–"”Uêı¡—*¤ı&ÓfËÑX¥1miˆ!Wœås
+src\components (3).zip:  c  PK   ’{[[               components/CheckoutPage.cssux         UT LBÿhÙ#iòôh­WİnãD¾¯Ôwu…Ô”¸µ'MØ†¬ˆhDR¡q1±ÇÉPÛcÙcÒ€Vâ†;.¹DÚwÛ'à8öx’±=ÕB[UÉÌøü|ç;ß_] ¿ßÿñM6Ä{b9GsLc’¢‹«Ó“K¯Z7¼ıú¯§'EøÙØRŸo\äŒÍäù3±˜®iì¢, œsV®&Ø÷i¼v‘íTçVØ{Z§,}½
+src\components (3).zip:44aÑJÑı@«tw ‰P×'²R‘LRF¼¦,’jsĞóJDõW³5Ws©Cpˆµ·>oöûPKçñ0êÂ  à  PK   º\[               components/CheckoutPage.jsxux         UT Ùµ iØ#iÎôhµ]oÜÆñ=€ÿÃš0²=ñä8Ğ³N†"Û©¨9EáºÑ¹wÇŠÇ¥—K)‡¢hSèGÚô©há¾ô±ïíßÑ¨BgöƒÜåQ²‹ d-—3³ó½3CÇäò¯¿"•HÆ	_—¼`…¬ÆÇ+–œñZĞ%‹V}qã½Ş	I>e4‘#²%uÅf’J6ÂÕƒÅ‚%’4d!øš‚»-’‚>¦¢ƒˆc8­ì9Æıc½öPh-W#’Î]œE&ØœVÌ¼ñ!	Ïs` ãÅišŞç‰ZVLœ3ñ<[³JÒu©ö^ÕLlÔêbÅS«%“€R©u]¦ ˜¥ªß–	Ëb¥’\°¾œOéy¶|_{´ÉÄ^Ê×ÂsN+%>Í
+src\components (3).zip:~—ó§^¢µïûÃBúÊqWLÅxAYxÊÍ‹±R²Rø#+{æ:Îr¹´§™ºÉ9h˜t¨våş|2ªµf­¾şrñË«µ¯ÓlÚ½ÛwÛ^§×ìöknĞëÙ^×ë÷:n¯İí{íš¸}»Ûëƒ~ßõº­f·]sµ|Ø¬¹øñôg†:Y«é"‰õPQ;lyvÏ‘OÓdóÆ4ıpB{4lM]Ú;ò6oaŸzáÀo“~ĞowÜš+‹ô9r›Y¹ç¸Ü&‘ÙnÉl¯•ÒŒÍ+A*#\™Ìªuhn¾fQ7KjíE«ç5[®×ît{ıA­S¦V]²@E#õUÎ#Ê¦‘Y_å_s|y‰U=Æ	4YjŞµFVLŞ¯*AC|YRqÅcæ¯pˆó“âèdÑä$àËdª=+‰“6³ºÜ °‹àÛq£SŞdÏ¨Àüç+ÿ­Fÿ PK;ğr·K  h  PK   üš[[               components/FeedbackForm.cssux         UT tyÿhÙ#i—@ÿhíVÛmÛ0ıˆ’ÀRôrl+ô·è”HÉDhQ ©ØiÑÒ:A¿Ûyº@;BøeI–cPÀ0lJ¼÷Ü{Î¹¤_`Œ2˜?yã/g•„¤Â|½¼ @?(9k*”‚ë¢(õb"U™‚h^ï@Ô;³œ10÷8D¤)£n}ç‰5Dl›‚ $jK¨÷ñ2ƒ7Á´?XŞš×7pçm	’ë$K{yIªÔ$°‘Ì¬
+src\components (3).zip:  PK   éš[[               components/FeedbackForm.jsxux         UT OyÿhÙ#ik@ÿh¥XÍnÛF¾È;LEA2•4ÍE±d¸l¸Hm7rR†¯È•D˜ä
+src\components (3).zip:  PK   ä£[[            !   components/HomeFeedbackWidget.cssux         UT 5‰ÿhBÂiGÿh…U½nÛ0ŞäˆìÀtdIş‰²t*Úµ?(:ÒâQf+‰IÇN‹3tĞµk§öyòí#ôDK¶$+­!ô'òî»»ï—äáşyÀ—,şğVòì86†\\ŒE…Óû@>R‰VëœGä\¸ßµÃ•æ ©f\®MD&a±uxÁ8—yß+¶ÄŸVğRm©Y1®6ñn&“¾t²doDªgì-†n;2°+´êyOÜÿŒmi……¥á
+src\components (3).zip:[hç£ÿzk]-ûë¦9EUàÎuÓÌaZ5·ûUs>r¦ÙŠ)¿>ÕÖG·¨İøüPKomEØ  Û  PK   £[[            !   components/HomeFeedbackWidget.jsxux         UT ³ˆÿhCÂiúFÿhÅU½nÜFîèÆ,Ò>‘»î.°»2œÀJàÂp±$—ºÈ]jwOçÃ™@w	œ? M5)R$uò<zè2»ü[/‰Råš[r¾ùf¾ùYF\ÿø”L¢D¥à”k=¥4Irş’¥gT‡Ÿ«7û{­RÃJ=,}’eÔ<àñTM¡‚LŠ<i@ŞIç´Dä9b™à@ÊD¢& dJå£õ.–Tâ_Î
+src\components (3).zip:zWÚ°f¦»¤—­OÄÂJ#¯\?;YKŞ4Náuµ[ô5®¼T;(´t.\(o¸2ÏÜÇeL™oŸ-ÿüúş-¦a ·*ÏØ|†´ËÔAÓñÄwhFàR¦CØó²À:¢ğX+Är#‹‡4ÏÚåe8ù¦óÌÓÊ6Ş óRó6,OÖÿt.Æ^öYÄ™<Ø§ùÚ§©y¾í‘§›ä¼Wdêå«ñC¸EÈ:yÒŠ¸+£ÿ’±ÏyÆïÏa8ÃLğsÿ‡(±’áŠõu³ã/PK844Lo  ú  PK   è¶W[               components/LogoutSuccess.cssux         UT üdúhÙ#iüdúhm’Ûnƒ0Dß#å,õ¥•êÈ¡…¤ôkß[ğ"Û$DUÿ½¡Ê…HÈãİáÌÀ¦EC¤aà\†@9ºÖIO~Ö+B„}§š¨VŸgåkÑªS”.Ö„§Sú|­ÕÚ(»p£iµI£{v0Yh€kƒ5yRªQ*é¿ëÕzµ™8x11\MrÏ=a®É;ëGR¥crF/¤§„Äö¢4x¬	#EZ9_¯xf¯d~6Û—<åiNs•c‰gŠ‰c‹>%ÙîŞ«fŸ:ğÚ:Ú`ŒØ%2s,-ú[‡²,­×ë;I›èîÛ¡0féR[N&$GÑbŠçĞİš‹™ß¸(´še•>?=Îßµbl2÷à‚|/\©Ö·° ¯şÿ²˜*Ô¦­?PK²{Rğ7  ¤  PK   )¶W[               components/LogoutSuccess.jsxux         UT –cúhØ#i•cúhU½NÃ0…÷Hy‡ƒ§vH,±’ff¨Ê€İä&µH|#ÿTTU%‰§ë“à$„íÈçûìë«û­ÇTåÑXî!ì˜ÅCšè¹;c«Í.Ë:³<Ù¬æ~AŠ\n¹Ís¨*r.¯œë4¡÷	¨©Q¡‹SyÍÿğÕç4,ù`VcŠZQuÊ¹'ÕÓFt“’¹ÙåLEîp_^¿?ñÊáúñu$ì‰"İRhàf4¡ëNw…Œø¯:”/„ÏpD8q€j•6pÌ&/äğOÛğ¼R,ç:pOÙŞQîæùãUñ¬£pÓ3åuÜË%M~ PKÕ¥4[ø   €  PK   £X[               components/MyBookings.cssux         UT 2”ûhÙ#i›Gûh•”án›0…ÿGÊ;XİŸMŠ#Ò†”Ò—è+|^¯e%é´wŸÁ@¡›&E(º„Ïçœ{È¾¹ˆïRW–¨=“,ùµİbça“cb.ä1\^»qÃ.ô,¹¯sò’Ü‡¶’:'	a­Ç~$
+src\components (3).zip:¢‹îåÒBé%vÇ¡jİßª˜ÉÉá´$Ò’Y+ß+‹­æA—¢°@ËÁRË¸l]@‰x¡®fÏ]jO!áî±UÁ¾';rûì“ìÇëlã–ò¶ÎKqí3AåÄV-ÀŸôİáÙvfºëÂŒÔIııü;ât%av“I™CQÁkrï‰“Â9Nxé°´¿aL&M¾xºhƒZ½²£‰±›×s-=Lö–Öyº­a<ş0{KÊÖºhPJoáy4c¢X…¬cü—Íypc1÷€w&Ã+Ö·x­š™x™·Sğq'•ä!™"şü•êÏ®éXê•Œ¢Ç…®úø©e‹#×Z6b8ó“’}–Zhf§Óiá#7e€NyşªPú°‰rÆË²lÁËŞPK¡ü˜\ø  O  PK   y€[[               components/MyBookings.jsxux         UT JÿhØ#iGûhÅXÍÛ6¾È;Lu’[JÓœ6¶É&$Û4î¥Xì–(›]YtIj7†W@/9õRôÈ¡@½´¯Ğ‡Ù'È#t(‰)Ë›\Šúb‰3óq¾ù#í(‚›?Şqóõ†ç4W2zµ}ÂùË—2ü^¾½{‡¡D(xCI¬F°ƒBÒgiJõ>ÎQJH_ƒ'´’÷¨5ÚAÌ³uÏGğCAÅvW+*è–T=å±	O¶-HÊ]I#ı ÔAL# …ZµúaG‘çQ­rğdEò%Mö·Ğ@R:%—l¹Çj,x¡¨'|mx¡¯XJ-»{'æ¹TĞI`
+src\components (3).zip:î³§áI³ÍÃĞÛ€«•I*‚mˆc}àŒWAYSÆoi]Ã²té‚GêùÏæ³ôÌ‘rgßÑE_NZCÀß÷	iy˜B•‘6‚z+HÂÕ†İ*öD½´× R’É‰Wÿ0Z3Ô¸ÕÖ‘y‹_«uµ¹J–bJGÂc{Q”«åÄ¤X¾BÛ ÷PãX)9zEm1Q›çù”xo¿gUGcÍ9i¢QR²ú[½Íiïòcb`Jf¬Áq°ú\Öäêdlç|O×ZEÑv1­) ùõ€Œ—9ÊH|&s¾åGğó#{:7a;ÌŸÇ±KîÙ×Qtt¦÷Ü[­í¾æÛ_Ø÷¥ÌŸÖÙÚÑ•İ@¯¬É¼4Á¬~GqÊAÙ%=‡şw¸…Å"ßæÅ€ıPK+B¹@Ò  t  PK   9][                components/SupportTicketCard.jsxux         UT 7iñ"i7i¥TËnÛ0¼ğ?,Ø(@•/=9¶‚ÀIEQÄí9¡(Úf#“IåAÿŞ¥D=l£9´CKîÌp–Ëõ‡mU–Ú¸Ÿ’?	·a&O~Û×ùLı.ÜÆìŒ>1>&WC®†\óª2gNÜjM î¤³báë´§¬l@&É¢O $Y\ºâÖzÈ|&^[P.v¬*Ğ[¥¸“ZÁ…ÖàÚEZms•İ˜Úh"¨ç3 ®•u€{y!:À¯¶X³oŠUâ¥KD°N;€3o}À^˜tã%ĞÜÿ²Š;¼°‡£°–í…%q°“È<ŠG Û°„á°xÌuÂùkÓp‹ù&ºêC¹zZftV6Ç£z8sü TæüéB$¸«%wşÓy’jêYbe5Xa…0’/L"§C¡Î6ÁŸziØ¡b.‚mB;şÓ´ı0ÂUFíR«\>/˜µßÙQ¬ëÇÎÅ'-‡u(²;«ylÒŞÕšT;MÒñÂW‡Ïi/¢Ø¬¸3É—SqDßd ´Kd”%„×0RÂÆ»$'åØ±œØàDâÛXB¯Å»w8íŸÊpç¸ £ß4g~v–F§Ìå³™x=snÃ{^eéY;V‹,ÂWlJÚuù±vÂíI›²Ê9œz­6‚Ö5m'ôr–)‘ê¡4zE–DMúUÁ°D;­Ê¿é¢‚.EîEïCüŠÂbüızÉ»°¸ì/í4ö“ƒMùPKu{ÍK  Ğ  PK   (°Z[               components/ThankYouPage.cssux         UT ÔLşhÙ#iÔLşh•SÁ›0½GÊ?X©*e¥²¤,ı‚=W=ôhğ`ÜÙfCZõßkŒ“%	»UC„Ì0óæ½™Gdk*_NªÇ¥’–
+src\components (3).zip:+”“äÏ•Ò­{¿7¨e5y­^Ï›½…ú†Zø±ÅóÃ}±h)‡©.ğNÈYÈy±´·*ÈÕÜ-¼PÖªöÃáÖñ„éjÄ/póˆ2­Ç)U£´xR×ôá}äırr‹LÈ—"ló9&ïBwwÈ$zJo¡Ó4õÏ£³/Ş£ô?'Tô.E.¸pF=´<ÖîÃ›93GRIX²j|gÕØ­ÅYÏ‡vÑÕk3vé”¸|?>ï´¹3æã93ôFnz`ÉTûPK¨´à  ­  PK   °Z[               components/ThankYouPage.jsxux         UT ¶LşhØ#i¶Lşh•T±nÛ0İø°¥chÓ)Ğ$¨Û¡2ĞòI&B‘I¹I;(ĞëôJR’E;éĞEÒéŞ{|<Ş‘••T> ÍÌ¶Pk¼Èstı\jÈ•,("g£#Ö’<úŠnXñ5U²6¨¦+Y³¦âş²¤vØ8N¨ÖhtâS²+Q']æ³¬o,-Î´vÙÑQ^‹Ì0) LGcØ 2)´Ñ;KCŸÑøl€ÜÚ„º¢%NÀºøÔw-Ão>"d`!–á³âh˜$ğûç7¸aÙ=,¥¼g¢ &rÙ–€ËŒò…‘ÊE*¨Pi)(g_©ÛŸSØId7˜ÎÛ=ö8ÕæM'›îÉÅšKƒeDL· –Cü÷ª½îr§ùnq}WTiÜ#œõø rQÇŠ…àé	Èy­,Q‘ïV~­}Œ™öï«+®Ãñ1şŒ9ŠÂ¬a'Y88„gZ·'w±®—Ä{²m¦ Ë¾@®ÑÛ;qÂÿ±¦‡²í‡5¸½ëC¡©•€¨ÍÏVl™-°vô”ô1µÇa(¶„ó^òßXªVÌYY€VYºF¯ÊMJüÜ€ò¢sPI(¶~5ß±f‰ÂÜé|º°{‚K±bÔNC@ o‘*˜i£¤(æÛ~
+src\components (3).zip:iPK   \[T4] ê  A  %          ¶Ô  components/AdminAssignedProviders.cssux         UT X· iPK   w\["iCå    %          ¶1  components/AdminAssignedProviders.jsxux         UT ;· iPK   uUW[ë€ö4  §            ¶‰  components/AdminFeedback.cssux         UT †¹ùhPK   İ]W[õôv8Š  ˜            ¶'  components/AdminFeedback.jsxux         UT ZÈùhPK   	][€Rš€  ¼  $          ¶  components/AdminSupportDashboard.cssux         UT ¢iPK   ñ][­) Çå  ×  $          ¶  components/AdminSupportDashboard.jsxux         UT iPK   j¶Z[ÎÕRË  İ  "          ¶d  components/BookingConfirmation.cssux         UT XşhPK   [[éÆğ
+src\components (3).zip:  c  "          ¶ã$  components/BookingConfirmation.jsxux         UT æHÿhPK   ’{[[çñ0êÂ  à            ¶](  components/CheckoutPage.cssux         UT LBÿhPK   º\[Î¹­Äh  &            ¶ˆ-  components/CheckoutPage.jsxux         UT Ùµ iPK   ñ
+src\components (3).zip:            ¶SC  components/FeedbackForm.cssux         UT tyÿhPK   éš[[¾²¾	à  ÷            ¶îF  components/FeedbackForm.jsxux         UT OyÿhPK   (CS[óÂÚ9:  H	            ¶7N  components/Footer.cssux         UT SôhPK   à][&Ÿ¶  Î
+src\components (3).zip:            ¶ÔQ  components/Footer.jsxux         UT ı iPK   ä£[[omEØ  Û  !          ¶íU  components/HomeFeedbackWidget.cssux         UT 5‰ÿhPK   £[[b¿'ü    !          ¶]Y  components/HomeFeedbackWidget.jsxux         UT ³ˆÿhPK   Õ][#ô|ß              ¶È]  components/HomePage.cssux         UT [)iPK   µ[[ñÜ„¬  Ú            ¶Gf  components/HomePage.jsxux         UT £§ÿhPK   +g][Pp¹—…  Ò
+src\components (3).zip:  "          ¶Xn  components/LaunchingSoonWidget.cssux         UT ÛÁiPK   g][‰'ä  Ò  "          ¶Mr  components/LaunchingSoonWidget.jsxux         UT ·ÁiPK   ²PX[ExH¤»  Ã            ¶¡{  components/Login.cssux         UT ûhPK   ™QX[844Lo  ú            ¶¾}  components/Login.jsxux         UT ÊûhPK   è¶W[²{Rğ7  ¤            ¶€  components/LogoutSuccess.cssux         UT üdúhPK   )¶W[Õ¥4[ø   €            ¶0‚  components/LogoutSuccess.jsxux         UT –cúhPK   £X[¡ü˜\ø  O            ¶’ƒ  components/MyBookings.cssux         UT 2”ûhPK   y€[[»•­œº  I            ¶ñ…  components/MyBookings.jsxux         UT JÿhPK   ğ¹\[í’Ã5›  X
+src\components (3).zip:            ¶]—  components/ServiceProviders.jsxux         UT %²ÿhPK   „[[:‘û  {            ¶œ  components/ServicesPage.cssux         UT Á…şhPK   [[{³ó*!  ª            ¶…¢  components/ServicesPage.jsxux         UT éƒşhPK   I][+B¹@Ò  t             ¶¨  components/SupportTicketCard.cssux         UT RiPK   9][u{ÍK  Ğ             ¶Oª  components/SupportTicketCard.jsxux         UT 7iPK   (°Z[¨´à  ­            ¶­  components/ThankYouPage.cssux         UT ÔLşhPK   °Z[ØyH–  ö            ¶Q¯  components/ThankYouPage.jsxux         UT ¶LşhPK    ) ) £  P²    src\pages\AdminDashboard.css:  border: none;
+src\pages\AdminDashboard.css:  border-left: 5px solid #007bff;
+src\pages\AdminDashboard.jsx:    totalBookings: 0,
+src\pages\AdminDashboard.jsx:    totalFeedback: 0,
+src\pages\AdminDashboard.jsx:        const bookingsSnap = await getDocs(collection(db, "bookings"));
+src\pages\AdminDashboard.jsx:        const feedbackSnap = await getDocs(collection(db, "feedback"));
+src\pages\AdminDashboard.jsx:        const bookings = bookingsSnap.docs.map((d) => d.data());
+src\pages\AdminDashboard.jsx:        const feedbacks = feedbackSnap.docs.map((d) => d.data());
+src\pages\AdminDashboard.jsx:        const totalBookings = bookings.length;
+src\pages\AdminDashboard.jsx:        const totalFeedback = feedbacks.length;
+src\pages\AdminDashboard.jsx:          feedbacks.length > 0
+src\pages\AdminDashboard.jsx:                feedbacks.reduce((sum, f) => sum + (f.rating || 0), 0) /
+src\pages\AdminDashboard.jsx:                feedbacks.length
+src\pages\AdminDashboard.jsx:        // Group bookings by category
+src\pages\AdminDashboard.jsx:        bookings.forEach((b) => {
+src\pages\AdminDashboard.jsx:        setStats({ totalBookings, totalFeedback, avgRating, topCategory });
+src\pages\AdminDashboard.jsx:        label: "Bookings by Category",
+src\pages\AdminDashboard.jsx:        borderColor: "#007bff",
+src\pages\AdminDashboard.jsx:        borderWidth: 1,
+src\pages\AdminDashboard.jsx:        text: "Service Bookings by Category",
+src\pages\AdminDashboard.jsx:          <div><strong>Total Bookings:</strong> {stats.totalBookings}</div>
+src\pages\AdminDashboard.jsx:          <div><strong>Total Feedback:</strong> {stats.totalFeedback}</div>
+src\pages\AdminOrderManager.css:.admin-orders-page {
+src\pages\AdminOrderManager.css:.admin-order-card {
+src\pages\AdminOrderManager.css:  border: 1px solid #dce3f0;
+src\pages\AdminOrderManager.css:  border-radius: 10px;
+src\pages\AdminOrderManager.css:.admin-order-card:hover {
+src\pages\AdminOrderManager.css:.admin-order-header {
+src\pages\AdminOrderManager.css:  border-bottom: 1px dashed #ccc;
+src\pages\AdminOrderManager.css:.admin-order-header h4 {
+src\pages\AdminOrderManager.css:  border-radius: 6px;
+src\pages\AdminOrderManager.css:  border: none;
+src\pages\AdminOrderManager.css:  border-radius: 6px;
+src\pages\AdminOrderManager.css:  border-radius: 8px;
+src\pages\AdminOrderManager.css:  border-bottom: 1px solid #dde3f4;
+src\pages\AdminOrderManager.css:  border-bottom: none;
+src\pages\AdminOrderManager.css:  border-radius: 10px;
+src\pages\AdminOrderManager.css:  border-left: 5px solid #0a4abf;
+src\pages\AdminOrderManager.css:  border-left: 5px solid #f7b500;
+src\pages\AdminOrderManager.css:  border-left: 5px solid #28a745;
+src\pages\AdminOrderManager.css:  border-left: 5px solid #dc3545;
+src\pages\AdminOrderManager.css:  border-left: 5px solid #17a2b8;
+src\pages\AdminOrderManager.jsx:  orderBy,
+src\pages\AdminOrderManager.jsx:import "./AdminOrderManager.css";
+src\pages\AdminOrderManager.jsx:export default function AdminOrderManager() {
+src\pages\AdminOrderManager.jsx:  const [orders, setOrders] = useState([]);
+src\pages\AdminOrderManager.jsx:    const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+src\pages\AdminOrderManager.jsx:      const orderList = await Promise.all(
+src\pages\AdminOrderManager.jsx:            collection(db, "orders", docSnap.id, "items")
+src\pages\AdminOrderManager.jsx:      setOrders(orderList);
+src\pages\AdminOrderManager.jsx:      const pending = orderList.filter((o) => o.status === "pending").length;
+src\pages\AdminOrderManager.jsx:      const completed = orderList.filter((o) => o.status === "Completed").length;
+src\pages\AdminOrderManager.jsx:      const cancelled = orderList.filter((o) => o.status === "Cancelled").length;
+src\pages\AdminOrderManager.jsx:      const revenue = orderList
+src\pages\AdminOrderManager.jsx:        total: orderList.length,
+src\pages\AdminOrderManager.jsx:  const updateStatus = async (orderId, newStatus) => {
+src\pages\AdminOrderManager.jsx:      await updateDoc(doc(db, "orders", orderId), { status: newStatus });
+src\pages\AdminOrderManager.jsx:      alert(`Order ${orderId} marked as ${newStatus}!`);
+src\pages\AdminOrderManager.jsx:      console.error("Error updating order status:", error);
+src\pages\AdminOrderManager.jsx:      <div className="admin-orders-page">
+src\pages\AdminOrderManager.jsx:        <p>Loading all orders...</p>
+src\pages\AdminOrderManager.jsx:    <div className="admin-orders-page">
+src\pages\AdminOrderManager.jsx:      <h2 className="admin-title">ğŸ§¾ Admin Order Manager</h2>
+src\pages\AdminOrderManager.jsx:          <h4>Total Orders</h4>
+src\pages\AdminOrderManager.jsx:      {orders.length === 0 && <p>No orders found yet.</p>}
+src\pages\AdminOrderManager.jsx:      {orders.map((order) => (
+src\pages\AdminOrderManager.jsx:        <div key={order.id} className="admin-order-card">
+src\pages\AdminOrderManager.jsx:          <div className="admin-order-header">
+src\pages\AdminOrderManager.jsx:              <h4>Order ID: {order.id}</h4>
+src\pages\AdminOrderManager.jsx:                User: <b>{order.userId}</b>
+src\pages\AdminOrderManager.jsx:                {order.createdAt?.toDate
+src\pages\AdminOrderManager.jsx:                  ? order.createdAt.toDate().toLocaleString()
+src\pages\AdminOrderManager.jsx:                className={`status-badge ${order.status?.toLowerCase() || "pending"}`}
+src\pages\AdminOrderManager.jsx:                {order.status}
+src\pages\AdminOrderManager.jsx:              <h4 className="admin-total">â‚¹{order.totalAmount}</h4>
+src\pages\AdminOrderManager.jsx:              onClick={() => updateStatus(order.id, "Completed")}
+src\pages\AdminOrderManager.jsx:              onClick={() => updateStatus(order.id, "Cancelled")}
+src\pages\AdminOrderManager.jsx:                setExpanded(expanded === order.id ? null : order.id)
+src\pages\AdminOrderManager.jsx:              {expanded === order.id ? "Hide Items â–²" : "View Items â–¼"}
+src\pages\AdminOrderManager.jsx:          {expanded === order.id && (
+src\pages\AdminOrderManager.jsx:              {order.items.map((item, idx) => (
+src\pages\AdminOrders.css:.admin-orders {
+src\pages\AdminOrders.css:.orders-list {
+src\pages\AdminOrders.css:.admin-order-card {
+src\pages\AdminOrders.css:  border-radius: 8px;
+src\pages\AdminOrders.css:.order-top {
+src\pages\AdminOrders.css:.order-actions {
+src\pages\AdminOrders.css:  border: none;
+src\pages\AdminOrders.css:  border-radius: 5px;
+src\pages\AdminOrders.css:  border: none;
+src\pages\AdminOrders.css:  border-radius: 5px;
+src\pages\AdminOrders.css:  border: none;
+src\pages\AdminOrders.css:  border-radius: 5px;
+src\pages\AdminOrders.jsx:import "./AdminOrders.css";
+src\pages\AdminOrders.jsx:export default function AdminOrders() {
+src\pages\AdminOrders.jsx:  const [orders, setOrders] = useState([]);
+src\pages\AdminOrders.jsx:    const fetchOrders = async () => {
+src\pages\AdminOrders.jsx:      const querySnap = await getDocs(collection(db, "orders"));
+src\pages\AdminOrders.jsx:      setOrders(data);
+src\pages\AdminOrders.jsx:    fetchOrders();
+src\pages\AdminOrders.jsx:    await updateDoc(doc(db, "orders", id), { status });
+src\pages\AdminOrders.jsx:    setOrders((prev) =>
+src\pages\AdminOrders.jsx:      prev.map((order) => (order.id === id ? { ...order, status } : order))
+src\pages\AdminOrders.jsx:  if (loading) return <p>Loading orders...</p>;
+src\pages\AdminOrders.jsx:    <div className="admin-orders">
+src\pages\AdminOrders.jsx:      <h2>ğŸ§¾ Manage Orders</h2>
+src\pages\AdminOrders.jsx:      {orders.length === 0 ? (
+src\pages\AdminOrders.jsx:        <p>No orders found.</p>
+src\pages\AdminOrders.jsx:        <div className="orders-list">
+src\pages\AdminOrders.jsx:          {orders.map((order) => (
+src\pages\AdminOrders.jsx:            <div key={order.id} className="admin-order-card">
+src\pages\AdminOrders.jsx:              <div className="order-top">
+src\pages\AdminOrders.jsx:                <h4>Order ID: {order.id}</h4>
+src\pages\AdminOrders.jsx:                <p>Total: â‚¹{order.totalAmount}</p>
+src\pages\AdminOrders.jsx:                <p>Status: <strong>{order.status}</strong></p>
+src\pages\AdminOrders.jsx:              <div className="order-actions">
+src\pages\AdminOrders.jsx:                  onClick={() => handleStatusChange(order.id, "Approved")}
+src\pages\AdminOrders.jsx:                  onClick={() => handleStatusChange(order.id, "Completed")}
+src\pages\AdminOrders.jsx:                  onClick={() => handleStatusChange(order.id, "Cancelled")}
+src\pages\AdminRevenueDashboard.css:.admin-financial .card { border-radius: 6px; }
+src\pages\AdminRevenueDashboard.css:.chart-card { border-radius: 6px; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+src\pages\AdminRevenueDashboard.jsx:  orderBy,
+src\pages\AdminRevenueDashboard.jsx:    const q = query(collection(db, "services"), orderBy("name"));
+src\pages\AdminRevenueDashboard.jsx:      const bookings = Number(s.bookingsCount || 0);
+src\pages\AdminRevenueDashboard.jsx:      const netRevenue = bookings * (price - cost - commissionAmt);
+src\pages\AdminRevenueDashboard.jsx:      totalRevenue += price * bookings;
+src\pages\AdminRevenueDashboard.jsx:      totalCost += cost * bookings;
+src\pages\AdminRevenueDashboard.jsx:      totalCommission += commissionAmt * bookings;
+src\pages\AdminRevenueDashboard.jsx:        byCategory[cat] = { revenue: 0, cost: 0, commission: 0, bookings: 0 };
+src\pages\AdminRevenueDashboard.jsx:      byCategory[cat].cost += cost * bookings;
+src\pages\AdminRevenueDashboard.jsx:      byCategory[cat].commission += commissionAmt * bookings;
+src\pages\AdminRevenueDashboard.jsx:      byCategory[cat].bookings += bookings;
+src\pages\AdminRevenueDashboard.jsx:        byArea[area] = { revenue: 0, cost: 0, commission: 0, bookings: 0 };
+src\pages\AdminRevenueDashboard.jsx:      byArea[area].cost += cost * bookings;
+src\pages\AdminRevenueDashboard.jsx:      byArea[area].commission += commissionAmt * bookings;
+src\pages\AdminRevenueDashboard.jsx:      byArea[area].bookings += bookings;
+src\pages\AdminRevenueDashboard.jsx:      const bookings = Number(s.bookingsCount || 0);
+src\pages\AdminRevenueDashboard.jsx:      const netRevenue = bookings * (price - cost - commissionAmt);
+src\pages\AdminRevenueDashboard.jsx:        bookingsCount: bookings,
+src\pages\AdminRevenueDashboard.jsx:      bookingsCount: r.bookingsCount,
+src\pages\AdminRevenueDashboard.jsx:        <table className="table table-striped table-bordered">
+src\pages\AdminRevenueDashboard.jsx:              <th>Bookings</th>
+src\pages\AdminRevenueDashboard.jsx:                  <td>{r.bookingsCount}</td>
+src\pages\CartPage.css:  border-radius: 12px;
+src\pages\CartPage.css:  border: none;
+src\pages\CartPage.css:  border-radius: 8px;
+src\pages\CartPage.css:  border-top: 2px solid #e3e9f3;
+src\pages\CartPage.css:/* ğŸŸ¢ Checkout button */
+src\pages\CartPage.css:.checkout-btn {
+src\pages\CartPage.css:  border: none;
+src\pages\CartPage.css:  border-radius: 8px;
+src\pages\CartPage.css:.checkout-btn:hover {
+src\pages\CartPage.css:.checkout-btn:disabled {
+src\pages\CartPage.css:  border: none;
+src\pages\CartPage.css:  border-radius: 8px;
+src\pages\CartPage.jsx:  // âœ… Handle checkout
+src\pages\CartPage.jsx:  const handleCheckout = async () => {
+src\pages\CartPage.jsx:      alert("Please login to place an order!");
+src\pages\CartPage.jsx:      // âœ… Create the order document in Firestore
+src\pages\CartPage.jsx:      const orderRef = await addDoc(collection(db, "orders"), {
+src\pages\CartPage.jsx:      // âœ… Add items as a subcollection under this order
+src\pages\CartPage.jsx:        await addDoc(collection(db, "orders", orderRef.id, "items"), {
+src\pages\CartPage.jsx:      alert("âœ… Order placed successfully!");
+src\pages\CartPage.jsx:      navigate("/my-orders");
+src\pages\CartPage.jsx:      console.error("Error placing order:", error);
+src\pages\CartPage.jsx:      alert("Something went wrong while placing the order.");
+src\pages\CartPage.jsx:              className="checkout-btn"
+src\pages\CartPage.jsx:              onClick={handleCheckout}
+src\pages\CartPage.jsx:              {processing ? "Processing..." : "Proceed to Checkout"}
+src\pages\MyOrders.css:.orders-page {
+src\pages\MyOrders.css:.orders-title {
+src\pages\MyOrders.css:.order-card {
+src\pages\MyOrders.css:  border: 1px solid #dce3f0;
+src\pages\MyOrders.css:  border-radius: 10px;
+src\pages\MyOrders.css:.order-card:hover {
+src\pages\MyOrders.css:.order-header {
+src\pages\MyOrders.css:  border-bottom: 1px dashed #e2e8f0;
+src\pages\MyOrders.css:.order-header h4 {
+src\pages\MyOrders.css:.order-header span {
+src\pages\MyOrders.css:.order-date {
+src\pages\MyOrders.css:.order-status {
+src\pages\MyOrders.css:  border-radius: 6px;
+src\pages\MyOrders.css:.order-total {
+src\pages\MyOrders.css:  border: none;
+src\pages\MyOrders.css:  border-radius: 6px;
+src\pages\MyOrders.css:.order-items {
+src\pages\MyOrders.css:  border-radius: 8px;
+src\pages\MyOrders.css:.order-item {
+src\pages\MyOrders.css:  border-bottom: 1px solid #e0e6f2;
+src\pages\MyOrders.css:.order-item:last-child {
+src\pages\MyOrders.css:  border-bottom: none;
+src\pages\MyOrders.css:.order-item span:first-child {
+src\pages\MyOrders.css:.order-item span:last-child {
+src\pages\MyOrders.jsx:  orderBy,
+src\pages\MyOrders.jsx:import "./MyOrders.css";
+src\pages\MyOrders.jsx:export default function MyOrders() {
+src\pages\MyOrders.jsx:  const [orders, setOrders] = useState([]);
+src\pages\MyOrders.jsx:      setOrders([]);
+src\pages\MyOrders.jsx:      collection(db, "orders"),
+src\pages\MyOrders.jsx:      orderBy("createdAt", "desc")
+src\pages\MyOrders.jsx:      const ordersData = await Promise.all(
+src\pages\MyOrders.jsx:          const orderData = { id: doc.id, ...doc.data() };
+src\pages\MyOrders.jsx:          const itemsSnap = await getDocs(collection(db, "orders", doc.id, "items"));
+src\pages\MyOrders.jsx:          orderData.items = itemsSnap.docs.map((itemDoc) => itemDoc.data());
+src\pages\MyOrders.jsx:          return orderData;
+src\pages\MyOrders.jsx:      setOrders(ordersData);
+src\pages\MyOrders.jsx:      <div className="orders-page">
+src\pages\MyOrders.jsx:        <p>Loading your orders...</p>
+src\pages\MyOrders.jsx:  if (orders.length === 0)
+src\pages\MyOrders.jsx:      <div className="orders-page">
+src\pages\MyOrders.jsx:        <h2>No orders found ğŸ›ï¸</h2>
+src\pages\MyOrders.jsx:    <div className="orders-page">
+src\pages\MyOrders.jsx:      <h2 className="orders-title">ğŸ“¦ My Orders</h2>
+src\pages\MyOrders.jsx:      {orders.map((order) => (
+src\pages\MyOrders.jsx:        <div key={order.id} className="order-card">
+src\pages\MyOrders.jsx:          <div className="order-header">
+src\pages\MyOrders.jsx:                Order ID: <span>{order.id}</span>
+src\pages\MyOrders.jsx:              <p className="order-date">
+src\pages\MyOrders.jsx:                {order.createdAt?.toDate
+src\pages\MyOrders.jsx:                  ? order.createdAt.toDate().toLocaleString()
+src\pages\MyOrders.jsx:            <div className="order-status">
+src\pages\MyOrders.jsx:                  order.status?.toLowerCase() || "pending"
+src\pages\MyOrders.jsx:                {order.status || "Pending"}
+src\pages\MyOrders.jsx:              <h4 className="order-total">â‚¹{order.totalAmount || 0}</h4>
+src\pages\MyOrders.jsx:              setExpandedId(expandedId === order.id ? null : order.id)
+src\pages\MyOrders.jsx:            {expandedId === order.id ? "Hide Items â–²" : "View Items â–¼"}
+src\pages\MyOrders.jsx:          {expandedId === order.id && (
+src\pages\MyOrders.jsx:            <div className="order-items">
+src\pages\MyOrders.jsx:              {order.items.map((item, idx) => (
+src\pages\MyOrders.jsx:                <div key={idx} className="order-item">
+src\utils\firestoreBookings.js:// src/utils/firestoreBookings.js
+src\utils\firestoreBookings.js:export const saveBooking = async (bookingData) => {
+src\utils\firestoreBookings.js:    const docRef = await addDoc(collection(db, "bookings"), {
+src\utils\firestoreBookings.js:      ...bookingData,
+src\utils\firestoreBookings.js:    console.log("Booking stored with ID:", docRef.id);
+src\utils\firestoreBookings.js:    console.error("Error saving booking:", error);
+ 
+===================================================== 
